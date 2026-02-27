@@ -1,0 +1,38 @@
+---
+description: Identical patterns for all components (atoms, molecules, organisms) in src/components/
+globs: src/components/**/*.tsx
+---
+
+# Component patterns (identical across the app)
+
+## File layout per component
+- `ComponentName/ComponentName.tsx` — implementation
+- `ComponentName/ComponentName.types.ts` — props and variant types
+- `ComponentName/index.ts` — barrel: export component, types, and variant helpers (e.g. `buttonVariants`)
+- Optional: `ComponentName.stories.tsx`, `ComponentName.test.tsx`
+
+## Implementation pattern
+1. **Variants:** Define with `cva()` from `class-variance-authority`. Export the variants (e.g. `buttonVariants`, `inputVariants`) for reuse.
+2. **Classes:** Merge with `cn(variants({ ... }), className)` from `@/utils`. Never use raw `clsx` or string concat for component root classes.
+3. **Props:** Extend appropriate HTML attributes in the types file (e.g. `ButtonHTMLAttributes`, `InputHTMLAttributes`). Omit `size` from input types if we use our own `size` (see Input.types.ts).
+4. **Refs:** Use `forwardRef` when the component wraps a native element that must receive a ref.
+
+## Imports (always)
+- `import { cva } from "class-variance-authority";`
+- `import { cn } from "@/utils";`
+- `import type { ComponentNameProps } from "./ComponentName.types";`
+
+## Barrel (index.ts) pattern
+```ts
+export { ComponentName, componentNameVariants } from "./ComponentName";
+export type { ComponentNameProps, ComponentNameVariant } from "./ComponentName.types";
+```
+
+## Composition rules
+- Atoms: do not import other design components from `@/components`. Only `@/utils`, `@/types`, theme/CSS.
+- Molecules: import only from `@/components/atoms` (and other molecules if needed).
+- Organisms: import from `@/components/atoms` and `@/components/molecules`.
+
+## Naming
+- Component name: PascalCase. Folder name: same as component (e.g. `Button`, `IconButton`).
+- Variants export: `componentNameVariants` (camelCase, e.g. `buttonVariants`).

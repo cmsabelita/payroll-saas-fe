@@ -75,9 +75,16 @@ Use `cn()` from `@/utils` (clsx + tailwind-merge) when merging classes. Use `cva
 - **Geist Mono** — loaded via `next/font/google` (`--font-mono`)
 - **Circular** — self-hosted in `public/fonts/circular/` (loaded via `src/app/circular-font.css`)
 
+### Cursor knowledge (indexing and identical patterns)
+
+- **`.cursorrules`** (project root) — Global rules for path alias, stack, atomic design, component pattern, theming. Applied in Cursor by default.
+- **`.cursor/rules/`** — Scoped rules (components, new atoms, theming, app/routes). Use `@.cursorrules` or `@.cursor/rules` for explicit context. See `.cursor/README.md`.
+
 ### docs/
 
 `docs/` contains project documentation:
 - `ARCHITECTURE.md` — Atomic Design details and Storybook configuration
 - `THEMING.md` — Full token reference and theming workflow
-- `USER_FLOWS.md`, `DESIGN-SUPABASE.md`, `ATOMS-INVENTORY.md`, `ATOMS-EVERYPESO-MOBILE-MAP.md`
+- `ATOMS-INVENTORY.md` — Existing atoms and gaps
+- `ATOMS-IMPLEMENTATION-PLAN.md` — New atoms to add, phases, lead review decisions
+- `USER_FLOWS.md`, `DESIGN-SUPABASE.md`, `ATOMS-EVERYPESO-MOBILE-MAP.md`

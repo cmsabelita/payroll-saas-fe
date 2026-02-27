@@ -1,0 +1,30 @@
+---
+description: When adding new atoms, follow this and docs/ATOMS-IMPLEMENTATION-PLAN.md
+globs: src/components/atoms/**/*
+---
+
+# New atom implementation (identical pattern)
+
+## Checklist for each new atom
+1. Create folder `ComponentName/` under `src/components/atoms/`.
+2. Add `ComponentName.types.ts` — props extending the right HTML attributes; variant types if using cva.
+3. Add `ComponentName.tsx` — use `cva()` for variants, `cn()` for class merge; export the variants.
+4. Add `index.ts` — export component, variants, and types.
+5. Add `ComponentName.stories.tsx` — cover variants and key states.
+6. Export from `src/components/atoms/index.ts`.
+
+## Canonical examples
+- **Button** — CVA variants (variant + size), exported `buttonVariants`. Use as reference for variant-based atoms.
+- **Input** — CVA with size and error; extends `InputHTMLAttributes` (size omitted). Use for form controls.
+- **Dot** — Simple variant-only atom. Use for small status/indicator primitives.
+
+## Decisions (from ATOMS-IMPLEMENTATION-PLAN lead review)
+- **Label:** Already has `required`; no new atom. Verify a11y in forms.
+- **NotificationDot:** Prefer extending **Dot** with size/variant unless a separate API is required.
+- **Code:** Prefer **Text** with `variant="code"` unless a separate Code atom is chosen.
+- **TabSegment / PaginationButton:** Keep as separate atoms (semantics, focused API).
+- **AccentBar:** Keep as separate atom (decoration vs Divider).
+
+## Spec and phases
+- Per-atom specs and implementation order: see `docs/ATOMS-IMPLEMENTATION-PLAN.md`.
+- Do not add molecules (SearchInput, Alert, Breadcrumb, LogoMark) as atoms; build them in `molecules/` from atoms.

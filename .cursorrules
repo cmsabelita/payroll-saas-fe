@@ -1,0 +1,36 @@
+# Payroll SaaS Frontend — Cursor Rules
+
+Apply these rules for consistent patterns and indexing across the application.
+
+## Path alias
+- Always use `@/` for `src/`: `@/components`, `@/hooks`, `@/utils`, `@/types`, `@/services`, `@/config`, `@/app/store`.
+
+## Stack
+- Next.js 16 (App Router), React 19, TypeScript.
+- Tailwind CSS v4, class-variance-authority (cva), `cn()` from `@/utils` (clsx + tailwind-merge).
+- MobX + mobx-react-lite; store via `useRootStore()`. next-themes for light/dark (`data-theme` on `<html>`).
+
+## Atomic Design (strict)
+- **Atoms** (`src/components/atoms/`): Single primitives. No composition of other design components. One folder per component: `ComponentName.tsx`, `ComponentName.types.ts`, `index.ts`, optional `ComponentName.stories.tsx`.
+- **Molecules** (`src/components/molecules/`): Compose atoms only.
+- **Organisms** (`src/components/organisms/`): Compose molecules and atoms.
+- **Templates** (`src/components/templates/`): Page-level layout. Pages compose one template.
+
+## Component pattern (atoms and molecules)
+- Use **CVA** for variants; export the variants (e.g. `buttonVariants`) for reuse. Use **cn()** to merge variant classes with `className`.
+- Put props and variant types in `ComponentName.types.ts`. Use `forwardRef` when the component wraps a native element that needs ref.
+- Export from barrel: `index.ts` re-exports component, types, and variant helpers.
+- New atoms: follow `docs/ATOMS-IMPLEMENTATION-PLAN.md` and existing atoms (e.g. Button, Input, Dot) for structure and conventions.
+
+## Theming
+- Tokens in `src/config/theme.ts`. Run `npm run generate:theme` to regenerate `src/app/theme-variables.css`. Use CSS variables and Tailwind `@theme` in `globals.css`; do not hardcode palette values in components.
+
+## Routes
+- `src/app/(marketing)/` — public; `src/app/(dashboard)/` — authenticated app shell.
+
+## Docs (for context and indexing)
+- `CLAUDE.md` — commands and high-level architecture.
+- `docs/ARCHITECTURE.md` — Atomic Design and Storybook.
+- `docs/ATOMS-INVENTORY.md` — existing atoms and gaps.
+- `docs/ATOMS-IMPLEMENTATION-PLAN.md` — new atoms to add, phases, and lead review decisions.
+- `docs/THEMING.md` — token reference.

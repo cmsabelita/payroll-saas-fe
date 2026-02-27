@@ -1,0 +1,22 @@
+---
+description: Theming, design tokens, and styling — use for any UI styling or new tokens
+globs: src/config/theme.ts, src/app/**/*.css, src/components/**/*.tsx
+---
+
+# Theming and design tokens (identical pattern)
+
+## Token source of truth
+- **`src/config/theme.ts`** — Define all design tokens (palette, spacing, radius, shadow, animation, z-index).
+- **`npm run generate:theme`** — Writes `src/app/theme-variables.css`. Run after changing theme.ts (also runs in prebuild).
+
+## Using tokens in components
+- Use Tailwind classes that map to theme variables (e.g. `bg-primary`, `text-foreground`, `border-border`, `ring-ring`).
+- Do not hardcode hex/rgb in component classNames. Use semantic names from theme (e.g. `primary`, `destructive`, `muted`).
+- For one-off values, use CSS variables in globals.css or extend theme in `theme.ts` and regenerate.
+
+## Light/dark
+- `data-theme="light"` / `data-theme="dark"` on `<html>` via next-themes. ThemeProvider in layout.
+- Use semantic tokens so components adapt automatically (e.g. `bg-background`, `text-foreground`).
+
+## Tailwind v4
+- `src/app/globals.css` imports theme variables and exposes via `@theme inline`. Add new palette entries in theme.ts, regenerate, then map in globals.css if needed.

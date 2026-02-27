@@ -1,0 +1,25 @@
+---
+description: App Router, routes, and state — use for pages, layout, and store
+globs: src/app/**/*.tsx, src/app/store/**/*
+---
+
+# App and routes (identical pattern)
+
+## Path alias
+- `@/` = `src/`. Use for all imports (e.g. `@/components`, `@/app/store`, `@/hooks`).
+
+## Route groups
+- **`src/app/(marketing)/`** — Public pages (landing, pricing, signup, login).
+- **`src/app/(dashboard)/`** — Authenticated app shell (sidebar, main content).
+
+## Pages
+- Compose one template and pass content. Avoid inline layout structure in page.tsx.
+- Use server components by default; add `"use client"` only when needed (hooks, interactivity, store).
+
+## State (MobX)
+- **RootStore** in `src/app/store/RootStore.ts`; `makeAutoObservable`. Add domain stores as properties.
+- Access via **`useRootStore()`** hook. **StoreProvider** wraps the app in layout.tsx.
+- Do not create new global state outside RootStore; add slices to RootStore or use React state for local UI.
+
+## Fonts
+- DM Sans (body), Geist Mono (mono), Circular (self-hosted). See layout.tsx and globals/circular-font.css.
