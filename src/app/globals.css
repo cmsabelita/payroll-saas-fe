@@ -1,26 +1,188 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Design tokens – generated from src/config/theme.ts (run: npm run generate:theme) */
+@import "./theme-variables.css";
 
 @theme inline {
+  /* ─── Palette (theme-variables.css sets these per data-theme) ─── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+  --color-muted: var(--color-muted);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+  --color-border: var(--color-border);
+  --color-ring: var(--color-ring);
+  --color-input: var(--color-input);
+  --color-input-foreground: var(--color-input-foreground);
+  --color-destructive: var(--color-destructive);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+  --color-success: var(--color-success);
+  --color-success-foreground: var(--color-success-foreground);
+  --color-warning: var(--color-warning);
+  --color-warning-foreground: var(--color-warning-foreground);
+  --color-info: var(--color-info);
+  --color-info-foreground: var(--color-info-foreground);
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+  --color-popover: var(--color-popover);
+  --color-popover-foreground: var(--color-popover-foreground);
+
+  /* ─── Spacing ─── */
+  --spacing-0: var(--spacing-0);
+  --spacing-px: var(--spacing-px);
+  --spacing-0-5: var(--spacing-0-5);
+  --spacing-1: var(--spacing-1);
+  --spacing-1-5: var(--spacing-1-5);
+  --spacing-2: var(--spacing-2);
+  --spacing-2-5: var(--spacing-2-5);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --spacing-20: var(--spacing-20);
+  --spacing-24: var(--spacing-24);
+  --spacing-28: var(--spacing-28);
+  --spacing-32: var(--spacing-32);
+  --spacing-36: var(--spacing-36);
+  --spacing-40: var(--spacing-40);
+  --spacing-44: var(--spacing-44);
+  --spacing-48: var(--spacing-48);
+  --spacing-52: var(--spacing-52);
+  --spacing-56: var(--spacing-56);
+  --spacing-60: var(--spacing-60);
+  --spacing-64: var(--spacing-64);
+  --spacing-72: var(--spacing-72);
+  --spacing-80: var(--spacing-80);
+  --spacing-96: var(--spacing-96);
+
+  /* ─── Radius ─── */
+  --radius-none: var(--radius-none);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+  --radius-full: var(--radius-full);
+
+  /* ─── Typography ─── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+  --font-size-xs: var(--font-size-xs);
+  --font-size-sm: var(--font-size-sm);
+  --font-size-base: var(--font-size-base);
+  --font-size-lg: var(--font-size-lg);
+  --font-size-xl: var(--font-size-xl);
+  --font-size-2xl: var(--font-size-2xl);
+  --font-size-3xl: var(--font-size-3xl);
+  --font-size-4xl: var(--font-size-4xl);
+  --font-size-5xl: var(--font-size-5xl);
+  --font-size-6xl: var(--font-size-6xl);
+  --font-size-7xl: var(--font-size-7xl);
+  --font-size-8xl: var(--font-size-8xl);
+  --font-size-9xl: var(--font-size-9xl);
+  --font-weight-thin: var(--font-weight-thin);
+  --font-weight-extralight: var(--font-weight-extralight);
+  --font-weight-light: var(--font-weight-light);
+  --font-weight-normal: var(--font-weight-normal);
+  --font-weight-medium: var(--font-weight-medium);
+  --font-weight-semibold: var(--font-weight-semibold);
+  --font-weight-bold: var(--font-weight-bold);
+  --font-weight-extrabold: var(--font-weight-extrabold);
+  --font-weight-black: var(--font-weight-black);
+  --tracking-tighter: var(--tracking-tighter);
+  --tracking-tight: var(--tracking-tight);
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: var(--tracking-wide);
+  --tracking-wider: var(--tracking-wider);
+  --tracking-widest: var(--tracking-widest);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* ─── Shadow ─── */
+  --shadow-none: var(--shadow-none);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow-DEFAULT);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+  --shadow-inner: var(--shadow-inner);
+
+  /* ─── Animation ─── */
+  --animate-duration-fast: var(--animate-duration-fast);
+  --animate-duration-normal: var(--animate-duration-normal);
+  --animate-duration-slow: var(--animate-duration-slow);
+  --animate-duration-slower: var(--animate-duration-slower);
+  --animate-ease: var(--animate-ease-DEFAULT);
+  --animate-ease-in: var(--animate-ease-in);
+  --animate-ease-out: var(--animate-ease-out);
+  --animate-ease-in-out: var(--animate-ease-in-out);
+  --animate-ease-bounce: var(--animate-ease-bounce);
+
+  /* ─── Z-index (use via z-[var(--z-index-modal)] etc.) ─── */
+  --z-index-auto: var(--z-index-auto);
+  --z-index-dropdown: var(--z-index-dropdown);
+  --z-index-sticky: var(--z-index-sticky);
+  --z-index-fixed: var(--z-index-fixed);
+  --z-index-modal-backdrop: var(--z-index-modal-backdrop);
+  --z-index-modal: var(--z-index-modal);
+  --z-index-popover: var(--z-index-popover);
+  --z-index-tooltip: var(--z-index-tooltip);
+  --z-index-toast: var(--z-index-toast);
+  --z-index-max: var(--z-index-max);
+
+  /* ─── Border & ring ─── */
+  --border-width-0: var(--border-width-0);
+  --border-width: var(--border-width-DEFAULT);
+  --border-width-2: var(--border-width-2);
+  --border-width-4: var(--border-width-4);
+  --border-width-8: var(--border-width-8);
+  --ring-width-0: var(--ring-width-0);
+  --ring-width-1: var(--ring-width-1);
+  --ring-width-2: var(--ring-width-2);
+  --ring-width-4: var(--ring-width-4);
+  --ring-width-8: var(--ring-width-8);
+  --ring-width: var(--ring-width-DEFAULT);
+  --ring-offset-width-0: var(--ring-offset-width-0);
+  --ring-offset-width-1: var(--ring-offset-width-1);
+  --ring-offset-width-2: var(--ring-offset-width-2);
+  --ring-offset-width-4: var(--ring-offset-width-4);
+  --ring-offset-width: var(--ring-offset-width-DEFAULT);
+
+  /* ─── Blur ─── */
+  --blur-none: var(--blur-none);
+  --blur-sm: var(--blur-sm);
+  --blur: var(--blur-DEFAULT);
+  --blur-md: var(--blur-md);
+  --blur-lg: var(--blur-lg);
+  --blur-xl: var(--blur-xl);
+  --blur-2xl: var(--blur-2xl);
+  --blur-3xl: var(--blur-3xl);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Screen-reader only (a11y) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
