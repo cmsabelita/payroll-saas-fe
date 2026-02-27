@@ -1,9 +1,4 @@
-/**
- * Design tokens: single source of truth for all theming.
- * Covers: palettes (light/dark), spacing, typography, radius, shadow,
- * animation, z-index, border, ring, blur, letter-spacing.
- * Generate CSS: npm run generate:theme
- */
+/** Design tokens. Generate CSS: npm run generate:theme */
 
 export interface Palette {
   background: string;
@@ -32,7 +27,6 @@ export interface Palette {
   cardForeground: string;
   popover: string;
   popoverForeground: string;
-  /** Chart/series colors (for data viz) */
   chart?: string[];
 }
 
@@ -57,100 +51,71 @@ export interface ThemeTokens {
   breakpoint: Record<string, string>;
 }
 
-/**
- * Payroll SaaS palette (light).
- * Element tokens mapped from design spec.
- */
 export const themeConfig: ThemeTokens = {
   palette: {
     light: {
-      /* Default Page */
-      background: "#F8FAFC" /* Slate 50 */,
-      foreground: "#0F172A" /* Slate 900 */,
-      /* Primary */
-      primary: "#2563EB" /* Blue 600 */,
+      background: "#F8F9FA",
+      foreground: "#11181C",
+      primary: "#3ECF8E",
       primaryForeground: "#FFFFFF",
-      /* Secondary */
-      secondary: "#F1F5F9" /* Slate 100 */,
-      secondaryForeground: "#1E293B" /* Slate 800 */,
-      /* Muted */
-      muted: "#F1F5F9" /* Slate 100 */,
-      mutedForeground: "#64748B" /* Slate 500 */,
-      /* Accent */
-      accent: "#E0E7FF" /* Indigo 100 */,
-      accentForeground: "#4338CA" /* Indigo 700 */,
-      /* Border / Ring */
-      border: "#E2E8F0" /* Slate 200 */,
-      ring: "#3B82F6" /* Blue 500 */,
-      /* Input */
+      secondary: "#EBEFF2",
+      secondaryForeground: "#11181C",
+      muted: "#EBEFF2",
+      mutedForeground: "#687076",
+      accent: "#D1F5E3",
+      accentForeground: "#065F46",
+      border: "#D7DBDF",
+      ring: "#3ECF8E",
       input: "#FFFFFF",
-      inputForeground: "#0F172A" /* Slate 900 */,
-      /* Destructive */
-      destructive: "#EF4444" /* Red 500 */,
+      inputForeground: "#11181C",
+      destructive: "#E5484D",
       destructiveForeground: "#FFFFFF",
-      /* Success */
-      success: "#10B981" /* Emerald 500 */,
+      success: "#3ECF8E",
       successForeground: "#FFFFFF",
-      /* Warning */
-      warning: "#F59E0B" /* Amber 500 */,
-      warningForeground: "#78350F" /* Amber 900 */,
-      /* Info */
-      info: "#0EA5E9" /* Sky 500 */,
+      warning: "#F59E0B",
+      warningForeground: "#78350F",
+      info: "#0EA5E9",
       infoForeground: "#FFFFFF",
-      /* Card */
       card: "#FFFFFF",
-      cardForeground: "#0F172A" /* Slate 900 */,
-      /* Popover */
+      cardForeground: "#11181C",
       popover: "#FFFFFF",
-      popoverForeground: "#0F172A" /* Slate 900 */,
-      chart: ["#2563EB", "#10B981", "#F59E0B", "#EF4444", "#0EA5E9"],
+      popoverForeground: "#11181C",
+      chart: ["#3ECF8E", "#0EA5E9", "#F59E0B", "#E5484D", "#065F46"],
     },
     dark: {
-      /* Default Page */
-      background: "#0B0F1A" /* Midnight */,
-      foreground: "#F8FAFC" /* Slate 50 */,
-      /* Primary */
-      primary: "#3B82F6" /* Blue 500 */,
+      background: "#1C1C1C",
+      foreground: "#EDEDED",
+      primary: "#3ECF8E",
       primaryForeground: "#FFFFFF",
-      /* Secondary */
-      secondary: "#1E293B" /* Slate 800 */,
-      secondaryForeground: "#F1F5F9" /* Slate 100 */,
-      /* Muted */
-      muted: "#1E293B" /* Slate 800 */,
-      mutedForeground: "#94A3B8" /* Slate 400 */,
-      /* Accent */
-      accent: "#1E293B" /* Slate 800 */,
-      accentForeground: "#F1F5F9" /* Slate 100 */,
-      /* Border / Ring */
-      border: "#334155" /* Slate 700 */,
-      ring: "#2563EB" /* Blue 600 */,
-      /* Input */
-      input: "#111827" /* Gray 900 */,
-      inputForeground: "#F8FAFC" /* Slate 50 */,
-      /* Destructive */
-      destructive: "#7F1D1D" /* Dark Red */,
-      destructiveForeground: "#FEE2E2" /* Red 100 */,
-      /* Success */
-      success: "#064E3B" /* Dark Green */,
-      successForeground: "#D1FAE5" /* Green 100 */,
-      /* Warning */
-      warning: "#78350F" /* Dark Amber */,
-      warningForeground: "#FEF3C7" /* Amber 100 */,
-      /* Info */
-      info: "#0C4A6E" /* Dark Sky */,
-      infoForeground: "#E0F2FE" /* Sky 100 */,
-      /* Card */
-      card: "#111827" /* Gray 900 */,
-      cardForeground: "#F8FAFC" /* Slate 50 */,
-      /* Popover */
-      popover: "#111827" /* Gray 900 */,
-      popoverForeground: "#F8FAFC" /* Slate 50 */,
-      chart: ["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#0EA5E9"],
+      secondary: "#2E2E2E",
+      secondaryForeground: "#EDEDED",
+      muted: "#2E2E2E",
+      mutedForeground: "#9BA3AF",
+      accent: "#1A2E26",
+      accentForeground: "#3ECF8E",
+      border: "#303030",
+      ring: "#3ECF8E",
+      input: "#181818",
+      inputForeground: "#EDEDED",
+      destructive: "#FF453A",
+      destructiveForeground: "#FFFFFF",
+      success: "#3ECF8E",
+      successForeground: "#000000",
+      warning: "#F59E0B",
+      warningForeground: "#FEF3C7",
+      info: "#0EA5E9",
+      infoForeground: "#E0F2FE",
+      card: "#232323",
+      cardForeground: "#EDEDED",
+      popover: "#232323",
+      popoverForeground: "#EDEDED",
+      chart: ["#3ECF8E", "#0EA5E9", "#F59E0B", "#FF453A", "#9BA3AF"],
     },
   },
 
   spacing: {
     0: "0",
+    content: "1.3125rem",
     0.5: "0.125rem",
     1: "0.25rem",
     1.5: "0.375rem",
@@ -223,6 +188,7 @@ export const themeConfig: ThemeTokens = {
     none: "0",
     sm: "0.25rem",
     md: "0.375rem",
+    panel: "0.375rem",
     lg: "0.5rem",
     xl: "0.75rem",
     "2xl": "1rem",
@@ -231,8 +197,8 @@ export const themeConfig: ThemeTokens = {
   },
 
   fontFamily: {
-    sans: "var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif",
-    mono: "var(--font-geist-mono), ui-monospace, monospace",
+    sans: "var(--font-sans), Helvetica Neue, Helvetica, Arial, sans-serif",
+    mono: "var(--font-mono), ui-monospace, monospace",
   },
 
   shadow: {
@@ -312,6 +278,7 @@ export const themeConfig: ThemeTokens = {
   },
 
   breakpoint: {
+    xs: "480px",
     sm: "640px",
     md: "768px",
     lg: "1024px",
@@ -342,7 +309,6 @@ function paletteToVars(palette: Palette): string[] {
   return lines;
 }
 
-/** Generate CSS custom properties for theme-variables.css */
 export function generateThemeCSS(): string {
   const lines: string[] = [
     "/* Generated from src/config/theme.ts – do not edit by hand */",
@@ -368,6 +334,7 @@ export function generateThemeCSS(): string {
   const sections: Array<[string, Record<string, string>]> = [
     ["spacing", themeConfig.spacing],
     ["radius", themeConfig.radius],
+    ["breakpoint", themeConfig.breakpoint],
     ["font-weight", themeConfig.fontWeight],
     ["shadow", themeConfig.shadow],
     ["z-index", themeConfig.zIndex],
@@ -382,7 +349,6 @@ export function generateThemeCSS(): string {
 
   for (const [title, record] of sections) {
     const prefix = title.replace(/\s+/g, "-");
-    lines.push(`/* ${title} */`);
     lines.push(":root {");
     for (const [key, value] of Object.entries(record)) {
       const varName = toVarName(prefix, key);
@@ -392,7 +358,6 @@ export function generateThemeCSS(): string {
     lines.push("");
   }
 
-  lines.push("/* Font size & line height */");
   lines.push(":root {");
   for (const [key, value] of Object.entries(themeConfig.fontSize)) {
     const name = key.includes(".") ? key.replace(".", "-") : key;

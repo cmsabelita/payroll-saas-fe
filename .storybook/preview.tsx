@@ -48,8 +48,7 @@ const preview: Preview = {
         >
           <div
             style={{
-              padding: "1rem",
-              minHeight: "100vh",
+              padding: "0.5rem",
               background: "var(--background)",
               color: "var(--foreground)",
             }}

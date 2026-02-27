@@ -1,7 +1,3 @@
-/**
- * Generates src/app/theme-variables.css from src/config/theme.ts.
- * Run: npx tsx scripts/generate-theme-css.ts
- */
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";

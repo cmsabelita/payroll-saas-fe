@@ -1,8 +1,3 @@
-/**
- * API and external service clients.
- * Keep frontend stateless; persistence and business logic live in the backend.
- */
-
 export const api = {
   baseUrl: process.env.NEXT_PUBLIC_API_URL ?? "/api",
 

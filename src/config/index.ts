@@ -1,8 +1,3 @@
-/**
- * Application configuration.
- * Environment-based config, feature flags, external URLs.
- */
-
 export const config = {
   apiUrl: process.env.NEXT_PUBLIC_API_URL ?? "/api",
   appUrl: process.env.NEXT_PUBLIC_APP_URL ?? "",

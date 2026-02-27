@@ -1,0 +1,40 @@
+/* Uncomment @font-face and add .woff2 files to public/fonts/circular/ to use Circular (Lineto). */
+/*
+@font-face {
+  font-family: "Circular";
+  src:
+    local("Circular Std Book"),
+    local("Circular-Book"),
+    url("/fonts/circular/Circular-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Circular";
+  src:
+    local("Circular Std Medium"),
+    local("Circular-Medium"),
+    url("/fonts/circular/Circular-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Circular";
+  src:
+    local("Circular Std Bold"),
+    local("Circular-Bold"),
+    url("/fonts/circular/Circular-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+:root {
+  --font-sans:
+    "Circular", "DM Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+}
