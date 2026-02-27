@@ -40,6 +40,8 @@ pnpm-debug.log*
 
 # Storybook
 *storybook.log
+# Auto-generated onboarding examples (our stories live in src/components/)
+src/stories/
 
 # Turbo
 .turbo
