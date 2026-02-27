@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Process Separation — Juan dela Cruz — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .badge { font-size:.6875rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap; }
+    .badge-green  { background:#DCFCE7;color:#15803D; }
+    .badge-yellow { background:#FEF9C3;color:#A16207; }
+    .badge-gray   { background:#F3F4F6;color:#374151; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer;transition:border-color .15s; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .select-wrapper { position:relative; }
+    .select-wrapper::after { content:'';position:absolute;right:12px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #9CA3AF;pointer-events:none; }
+    .step-dot { width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0; }
+    .step-connector { flex:1;height:2px; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1">
+        <div class="flex items-center gap-1.5 text-sm text-gray-500">
+          <a href="employees.html" class="hover:text-gray-700">Employees</a>
+          <span class="text-gray-300">›</span>
+          <a href="employees-profile.html" class="hover:text-gray-700">Juan dela Cruz</a>
+          <span class="text-gray-300">›</span>
+          <span class="font-medium text-gray-900">Process Separation</span>
+        </div>
+      </div>
+      <button class="relative p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full" style="background:#EF4444;"></span>
+      </button>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <!-- Wizard Steps -->
+    <div class="bg-white border-b border-gray-100 px-6 py-4 shrink-0">
+      <div class="max-w-xl mx-auto flex items-center gap-0">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#3ECF8E;color:white;">1</div>
+          <span class="text-xs font-semibold whitespace-nowrap" style="color:#059669;font-size:.6875rem;">Separation Details</span>
+        </div>
+        <div class="step-connector mx-3" style="background:#E5E7EB;"></div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">2</div>
+          <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Final Pay Preview</span>
+        </div>
+        <div class="step-connector mx-3" style="background:#E5E7EB;"></div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">3</div>
+          <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Confirm</span>
+        </div>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8 mb-6">
+
+          <!-- Warning Alert -->
+          <div class="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-amber-800 mb-1">This action is permanent</p>
+              <p class="text-sm text-amber-700">This action will mark <strong>Juan dela Cruz</strong> as separated. A Final Pay computation will be generated. This cannot be undone without contacting support.</p>
+            </div>
+          </div>
+
+          <!-- Employee mini card -->
+          <div class="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-xl p-3 mb-6">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm shrink-0" style="background:#DBEAFE;color:#1D4ED8;">JD</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Juan dela Cruz</p>
+              <p class="text-xs text-gray-400">EMP-00124 &middot; Software Engineer &middot; Hired Jan 15, 2023</p>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="space-y-4">
+
+            <!-- Separation Type -->
+            <div>
+              <label class="form-label">Separation Type <span style="color:#EF4444;">*</span></label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option selected>Resignation</option>
+                  <option>Termination &ndash; Just Cause</option>
+                  <option>Termination &ndash; Authorized Cause</option>
+                  <option>Redundancy</option>
+                  <option>Retrenchment</option>
+                  <option>End of Contract</option>
+                  <option>Retirement</option>
+                  <option>Death</option>
+                  <option>Others</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Last Day -->
+              <div>
+                <label class="form-label">Date of Separation / Last Day <span style="color:#EF4444;">*</span></label>
+                <input type="date" class="form-input" value="2026-02-28">
+              </div>
+              <!-- Date Notice Received -->
+              <div>
+                <label class="form-label">Date Notice Received</label>
+                <input type="date" class="form-input" value="2026-02-14">
+              </div>
+            </div>
+
+            <!-- Clearance Status -->
+            <div>
+              <label class="form-label">Clearance Status</label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option selected>Pending</option>
+                  <option>Cleared</option>
+                  <option>With Accountabilities</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Reason / Notes -->
+            <div>
+              <label class="form-label">Separation Reason / Notes</label>
+              <textarea class="form-input" rows="3" placeholder="Optional notes about this separation..." style="resize:vertical;"></textarea>
+            </div>
+
+            <!-- Checkboxes -->
+            <div class="space-y-3 pt-1">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 accent-emerald-500">
+                <span class="text-sm text-gray-700">Separation notice / resignation letter received</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-emerald-500">
+                <span class="text-sm text-gray-700">Exit interview completed</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" class="w-4 h-4 rounded border-gray-300 accent-emerald-500">
+                <span class="text-sm text-gray-700">Clearance form signed</span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="flex items-center justify-between py-2">
+          <a href="employees-profile.html" class="text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">Cancel</a>
+          <a href="employees-finalpay.html" class="flex items-center gap-2 text-sm font-semibold text-white px-5 py-2.5 rounded-lg transition-all hover:opacity-90" style="background:#F59E0B;">
+            Next: Preview Final Pay
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="_sidebar.js"></script>
+</body>
+</html>

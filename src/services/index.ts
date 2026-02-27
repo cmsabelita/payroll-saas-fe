@@ -1,3 +1,22 @@
+export {
+  get,
+  post,
+  put,
+  patch,
+  deleteRequest,
+  httpService,
+  addRequestInterceptor,
+  addResponseInterceptor,
+  addErrorInterceptor,
+  removeInterceptor,
+} from "./http";
+export type {
+  HttpError,
+  HttpRequestConfig,
+  HttpResponse,
+  HttpServiceInterface,
+} from "./http";
+
 export const api = {
   baseUrl: process.env.NEXT_PUBLIC_API_URL ?? "/api",
 

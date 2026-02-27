@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .float-card { background: white; border-radius: 14px; box-shadow: 0 16px 48px rgba(0,0,0,0.28); }
+    .form-input {
+      width: 100%; padding: 9px 13px 9px 36px; font-size: .875rem; background: white;
+      border: 1.5px solid #E5E7EB; border-radius: 10px; color: #111827; outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .form-input:focus { border-color: #3ECF8E; box-shadow: 0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color: #9CA3AF; }
+    .form-label { display: block; font-size: .875rem; font-weight: 500; color: #374151; margin-bottom: 5px; }
+    .strength-dot { width: 28px; height: 4px; border-radius: 2px; background: #E5E7EB; }
+    .strength-dot.on { background: #3ECF8E; }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+
+  <div class="w-full max-w-[960px] bg-white rounded-2xl shadow-2xl overflow-hidden flex" style="min-height: 640px;">
+
+    <!-- LEFT PANEL: Form -->
+    <div class="w-[460px] shrink-0 flex flex-col p-10 overflow-y-auto">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5 mb-7">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#3ECF8E;">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <span class="font-semibold text-gray-900 text-xl tracking-tight">Payro</span>
+      </div>
+
+      <!-- Heading -->
+      <div class="mb-6">
+        <h1 class="text-[22px] font-bold text-gray-900 mb-1">Create your account</h1>
+        <p class="text-sm text-gray-500">Start your 14-day free trial. No credit card required.</p>
+      </div>
+
+      <!-- Form -->
+      <form class="space-y-4 flex-1">
+
+        <!-- Full Name -->
+        <div>
+          <label class="form-label">Full Name <span class="text-red-400">*</span></label>
+          <div class="relative">
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </div>
+            <input type="text" class="form-input" placeholder="Maria Santos">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="form-label">Email Address <span class="text-red-400">*</span></label>
+          <div class="relative">
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <input type="email" class="form-input" placeholder="maria@acme.com.ph">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div>
+          <label class="form-label">Password <span class="text-red-400">*</span></label>
+          <div class="relative">
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <input type="password" class="form-input" style="padding-right:40px;" placeholder="Min. 8 characters">
+            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+          <!-- Strength dots: 2 green, 2 gray -->
+          <div class="mt-2 flex items-center gap-2">
+            <div class="flex gap-1">
+              <div class="strength-dot on"></div>
+              <div class="strength-dot on"></div>
+              <div class="strength-dot"></div>
+              <div class="strength-dot"></div>
+            </div>
+            <span class="text-xs font-medium text-gray-400">Fair</span>
+          </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+          <label class="form-label">Confirm Password <span class="text-red-400">*</span></label>
+          <div class="relative">
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <input type="password" class="form-input" style="padding-right:40px;" placeholder="Repeat password">
+            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Terms checkbox -->
+        <div class="flex items-start gap-3 pt-1">
+          <input type="checkbox" id="terms" class="mt-0.5 w-4 h-4 rounded border-gray-300 cursor-pointer" style="accent-color:#3ECF8E;">
+          <label for="terms" class="text-sm text-gray-600 leading-relaxed cursor-pointer">
+            I agree to the <a href="#" class="font-medium hover:underline" style="color:#3ECF8E;">Terms of Service</a> and <a href="#" class="font-medium hover:underline" style="color:#3ECF8E;">Privacy Policy</a>
+          </label>
+        </div>
+
+        <!-- Create Account Button -->
+        <button type="submit" class="w-full font-semibold py-3 px-4 rounded-xl text-sm text-white transition mt-1"
+          style="background:#3ECF8E;" onmouseover="this.style.background='#2db87a'" onmouseout="this.style.background='#3ECF8E'">
+          Create Account
+        </button>
+
+        <!-- Divider -->
+        <div class="relative py-1">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-100"></div>
+          </div>
+          <div class="relative flex justify-center text-xs">
+            <span class="px-3 bg-white text-gray-400">or sign up with</span>
+          </div>
+        </div>
+
+        <!-- Social Buttons: Google + Apple side by side -->
+        <div class="flex gap-3">
+          <button type="button" class="flex-1 h-11 rounded-xl border border-gray-200 flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:bg-gray-50 transition">
+            <svg class="w-4 h-4" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Google
+          </button>
+          <button type="button" class="flex-1 h-11 rounded-xl border border-gray-200 flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:bg-gray-50 transition">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;" class="text-gray-800">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Apple
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Footer link -->
+      <div class="mt-6 text-center text-sm text-gray-500">
+        Already have an account?
+        <a href="login.html" class="font-semibold hover:underline" style="color:#3ECF8E;">Sign in</a>
+      </div>
+      <div class="mt-3 text-center text-xs text-gray-400">
+        Copyright &copy; Payro, All Rights Reserved
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: Branding -->
+    <div class="flex-1 relative overflow-hidden flex flex-col items-center justify-end pb-10"
+         style="background: linear-gradient(150deg, #0a3d35 0%, #0d4f42 50%, #0a3228 100%);">
+
+      <!-- Grid texture -->
+      <div class="absolute inset-0 grid-bg"></div>
+
+      <!-- Radial glow -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full"
+           style="background: radial-gradient(circle, rgba(62,207,142,0.15) 0%, transparent 70%);"></div>
+
+      <!-- Floating cards -->
+      <div class="absolute top-8 left-0 right-0 flex justify-center pointer-events-none">
+        <div class="relative" style="width:320px; height:260px;">
+
+          <!-- Back card (employee list) -->
+          <div class="float-card p-4 absolute" style="width:260px; top:32px; left:44px; transform:rotate(4deg); opacity:0.62;">
+            <div class="text-xs font-semibold text-gray-400 mb-3">Employees · Active (128)</div>
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#3ECF8E;">MS</div>
+                <div>
+                  <div class="text-xs font-semibold text-gray-800">Maria Santos</div>
+                  <div class="text-xs text-gray-400">Software Engineer</div>
+                </div>
+                <span class="ml-auto text-xs font-medium" style="color:#3ECF8E;">Active</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#6366F1;">JR</div>
+                <div>
+                  <div class="text-xs font-semibold text-gray-800">Jose Reyes</div>
+                  <div class="text-xs text-gray-400">HR Manager</div>
+                </div>
+                <span class="ml-auto text-xs font-medium" style="color:#3ECF8E;">Active</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#F59E0B;">AC</div>
+                <div>
+                  <div class="text-xs font-semibold text-gray-800">Ana Cruz</div>
+                  <div class="text-xs text-gray-400">Accountant</div>
+                </div>
+                <span class="ml-auto text-xs font-medium" style="color:#3ECF8E;">Active</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Front card (payroll summary) -->
+          <div class="float-card p-4 absolute" style="width:280px; top:0; left:0;">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-semibold text-gray-500">Payroll Period · Feb 2026</span>
+              <span class="text-xs px-2 py-0.5 rounded-full font-medium" style="background:#DCFCE7; color:#15803D;">Approved</span>
+            </div>
+            <div class="text-2xl font-bold text-gray-900 mb-0.5">₱ 4,284,500</div>
+            <div class="text-xs text-gray-400 mb-4">128 employees · Gross Payroll</div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>Gross</span><span class="font-semibold text-gray-700">₱ 4,284,500</span>
+              </div>
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>Deductions</span><span class="font-semibold text-red-500">−₱ 631,240</span>
+              </div>
+              <div class="flex justify-between text-xs text-gray-500">
+                <span>Net Pay</span><span class="font-semibold" style="color:#3ECF8E;">₱ 3,653,260</span>
+              </div>
+            </div>
+            <div class="mt-3 w-full bg-gray-100 rounded-full h-1.5">
+              <div class="h-1.5 rounded-full" style="width:85%; background:#3ECF8E;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Icon -->
+      <div class="relative z-10 w-12 h-12 rounded-2xl flex items-center justify-center mb-4 shadow-xl"
+           style="background:#3ECF8E;">
+        <svg class="w-6 h-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+
+      <!-- Tagline + bullets -->
+      <div class="relative z-10 text-center px-10 mb-5">
+        <h2 class="text-xl font-bold text-white mb-4">Join 500+ Philippine Businesses</h2>
+        <div class="space-y-2.5 text-left inline-block">
+          <div class="flex items-center gap-2.5 text-sm" style="color:rgba(255,255,255,0.85);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style="background:rgba(62,207,142,0.25);">
+              <svg class="w-3 h-3" fill="none" stroke="#3ECF8E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            BIR-compliant payroll automation
+          </div>
+          <div class="flex items-center gap-2.5 text-sm" style="color:rgba(255,255,255,0.85);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style="background:rgba(62,207,142,0.25);">
+              <svg class="w-3 h-3" fill="none" stroke="#3ECF8E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            SSS / PhilHealth / Pag-IBIG auto-compute
+          </div>
+          <div class="flex items-center gap-2.5 text-sm" style="color:rgba(255,255,255,0.85);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style="background:rgba(62,207,142,0.25);">
+              <svg class="w-3 h-3" fill="none" stroke="#3ECF8E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            Employee self-service portal
+          </div>
+          <div class="flex items-center gap-2.5 text-sm" style="color:rgba(255,255,255,0.85);">
+            <div class="w-5 h-5 rounded-full flex items-center justify-center shrink-0" style="background:rgba(62,207,142,0.25);">
+              <svg class="w-3 h-3" fill="none" stroke="#3ECF8E" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            14-day free trial, no credit card needed
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination dots -->
+      <div class="relative z-10 flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full" style="background:rgba(255,255,255,0.25);"></div>
+        <div class="h-1.5 rounded-full bg-white" style="width:24px;"></div>
+        <div class="h-1.5 w-1.5 rounded-full" style="background:rgba(255,255,255,0.25);"></div>
+        <div class="h-1.5 w-1.5 rounded-full" style="background:rgba(255,255,255,0.25);"></div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

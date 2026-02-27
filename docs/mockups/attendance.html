@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .badge { font-size:.6875rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap; }
+    .badge-green  { background:#DCFCE7;color:#15803D; }
+    .badge-yellow { background:#FEF9C3;color:#A16207; }
+    .badge-blue   { background:#DBEAFE;color:#1D4ED8; }
+    .badge-orange { background:#FFEDD5;color:#C2410C; }
+    .badge-gray   { background:#F3F4F6;color:#374151; }
+    .badge-red    { background:#FEE2E2;color:#B91C1C; }
+    .badge-purple { background:#F3E8FF;color:#7C3AED; }
+    th { font-size:.75rem;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.04em; }
+    td { font-size:.8125rem; }
+    tr:hover td { background:#FAFAFA; }
+    .tab-btn { padding:5px 12px;border-radius:6px;font-size:.8125rem;font-weight:500;color:#6B7280;cursor:pointer;border:none;background:none;white-space:nowrap; }
+    .tab-btn.active { background:white;color:#111827;box-shadow:0 1px 3px rgba(0,0,0,.08); }
+    .form-input { padding:8px 12px;font-size:.8125rem;background:white;border:1.5px solid #E5E7EB;border-radius:8px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-select { padding:8px 12px;font-size:.8125rem;background:white;border:1.5px solid #E5E7EB;border-radius:8px;color:#111827;outline:none;appearance:none;cursor:pointer; }
+    .view-btn { padding:6px 14px;border-radius:8px;font-size:.8125rem;font-weight:500;cursor:pointer;border:1.5px solid #E5E7EB;background:white;color:#374151;transition:background .12s; }
+    .view-btn.active { background:#111827;border-color:#111827;color:white; }
+    .view-btn:hover:not(.active) { background:#F9FAFB; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="attendance">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <h1 class="text-lg font-semibold text-gray-900">Attendance</h1>
+      <!-- Month picker -->
+      <button class="flex items-center gap-1.5 text-sm text-gray-500 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 hover:bg-gray-100 ml-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Feb 2026
+        <svg class="w-3.5 h-3.5 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+      </button>
+      <!-- Right side -->
+      <div class="flex items-center gap-3 ml-auto">
+        <button class="relative p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6">
+
+      <!-- Stats row -->
+      <div class="grid grid-cols-4 gap-4 mb-5">
+        <div class="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0" style="background:#ECFDF5;">
+            <svg class="w-5 h-5" style="color:#059669;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-gray-900">118</div>
+            <div class="text-xs text-gray-400 font-medium">Present Today</div>
+          </div>
+          <span class="badge badge-green ml-auto">On track</span>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-yellow-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-gray-900">5</div>
+            <div class="text-xs text-gray-400 font-medium">Late Today</div>
+          </div>
+          <span class="badge badge-yellow ml-auto">Late</span>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-gray-900">3</div>
+            <div class="text-xs text-gray-400 font-medium">On Leave</div>
+          </div>
+          <span class="badge badge-blue ml-auto">Leave</span>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-gray-900">2</div>
+            <div class="text-xs text-gray-400 font-medium">Absent Today</div>
+          </div>
+          <span class="badge badge-red ml-auto">Absent</span>
+        </div>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="bg-white border border-gray-100 rounded-xl p-4 mb-4 flex items-center gap-3 flex-wrap">
+        <div class="relative">
+          <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" placeholder="Search employee..." class="form-input pl-9 w-52" value="">
+        </div>
+        <div class="relative">
+          <select class="form-select pr-8 w-44">
+            <option>All Departments</option>
+            <option>Engineering</option>
+            <option>HR</option>
+            <option>Finance</option>
+            <option>Operations</option>
+            <option>Marketing</option>
+          </select>
+          <svg class="w-4 h-4 text-gray-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+        <!-- Status filter pills -->
+        <div class="bg-gray-100 rounded-xl p-1 flex items-center gap-1">
+          <button class="tab-btn active">All</button>
+          <button class="tab-btn">Present</button>
+          <button class="tab-btn">Late</button>
+          <button class="tab-btn">Absent</button>
+          <button class="tab-btn">On Leave</button>
+        </div>
+        <!-- View toggle -->
+        <div class="ml-auto flex items-center gap-1.5">
+          <button class="view-btn active flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+            List
+          </button>
+          <button class="view-btn flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Calendar
+          </button>
+        </div>
+      </div>
+
+      <!-- Attendance Table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-gray-100">
+              <th class="text-left px-5 py-3.5">Employee</th>
+              <th class="text-left px-5 py-3.5">Date</th>
+              <th class="text-left px-5 py-3.5">Time In</th>
+              <th class="text-left px-5 py-3.5">Time Out</th>
+              <th class="text-left px-5 py-3.5">Hours</th>
+              <th class="text-left px-5 py-3.5">Late (min)</th>
+              <th class="text-left px-5 py-3.5">Status</th>
+              <th class="text-left px-5 py-3.5">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <!-- Row 1 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);">JD</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Juan dela Cruz</div>
+                    <div class="text-xs text-gray-400">EMP-00124 · Engineering</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 27</td>
+              <td class="px-5 py-3.5 text-gray-900 font-medium">7:58 AM</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-600">7h 12m</td>
+              <td class="px-5 py-3.5 text-gray-400">0</td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Present</span></td>
+              <td class="px-5 py-3.5">
+                <a href="attendance-id.html" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+              </td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#EC4899,#F43F5E);">MS</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Maria Santos</div>
+                    <div class="text-xs text-gray-400">EMP-00115 · HR</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 27</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5"><span class="badge badge-blue">On Leave</span></td>
+              <td class="px-5 py-3.5">
+                <a href="#" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+              </td>
+            </tr>
+            <!-- Row 3 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#F59E0B,#EF4444);">RP</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Rosa Perez</div>
+                    <div class="text-xs text-gray-400">EMP-00108 · Finance</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 27</td>
+              <td class="px-5 py-3.5 text-gray-900 font-medium">8:05 AM</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-600">7h 5m</td>
+              <td class="px-5 py-3.5 text-gray-600">5</td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Present</span></td>
+              <td class="px-5 py-3.5">
+                <a href="#" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+              </td>
+            </tr>
+            <!-- Row 4 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#3B82F6,#06B6D4);">BG</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Brigitte Garcia</div>
+                    <div class="text-xs text-gray-400">EMP-00131 · Engineering</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 27</td>
+              <td class="px-5 py-3.5 text-gray-900 font-medium">8:23 AM</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-600">6h 47m</td>
+              <td class="px-5 py-3.5 text-yellow-600 font-medium">23</td>
+              <td class="px-5 py-3.5"><span class="badge badge-yellow">Late</span></td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <a href="#" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+                  <span class="text-gray-300">·</span>
+                  <a href="#" class="text-xs font-medium text-blue-600 hover:text-blue-800 underline-offset-2 hover:underline">Excuse</a>
+                </div>
+              </td>
+            </tr>
+            <!-- Row 5 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#10B981,#14B8A6);">AC</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Alonzo Cruz</div>
+                    <div class="text-xs text-gray-400">EMP-00117 · Operations</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 27</td>
+              <td class="px-5 py-3.5 text-gray-900 font-medium">7:45 AM</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-600">7h 25m</td>
+              <td class="px-5 py-3.5 text-gray-400">0</td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Present</span></td>
+              <td class="px-5 py-3.5">
+                <a href="#" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+              </td>
+            </tr>
+            <!-- Row 6 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#6B7280,#374151);">DM</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Daniel Manalo</div>
+                    <div class="text-xs text-gray-400">EMP-00122 · Operations</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 27</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5 text-gray-400">—</td>
+              <td class="px-5 py-3.5"><span class="badge badge-red">Absent</span></td>
+              <td class="px-5 py-3.5">
+                <a href="#" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+              </td>
+            </tr>
+            <!-- Row 7 -->
+            <tr>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#6366F1,#8B5CF6);">JD</div>
+                  <div>
+                    <div class="font-medium text-gray-900">Juan dela Cruz</div>
+                    <div class="text-xs text-gray-400">EMP-00124 · Engineering</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600">Feb 26</td>
+              <td class="px-5 py-3.5 text-gray-900 font-medium">8:02 AM</td>
+              <td class="px-5 py-3.5 text-gray-900 font-medium">5:31 PM</td>
+              <td class="px-5 py-3.5 text-gray-600">9h 29m</td>
+              <td class="px-5 py-3.5 text-gray-600">2</td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Present</span></td>
+              <td class="px-5 py-3.5">
+                <a href="#" class="text-xs font-medium text-gray-500 hover:text-gray-800 underline-offset-2 hover:underline">View</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Pagination -->
+        <div class="flex items-center justify-between px-5 py-3.5 border-t border-gray-100">
+          <p class="text-xs text-gray-400">Showing 1–25 of 3,194 records</p>
+          <div class="flex items-center gap-1">
+            <button class="w-8 h-8 rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50 flex items-center justify-center text-sm" disabled>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button class="w-8 h-8 rounded-lg text-xs font-semibold text-white" style="background:#3ECF8E;">1</button>
+            <button class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 text-xs font-medium">2</button>
+            <button class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 text-xs font-medium">3</button>
+            <span class="text-gray-400 text-xs px-1">…</span>
+            <button class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 text-xs font-medium">128</button>
+            <button class="w-8 h-8 rounded-lg border border-gray-200 text-gray-500 hover:bg-gray-50 flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

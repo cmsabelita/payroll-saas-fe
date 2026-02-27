@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 7px 10px; border-radius: 8px;
+      font-size: 0.8125rem; font-weight: 500; color: #4B5563;
+      cursor: pointer; text-decoration: none; transition: background 0.12s, color 0.12s;
+    }
+    .nav-item:hover { background: #F3F4F6; color: #111827; }
+    .nav-item.active { background: #ECFDF5; color: #059669; }
+    .section-label {
+      font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.07em;
+      color: #9CA3AF; text-transform: uppercase; padding: 0 10px;
+      margin-top: 20px; margin-bottom: 4px;
+    }
+    .badge { font-size: 0.6875rem; font-weight: 600; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+    .badge-green  { background: #DCFCE7; color: #15803D; }
+    .badge-yellow { background: #FEF9C3; color: #A16207; }
+    .badge-blue   { background: #DBEAFE; color: #1D4ED8; }
+    .badge-orange { background: #FFEDD5; color: #C2410C; }
+    .badge-gray   { background: #F3F4F6; color: #374151; }
+    .badge-purple { background: #F3E8FF; color: #7C3AED; }
+    .badge-red    { background: #FEE2E2; color: #B91C1C; }
+    .tab-btn { padding: 5px 12px; border-radius: 6px; font-size: 0.8125rem; font-weight: 500; color: #6B7280; cursor: pointer; white-space: nowrap; }
+    .tab-btn.active { background: white; color: #111827; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    th { font-size: 0.75rem; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.04em; }
+    td { font-size: 0.8125rem; }
+    tr:hover td { background: #FAFAFA; }
+    /* Status stepper */
+    .step { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .step-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.625rem; font-weight: 700; }
+    .step-line { flex: 1; height: 2px; }
+    .step-done  .step-dot { background: #DCFCE7; color: #059669; }
+    .step-active .step-dot { background: #3ECF8E; color: white; }
+    .step-pending .step-dot { background: #F3F4F6; color: #9CA3AF; }
+    .step-done  .step-line { background: #DCFCE7; }
+    .step-active .step-line { background: #DCFCE7; }
+    .step-pending .step-line { background: #F3F4F6; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50">
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside class="w-[232px] bg-white border-r border-gray-100 flex flex-col h-screen overflow-y-auto shrink-0">
+    <div class="flex items-center gap-2.5 px-4 py-4 border-b border-gray-100">
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#3ECF8E;">
+        <svg class="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+        </svg>
+      </div>
+      <span class="font-semibold text-gray-900 text-[17px] tracking-tight">Payro</span>
+    </div>
+    <nav class="flex-1 px-2.5 pb-4 pt-2">
+      <div class="section-label">Main</div>
+      <a href="dashboard.html" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Dashboard
+      </a>
+      <div class="section-label">People</div>
+      <a href="employees.html" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        Employees
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        Organization
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        Team
+      </a>
+      <div class="section-label">Time &amp; Requests</div>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Attendance
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span class="flex-1">Approvals</span>
+        <span class="text-xs font-semibold px-1.5 py-0.5 rounded-full text-white" style="background:#F59E0B;font-size:0.6875rem;">12</span>
+      </a>
+      <div class="section-label">Finance</div>
+      <a href="payroll.html" class="nav-item active">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        Payroll
+      </a>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Compliance
+      </a>
+      <div class="section-label">Analytics</div>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        Reports
+      </a>
+      <div class="section-label">System</div>
+      <a href="#" class="nav-item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Settings
+      </a>
+    </nav>
+    <div class="border-t border-gray-100 px-3 py-3">
+      <div class="flex items-center gap-2.5 px-1">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+        <div class="flex-1 min-w-0">
+          <p class="text-xs font-semibold text-gray-900 truncate">Mark Santos</p>
+          <p class="text-xs text-gray-400 truncate">Owner</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1">
+        <h1 class="text-lg font-semibold text-gray-900">Payroll Periods</h1>
+      </div>
+      <button class="flex items-center gap-1.5 text-sm font-medium text-white px-4 py-1.5 rounded-lg" style="background:#3ECF8E;">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+        New Period
+      </button>
+      <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+      </button>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 overflow-y-auto p-6">
+
+      <!-- Summary KPIs -->
+      <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">YTD Gross Payroll</p>
+          <p class="text-xl font-bold text-gray-900">₱8.42M</p>
+          <p class="text-xs text-gray-400 mt-0.5">Jan–Feb 2026</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">YTD Net Payroll</p>
+          <p class="text-xl font-bold text-gray-900">₱7.11M</p>
+          <p class="text-xs text-gray-400 mt-0.5">After deductions</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">Periods This Year</p>
+          <p class="text-xl font-bold text-gray-900">4</p>
+          <p class="text-xs text-gray-400 mt-0.5">3 paid · 1 draft</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">Avg. Per Employee</p>
+          <p class="text-xl font-bold text-gray-900">₱27.8K</p>
+          <p class="text-xs text-gray-400 mt-0.5">Net pay / period</p>
+        </div>
+      </div>
+
+      <!-- Tab filters + Table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-4 pt-4 pb-0 border-b border-gray-100">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold text-gray-900">All Periods</h2>
+            <div class="flex items-center gap-2">
+              <button class="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                Filter by year
+                <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center gap-1 bg-gray-100 rounded-xl p-1 w-fit mb-0 -mb-px">
+            <button class="tab-btn active">All &nbsp;<span class="text-gray-400">4</span></button>
+            <button class="tab-btn">Draft &nbsp;<span class="text-gray-400">1</span></button>
+            <button class="tab-btn">Processing &nbsp;<span class="text-gray-400">0</span></button>
+            <button class="tab-btn">Computed &nbsp;<span class="text-gray-400">0</span></button>
+            <button class="tab-btn">Approved &nbsp;<span class="text-gray-400">1</span></button>
+            <button class="tab-btn">Paid &nbsp;<span class="text-gray-400">2</span></button>
+          </div>
+        </div>
+
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-gray-100">
+              <th class="text-left px-5 py-3">Period</th>
+              <th class="text-left px-5 py-3">Date Range</th>
+              <th class="text-left px-5 py-3">Employees</th>
+              <th class="text-right px-5 py-3">Gross Pay</th>
+              <th class="text-right px-5 py-3">Net Pay</th>
+              <th class="text-left px-5 py-3">Status</th>
+              <th class="text-left px-5 py-3"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+
+            <!-- Row 1: Draft -->
+            <tr class="cursor-pointer">
+              <td class="px-5 py-4">
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm">Feb 2026 · 2nd Half</p>
+                  <p class="text-xs text-gray-400">Semi-monthly</p>
+                </div>
+              </td>
+              <td class="px-5 py-4 text-sm text-gray-600">Feb 16 – Feb 28, 2026</td>
+              <td class="px-5 py-4">
+                <div class="flex items-center gap-1.5 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  128
+                </div>
+              </td>
+              <td class="px-5 py-4 text-right text-sm text-gray-400">—</td>
+              <td class="px-5 py-4 text-right text-sm text-gray-400">—</td>
+              <td class="px-5 py-4"><span class="badge badge-gray">Draft</span></td>
+              <td class="px-5 py-4">
+                <button class="text-xs font-semibold px-3 py-1.5 rounded-lg text-white" style="background:#3ECF8E;">Compute</button>
+              </td>
+            </tr>
+
+            <!-- Row 2: Approved -->
+            <tr class="cursor-pointer">
+              <td class="px-5 py-4">
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm">Feb 2026 · 1st Half</p>
+                  <p class="text-xs text-gray-400">Semi-monthly</p>
+                </div>
+              </td>
+              <td class="px-5 py-4 text-sm text-gray-600">Feb 1 – Feb 15, 2026</td>
+              <td class="px-5 py-4 text-sm text-gray-600">128</td>
+              <td class="px-5 py-4 text-right text-sm font-semibold text-gray-900">₱ 2,142,500</td>
+              <td class="px-5 py-4 text-right text-sm font-semibold text-gray-700">₱ 1,826,730</td>
+              <td class="px-5 py-4"><span class="badge badge-green">Approved</span></td>
+              <td class="px-5 py-4">
+                <div class="flex items-center gap-2">
+                  <button class="text-xs font-semibold px-3 py-1.5 rounded-lg text-white" style="background:#3ECF8E;">Mark Paid</button>
+                  <button class="text-xs font-medium px-3 py-1.5 rounded-lg text-gray-600 bg-gray-50 border border-gray-200 hover:bg-gray-100">View</button>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Row 3: Paid -->
+            <tr class="cursor-pointer">
+              <td class="px-5 py-4">
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm">Jan 2026 · 2nd Half</p>
+                  <p class="text-xs text-gray-400">Semi-monthly</p>
+                </div>
+              </td>
+              <td class="px-5 py-4 text-sm text-gray-600">Jan 16 – Jan 31, 2026</td>
+              <td class="px-5 py-4 text-sm text-gray-600">126</td>
+              <td class="px-5 py-4 text-right text-sm font-semibold text-gray-900">₱ 2,086,400</td>
+              <td class="px-5 py-4 text-right text-sm font-semibold text-gray-700">₱ 1,779,220</td>
+              <td class="px-5 py-4"><span class="badge badge-gray">Paid</span></td>
+              <td class="px-5 py-4">
+                <button class="text-xs font-medium px-3 py-1.5 rounded-lg text-gray-600 bg-gray-50 border border-gray-200 hover:bg-gray-100">View</button>
+              </td>
+            </tr>
+
+            <!-- Row 4: Paid -->
+            <tr class="cursor-pointer">
+              <td class="px-5 py-4">
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm">Jan 2026 · 1st Half</p>
+                  <p class="text-xs text-gray-400">Semi-monthly</p>
+                </div>
+              </td>
+              <td class="px-5 py-4 text-sm text-gray-600">Jan 1 – Jan 15, 2026</td>
+              <td class="px-5 py-4 text-sm text-gray-600">126</td>
+              <td class="px-5 py-4 text-right text-sm font-semibold text-gray-900">₱ 2,052,100</td>
+              <td class="px-5 py-4 text-right text-sm font-semibold text-gray-700">₱ 1,748,950</td>
+              <td class="px-5 py-4"><span class="badge badge-gray">Paid</span></td>
+              <td class="px-5 py-4">
+                <button class="text-xs font-medium px-3 py-1.5 rounded-lg text-gray-600 bg-gray-50 border border-gray-200 hover:bg-gray-100">View</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Payroll Period Detail Preview (expanded) -->
+      <div class="mt-4 bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900">Feb 2026 · 1st Half — Period Detail</h3>
+            <p class="text-xs text-gray-400 mt-0.5">Feb 1–15, 2026 · 128 employees</p>
+          </div>
+          <span class="badge badge-green">Approved</span>
+        </div>
+
+        <!-- Status stepper -->
+        <div class="px-5 py-5 border-b border-gray-100">
+          <div class="flex items-center">
+            <!-- Draft -->
+            <div class="step step-done">
+              <div class="step-dot">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-xs text-gray-500 mt-1">Draft</span>
+            </div>
+            <div class="flex-1 h-0.5 mb-4" style="background:#DCFCE7;"></div>
+
+            <!-- Processing -->
+            <div class="step step-done">
+              <div class="step-dot">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-xs text-gray-500 mt-1">Processing</span>
+            </div>
+            <div class="flex-1 h-0.5 mb-4" style="background:#DCFCE7;"></div>
+
+            <!-- Computed -->
+            <div class="step step-done">
+              <div class="step-dot">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-xs text-gray-500 mt-1">Computed</span>
+            </div>
+            <div class="flex-1 h-0.5 mb-4" style="background:#DCFCE7;"></div>
+
+            <!-- Approved (current) -->
+            <div class="step step-active">
+              <div class="step-dot" style="background:#3ECF8E; color:white; font-size:0.6875rem;">4</div>
+              <span class="text-xs font-semibold mt-1" style="color:#059669;">Approved</span>
+            </div>
+            <div class="flex-1 h-0.5 mb-4 bg-gray-100"></div>
+
+            <!-- Paid -->
+            <div class="step step-pending">
+              <div class="step-dot" style="font-size:0.6875rem;">5</div>
+              <span class="text-xs text-gray-400 mt-1">Paid</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary cards -->
+        <div class="px-5 py-4 grid grid-cols-4 gap-3">
+          <div class="bg-gray-50 rounded-xl p-3.5">
+            <p class="text-xs text-gray-400 mb-1">Total Gross</p>
+            <p class="text-lg font-bold text-gray-900">₱ 2,142,500</p>
+            <p class="text-xs text-gray-400 mt-0.5">128 employees</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-3.5">
+            <p class="text-xs text-gray-400 mb-1">Total Deductions</p>
+            <p class="text-lg font-bold text-red-600">₱ 315,770</p>
+            <p class="text-xs text-gray-400 mt-0.5">SSS · PH · HDMF · Tax</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-3.5">
+            <p class="text-xs text-gray-400 mb-1">Total Net Pay</p>
+            <p class="text-lg font-bold" style="color:#059669;">₱ 1,826,730</p>
+            <p class="text-xs text-gray-400 mt-0.5">To be disbursed</p>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-3.5">
+            <p class="text-xs text-gray-400 mb-1">Withholding Tax</p>
+            <p class="text-lg font-bold text-gray-900">₱ 198,440</p>
+            <p class="text-xs text-gray-400 mt-0.5">BIR 1601-C</p>
+          </div>
+        </div>
+
+        <div class="px-5 pb-5 flex gap-2">
+          <button class="text-sm font-semibold px-4 py-2 rounded-lg text-white" style="background:#3ECF8E;">Mark as Paid</button>
+          <button class="text-sm font-medium px-4 py-2 rounded-lg text-gray-600 bg-white border border-gray-200 hover:bg-gray-50">Distribute Payslips</button>
+          <button class="text-sm font-medium px-4 py-2 rounded-lg text-gray-600 bg-white border border-gray-200 hover:bg-gray-50">View Employee Records</button>
+          <button class="text-sm font-medium px-4 py-2 rounded-lg text-red-500 bg-white border border-red-100 hover:bg-red-50 ml-auto">Reject to Draft</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</body>
+</html>

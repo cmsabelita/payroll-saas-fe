@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding — Business &amp; Tax — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;cursor:pointer;appearance:auto; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .btn-primary { display:inline-flex;align-items:center;gap:6px;background:#3ECF8E;color:white;font-weight:600;padding:10px 20px;border-radius:10px;font-size:.875rem;border:none;cursor:pointer;text-decoration:none;transition:background .15s; }
+    .btn-primary:hover { background:#2db87a; }
+    .btn-secondary { display:inline-flex;align-items:center;gap:6px;background:white;color:#374151;font-weight:500;padding:10px 20px;border-radius:10px;font-size:.875rem;border:1.5px solid #E5E7EB;cursor:pointer;text-decoration:none; }
+    .step-connector { flex:1; height:2px; background:#E5E7EB; }
+    .step-connector.done { background:#3ECF8E; }
+  </style>
+</head>
+<body class="min-h-screen" style="background:#F9FAFB;">
+
+  <!-- ── TOP HEADER ── -->
+  <header class="bg-white border-b border-gray-100 sticky top-0 z-20">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#3ECF8E;">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <span class="font-semibold text-gray-900 text-xl tracking-tight">Payro</span>
+      </div>
+      <div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 text-sm text-gray-500">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/>
+        </svg>
+        Setting up <strong class="text-gray-700 ml-1">Acme Corporation</strong>
+      </div>
+      <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-white" style="background:#3ECF8E;">
+        MS
+      </div>
+    </div>
+  </header>
+
+  <!-- ── STEP PROGRESS ── -->
+  <div class="bg-white border-b border-gray-100">
+    <div class="max-w-2xl mx-auto px-6 py-5">
+      <div class="flex items-center gap-0">
+
+        <!-- Step 1: Done -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:#3ECF8E;">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <span class="text-xs font-medium text-gray-400">Company Info</span>
+        </div>
+        <div class="step-connector done mx-2 mb-5"></div>
+
+        <!-- Step 2: Active -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:#3ECF8E;">2</div>
+          <span class="text-xs font-semibold" style="color:#3ECF8E;">Business &amp; Tax</span>
+        </div>
+        <div class="step-connector mx-2 mb-5"></div>
+
+        <!-- Step 3: Pending -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-gray-400 border-2 border-gray-200 bg-white">3</div>
+          <span class="text-xs text-gray-400">Payroll Setup</span>
+        </div>
+        <div class="step-connector mx-2 mb-5"></div>
+
+        <!-- Step 4: Pending -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold text-gray-400 border-2 border-gray-200 bg-white">4</div>
+          <span class="text-xs text-gray-400">Plan</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD CONTENT ── -->
+  <div class="max-w-2xl mx-auto px-6 mt-8 pb-32">
+    <div class="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+
+      <!-- Card heading -->
+      <div class="mb-7">
+        <h1 class="text-xl font-bold text-gray-900 mb-1">Business &amp; Tax Registration</h1>
+        <p class="text-sm text-gray-500">Required for government remittances and BIR submissions.</p>
+      </div>
+
+      <form class="space-y-5">
+
+        <!-- Business Registration Type (full width) -->
+        <div>
+          <label class="form-label">Business Registration Type <span class="text-red-400">*</span></label>
+          <select class="form-select">
+            <option value="">Select type</option>
+            <option>Sole Proprietorship</option>
+            <option>Partnership</option>
+            <option selected>Corporation</option>
+            <option>One Person Corporation (OPC)</option>
+          </select>
+        </div>
+
+        <!-- SEC/DTI + BIR TIN -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="form-label">SEC / DTI Registration No. <span class="text-red-400">*</span></label>
+            <input type="text" class="form-input" placeholder="CS202312345">
+          </div>
+          <div>
+            <label class="form-label">BIR TIN <span class="text-red-400">*</span></label>
+            <input type="text" class="form-input" placeholder="000-000-000-000">
+            <p class="mt-1 text-xs text-gray-400">Format: 000-000-000-000</p>
+          </div>
+        </div>
+
+        <!-- RDO Code -->
+        <div>
+          <label class="form-label">RDO Code <span class="text-red-400">*</span></label>
+          <input type="number" class="form-input" placeholder="e.g. 44 (Makati South)" style="max-width:240px;">
+          <p class="mt-1 text-xs text-gray-400">Revenue District Office where the company is registered</p>
+        </div>
+
+        <!-- SSS + PhilHealth -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="form-label">SSS Employer ID <span class="text-red-400">*</span></label>
+            <input type="text" class="form-input" placeholder="03-1234567-8">
+          </div>
+          <div>
+            <label class="form-label">PhilHealth Employer No. <span class="text-red-400">*</span></label>
+            <input type="text" class="form-input" placeholder="01-000000000-1">
+          </div>
+        </div>
+
+        <!-- HDMF + ATC -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="form-label">HDMF / Pag-IBIG Employer ID <span class="text-red-400">*</span></label>
+            <input type="text" class="form-input" placeholder="PG-123456789">
+          </div>
+          <div>
+            <label class="form-label">ATC Code</label>
+            <input type="text" class="form-input" value="WC010" placeholder="WC010">
+            <p class="mt-1 text-xs text-gray-400">Default: WC010 – Compensation</p>
+          </div>
+        </div>
+
+        <!-- Divider: Signatory -->
+        <div class="border-t border-gray-100 pt-1">
+          <p class="text-sm font-semibold text-gray-700 mb-4">Authorized Signatory</p>
+        </div>
+
+        <!-- Signatory Name + Position -->
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="form-label">Signatory Name <span class="text-red-400">*</span></label>
+            <input type="text" class="form-input" placeholder="Mark Santos" value="Mark Santos">
+            <p class="mt-1 text-xs text-gray-400">Appears on BIR forms (e.g. 1601-C, 2316)</p>
+          </div>
+          <div>
+            <label class="form-label">Signatory Position <span class="text-red-400">*</span></label>
+            <select class="form-select">
+              <option value="">Select position</option>
+              <option>President / CEO</option>
+              <option>Owner</option>
+              <option>HR Manager</option>
+              <option selected>Finance Manager</option>
+              <option>Accountant</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Signatory TIN -->
+        <div>
+          <label class="form-label">Signatory TIN <span class="text-red-400">*</span></label>
+          <input type="text" class="form-input" placeholder="000-000-000-000" style="max-width:280px;">
+        </div>
+
+        <!-- Info box -->
+        <div class="rounded-xl p-4 flex gap-3" style="background:#EFF6FF; border:1.5px solid #BFDBFE;">
+          <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="#3B82F6" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/>
+          </svg>
+          <p class="text-sm text-blue-700 leading-relaxed">
+            These details are used to auto-fill <strong>BIR Form 1601-C</strong>, <strong>BIR Form 2316</strong>, and the Annual Alphalist. You can update them later in Settings.
+          </p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ── STICKY FOOTER ── -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 z-10">
+    <div class="max-w-2xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="onboarding-company.html" class="btn-secondary">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+        </svg>
+        Back
+      </a>
+      <a href="onboarding-payroll-settings.html" class="btn-primary">
+        Next: Payroll Setup
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
