@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-export type TextVariant = "body" | "caption" | "label" | "heading";
+export type TextVariant = "body" | "caption" | "label" | "heading" | "code";
 
 export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: TextVariant;

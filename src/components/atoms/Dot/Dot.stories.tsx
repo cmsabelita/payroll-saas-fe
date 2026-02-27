@@ -11,6 +11,7 @@ const meta: Meta<typeof Dot> = {
       control: "select",
       options: ["default", "success", "warning", "destructive", "muted"],
     },
+    size: { control: "select", options: ["xs", "sm"] },
   },
 };
 
@@ -30,6 +31,30 @@ export const Variants: Story = {
       <Dot variant="warning" />
       <Dot variant="destructive" />
       <Dot variant="muted" />
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Dot size="xs" variant="destructive" />
+      <Dot size="sm" variant="destructive" />
+    </div>
+  ),
+};
+
+export const NotificationStyle: Story = {
+  render: () => (
+    <div className="relative inline-flex">
+      <span className="flex size-9 items-center justify-center rounded-full bg-muted text-muted-foreground">
+        Bell
+      </span>
+      <Dot
+        size="xs"
+        variant="destructive"
+        className="absolute -right-0.5 -top-0.5"
+      />
     </div>
   ),
 };

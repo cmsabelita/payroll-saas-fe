@@ -41,3 +41,21 @@ export const WithHtmlFor: Story = {
     </div>
   ),
 };
+
+export const RequiredWithHtmlFor: Story = {
+  render: () => (
+    <div className="flex flex-col gap-2 w-64">
+      <Label htmlFor="required-field" required>
+        Email
+      </Label>
+      <input
+        id="required-field"
+        type="email"
+        placeholder="you@example.com"
+        required
+        aria-required="true"
+        className="rounded-md border border-border bg-input px-3 py-2 text-input-foreground text-sm"
+      />
+    </div>
+  ),
+};

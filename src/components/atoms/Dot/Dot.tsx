@@ -11,19 +11,29 @@ const dotVariants = cva("inline-block rounded-full shrink-0", {
       destructive: "bg-destructive",
       muted: "bg-muted-foreground",
     },
+    size: {
+      xs: "size-1.5",
+      sm: "size-2",
+    },
   },
   defaultVariants: {
     variant: "default",
+    size: "sm",
   },
 });
 
 export { dotVariants };
 
-export function Dot({ variant = "default", className, ...rest }: DotProps) {
+export function Dot({
+  variant = "default",
+  size = "sm",
+  className,
+  ...rest
+}: DotProps) {
   return (
     <span
       role="presentation"
-      className={cn("size-2", dotVariants({ variant }), className)}
+      className={cn(dotVariants({ variant, size }), className)}
       {...rest}
     />
   );

@@ -11,7 +11,7 @@ const meta: Meta<typeof Text> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["body", "caption", "label", "heading"],
+      options: ["body", "caption", "label", "heading", "code"],
     },
     as: {
       control: "select",
@@ -52,6 +52,13 @@ export const Heading: Story = {
   },
 };
 
+export const Code: Story = {
+  args: {
+    children: "inline code or token",
+    variant: "code",
+  },
+};
+
 export const AsHeading: Story = {
   args: {
     children: "Rendered as h1",
@@ -69,6 +76,7 @@ export const AllVariants: Story = {
       <Text variant="body">Body variant — default paragraph style.</Text>
       <Text variant="label">Label variant</Text>
       <Text variant="caption">Caption variant — smaller, muted.</Text>
+      <Text variant="code">Code variant — mono, pill background.</Text>
     </div>
   ),
 };

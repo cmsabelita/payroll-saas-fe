@@ -1,6 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Input } from "./Input";
 import { Label } from "../Label";
+import { Icon } from "../Icon";
+import { IconButton } from "../IconButton";
+
+const SearchSvg = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
+  </svg>
+);
+const EyeSvg = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+const XSvg = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M18 6 6 18M6 6l12 12" />
+  </svg>
+);
 
 const meta: Meta<typeof Input> = {
   title: "Atoms/Input",
@@ -57,4 +77,62 @@ export const Disabled: Story = {
     placeholder: "Disabled",
     disabled: true,
   },
+};
+
+export const WithAdornments: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4 w-72">
+      <div className="flex flex-col gap-1">
+        <Label htmlFor="search">Search (left icon)</Label>
+        <Input
+          id="search"
+          type="search"
+          placeholder="Search..."
+          leftAdornment={
+            <Icon size="sm">
+              <SearchSvg />
+            </Icon>
+          }
+        />
+      </div>
+      <div className="flex flex-col gap-1">
+        <Label htmlFor="password">Password (right toggle)</Label>
+        <Input
+          id="password"
+          type="password"
+          placeholder="Enter password"
+          rightAdornment={
+            <IconButton
+              variant="ghost"
+              size="sm"
+              aria-label="Toggle password visibility"
+            >
+              <Icon size="sm">
+                <EyeSvg />
+              </Icon>
+            </IconButton>
+          }
+        />
+      </div>
+      <div className="flex flex-col gap-1">
+        <Label htmlFor="both">Both sides</Label>
+        <Input
+          id="both"
+          placeholder="With both adornments"
+          leftAdornment={
+            <Icon size="sm">
+              <SearchSvg />
+            </Icon>
+          }
+          rightAdornment={
+            <IconButton variant="ghost" size="sm" aria-label="Clear">
+              <Icon size="sm">
+                <XSvg />
+              </Icon>
+            </IconButton>
+          }
+        />
+      </div>
+    </div>
+  ),
 };

@@ -9,6 +9,7 @@ const textVariants = cva("m-0 text-foreground", {
       caption: "text-sm leading-snug text-muted-foreground",
       label: "text-sm font-medium",
       heading: "text-xl font-semibold leading-tight",
+      code: "font-mono text-sm bg-muted px-1.5 py-0.5 rounded",
     },
   },
   defaultVariants: {
