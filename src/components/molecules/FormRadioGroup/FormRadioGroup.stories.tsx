@@ -50,7 +50,16 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormRadioGroup control={control} name="plan" {...args} />
+        <FormRadioGroup
+          control={control}
+          name="plan"
+          options={args.options}
+          label={args.label}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+          orientation={args.orientation}
+        />
       )}
     </FormWrapper>
   ),
@@ -61,7 +70,16 @@ export const Row: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormRadioGroup control={control} name="plan" {...args} />
+        <FormRadioGroup
+          control={control}
+          name="plan"
+          options={args.options}
+          label={args.label}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+          orientation={args.orientation}
+        />
       )}
     </FormWrapper>
   ),

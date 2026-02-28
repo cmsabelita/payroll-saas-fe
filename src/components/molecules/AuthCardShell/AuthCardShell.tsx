@@ -30,7 +30,7 @@ export function AuthCardShell({
           </div>
         )}
         <div className={cn("flex-1", centered && "flex w-full flex-col items-center")}>
-          {children}
+          {children ?? null}
         </div>
         {footer != null && (
           <div className={cn("mt-7", centered && "flex flex-col items-center")}>

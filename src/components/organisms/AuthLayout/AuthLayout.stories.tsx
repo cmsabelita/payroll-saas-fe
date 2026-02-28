@@ -1,6 +1,8 @@
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGaugeHigh } from "@fortawesome/free-solid-svg-icons";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { useState } from "react";
-import { Box, Button, Icon, Text } from "@/components/atoms";
+import { AppLogoIcon, Box, Button, FaIcon, Text } from "@/components/atoms";
 import {
   AuthBranding,
   FormField,
@@ -8,30 +10,10 @@ import {
 } from "@/components/molecules";
 import { AuthLayout } from "./AuthLayout";
 
-const LogoIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect width="7" height="9" x="3" y="3" rx="1" />
-    <rect width="7" height="5" x="14" y="3" rx="1" />
-    <rect width="7" height="9" x="14" y="12" rx="1" />
-    <rect width="7" height="5" x="3" y="16" rx="1" />
-  </svg>
-);
-
 const PayroLogoMark = () => (
   <div className="flex items-center gap-2.5">
     <div className="flex size-8 items-center justify-center rounded-lg bg-primary">
-      <svg
-        className="size-4 text-primary-foreground"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        aria-hidden
-      >
-        <path
-          fillRule="evenodd"
-          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-          clipRule="evenodd"
-        />
-      </svg>
+      <AppLogoIcon size="sm" className="text-primary-foreground" />
     </div>
     <Text variant="label" as="span" className="text-xl font-semibold tracking-tight text-foreground">
       Payro
@@ -82,9 +64,7 @@ export const Default: Story = {
       <AuthLayout
         logo={
           <Box className="flex items-center gap-2">
-            <Icon size="lg">
-              <LogoIcon />
-            </Icon>
+            <FaIcon icon={faGaugeHigh} size="lg" />
             <Text variant="label" as="span" className="text-lg font-semibold">
               Payroll
             </Text>
@@ -97,8 +77,8 @@ export const Default: Story = {
         socialLogin={
           <SocialLoginButtons
             buttons={[
-              { label: "Continue with Google", icon: <span>G</span>, onClick: () => {} },
-              { label: "Continue with GitHub", icon: <span>GH</span>, onClick: () => {} },
+              { label: "Continue with Google", icon: <FaIcon icon={faGoogle} size="md" />, onClick: () => {} },
+              { label: "Continue with GitHub", icon: <FaIcon icon={faGaugeHigh} size="md" />, onClick: () => {} },
             ]}
           />
         }
@@ -124,9 +104,7 @@ export const LoginOnly: Story = {
   args: {
     logo: (
       <Box className="flex items-center gap-2">
-        <Icon size="lg">
-          <LogoIcon />
-        </Icon>
+        <FaIcon icon={faGaugeHigh} size="lg" />
         <Text variant="label" as="span" className="text-lg font-semibold">
           Payroll
         </Text>

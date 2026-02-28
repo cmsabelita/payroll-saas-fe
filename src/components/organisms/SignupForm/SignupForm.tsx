@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useId, useMemo } from "react";
+import { Controller, useForm, useWatch } from "react-hook-form";
+import type { FieldPath } from "react-hook-form";
 import { Button, Checkbox, Link, Text } from "@/components/atoms";
-import { FormField } from "@/components/molecules";
+import { FormInput } from "@/components/molecules";
 import { cn } from "@/utils";
-import type { SignupFormProps } from "./SignupForm.types";
+import type { SignupFormProps, SignupFormValues } from "./SignupForm.types";
 
 function passwordStrength(password: string): { level: 0 | 1 | 2 | 3 | 4; label: string } {
   const len = password.length;
@@ -27,21 +29,20 @@ export function SignupForm({
   error,
   className,
 }: SignupFormProps) {
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
-  const [agreeToTerms, setAgreeToTerms] = useState(false);
+  const termsId = useId();
+  const { control, handleSubmit } = useForm<SignupFormValues>({
+    defaultValues: {
+      fullName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      agreeToTerms: false,
+    },
+  });
 
-  const strength = useMemo(() => passwordStrength(password), [password]);
-  const confirmError =
-    confirm.length > 0 && password !== confirm ? "Passwords do not match" : undefined;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password !== confirm || !agreeToTerms) return;
-    onSubmit({ fullName, email, password, agreeToTerms });
-  };
+  const password = useWatch({ control, name: "password" as FieldPath<SignupFormValues>, defaultValue: "" });
+  const agreeToTerms = useWatch({ control, name: "agreeToTerms" as FieldPath<SignupFormValues>, defaultValue: false });
+  const strength = useMemo(() => passwordStrength(String(password ?? "")), [password]);
 
   return (
     <div className={cn("flex flex-col", className)}>
@@ -54,66 +55,103 @@ export function SignupForm({
         </Text>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <FormField
+      <form
+        onSubmit={handleSubmit((values) =>
+          onSubmit({
+            fullName: values.fullName,
+            email: values.email,
+            password: values.password,
+            agreeToTerms: values.agreeToTerms,
+          })
+        )}
+        className="space-y-4"
+      >
+        <FormInput<SignupFormValues>
+          control={control}
+          name="fullName"
+          rules={{ required: "Full name is required" }}
           label="Full Name"
           required
           placeholder="Maria Santos"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
         />
-        <FormField
+        <FormInput<SignupFormValues>
+          control={control}
+          name="email"
+          rules={{ required: "Email is required" }}
           label="Email Address"
           type="email"
           required
           placeholder="maria@acme.com.ph"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
         />
-        <FormField
+        <FormInput<SignupFormValues>
+          control={control}
+          name="password"
+          rules={{ required: "Password is required" }}
           label="Password"
           type="password"
           required
           placeholder="Min. 8 characters"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
           showPasswordStrength
           passwordStrengthLevel={strength.level}
           passwordStrengthLabel={strength.label}
         />
-        <FormField
+        <FormInput<SignupFormValues>
+          control={control}
+          name="confirmPassword"
+          rules={{
+            required: "Please confirm your password",
+            validate: (value, formValues) =>
+              value === formValues.password || "Passwords do not match",
+          }}
           label="Confirm Password"
           type="password"
           required
           placeholder="Repeat password"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
-          error={confirmError}
         />
 
-        <div className="flex items-start gap-3 pt-1">
-          <Checkbox
-            id="signup-terms"
-            checked={agreeToTerms}
-            onChange={(e) => setAgreeToTerms(e.target.checked)}
-            className="mt-0.5 shrink-0"
-            aria-describedby="signup-terms-text"
-          />
-          <label
-            id="signup-terms-text"
-            htmlFor="signup-terms"
-            className="cursor-pointer text-sm leading-relaxed text-muted-foreground"
-          >
-            I agree to the{" "}
-            <Link href={termsHref} className="font-medium text-primary hover:underline">
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link href={privacyHref} className="font-medium text-primary hover:underline">
-              Privacy Policy
-            </Link>
-          </label>
-        </div>
+        <Controller
+          control={control}
+          name={"agreeToTerms" as FieldPath<SignupFormValues>}
+          rules={{
+            required: "You must agree to the terms",
+            validate: (v) => v === true || "You must agree to the terms",
+          }}
+          render={({ field, fieldState }) => (
+            <div className="flex flex-col gap-1.5 pt-1">
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id={termsId}
+                  checked={Boolean(field.value)}
+                  onChange={(e) => field.onChange(e.target.checked)}
+                  onBlur={field.onBlur}
+                  ref={field.ref}
+                  className="mt-0.5 shrink-0"
+                  aria-describedby={`${termsId}-text`}
+                  aria-invalid={fieldState.error ? true : undefined}
+                />
+                <label
+                  id={`${termsId}-text`}
+                  htmlFor={termsId}
+                  className="cursor-pointer text-sm leading-relaxed text-muted-foreground"
+                >
+                  I agree to the{" "}
+                  <Link href={termsHref} className="font-medium text-primary hover:underline">
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link href={privacyHref} className="font-medium text-primary hover:underline">
+                    Privacy Policy
+                  </Link>
+                </label>
+              </div>
+              {fieldState.error && (
+                <Text variant="caption" className="text-destructive" role="alert">
+                  {fieldState.error.message}
+                </Text>
+              )}
+            </div>
+          )}
+        />
 
         {error && (
           <Text variant="caption" className="text-destructive" role="alert">
@@ -121,7 +159,11 @@ export function SignupForm({
           </Text>
         )}
 
-        <Button type="submit" className="mt-1 w-full" disabled={isLoading || !agreeToTerms}>
+        <Button
+          type="submit"
+          className="mt-1 w-full"
+          disabled={isLoading || !agreeToTerms}
+        >
           {isLoading ? "Creating account…" : "Create Account"}
         </Button>
       </form>
@@ -133,12 +175,12 @@ export function SignupForm({
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center">
-              <Text as="span" variant="caption" className="bg-background px-3 text-muted-foreground">
-                or sign up with
-              </Text>
+              <span className="bg-background px-3 text-xs text-muted-foreground">
+                Or continue with
+              </span>
             </div>
           </div>
-          <div className="flex gap-3">{socialButtons}</div>
+          {socialButtons}
         </>
       )}
 

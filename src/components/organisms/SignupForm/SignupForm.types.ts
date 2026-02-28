@@ -1,5 +1,13 @@
 import type { ReactNode } from "react";
 
+export interface SignupFormValues {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  agreeToTerms: boolean;
+}
+
 export interface SignupFormProps {
   /** Heading (e.g. "Create your account") */
   heading?: string;

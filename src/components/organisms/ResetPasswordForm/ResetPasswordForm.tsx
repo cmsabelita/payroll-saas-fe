@@ -1,7 +1,8 @@
 "use client";
 
+import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { Button, Link, Text } from "@/components/atoms";
+import { Button, FaIcon, Link, Text } from "@/components/atoms";
 import { AuthCardShell } from "@/components/molecules/AuthCardShell";
 import { FormField } from "@/components/molecules";
 import { cn } from "@/utils";
@@ -87,17 +88,13 @@ export function ResetPasswordForm({
                   key={i}
                   className={cn(
                     "flex items-center gap-2 text-xs",
-                    req.met ? "text-green-600" : "text-muted-foreground"
+                    req.met ? "text-success" : "text-muted-foreground"
                   )}
                 >
                   {req.met ? (
-                    <svg className="size-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <FaIcon icon={faCheck} size="xs" className="shrink-0 text-success" />
                   ) : (
-                    <svg className="size-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <FaIcon icon={faXmark} size="xs" className="shrink-0 text-destructive" />
                   )}
                   {req.label}
                 </div>

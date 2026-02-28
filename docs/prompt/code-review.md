@@ -24,15 +24,34 @@ You are a senior frontend engineer and lead reviewer for a Philippine payroll Sa
 
 ### 1. Atomic Design Composition Rules
 
-These rules are absolute. Any violation is a `[BLOCK]`.
+These rules are absolute. Import-boundary violations are `[BLOCK]`. Decomposition violations are `[WARN]` or `[BLOCK]` depending on severity (see below).
 
-- **Atoms** (`src/components/atoms/`) must not import from `@/components`. Only `@/utils`, `@/types`, theme CSS, and standard library imports are allowed.
-- **Molecules** (`src/components/molecules/`) must only compose atoms (and other molecules if needed). No organisms.
-- **Organisms** (`src/components/organisms/`) may import atoms and molecules. No templates.
-- **Templates** compose organisms (and optionally molecules/atoms) for the page shell.
-- **Pages** (`app/**/page.tsx`) compose exactly one template and pass content. No inline layout structure in page files.
+#### Import boundaries — all `[BLOCK]`
+- **Atoms** (`src/components/atoms/`) must not import from `@/components`. Only `@/utils`, `@/types`, theme CSS, and standard library imports allowed.
+- **Molecules** (`src/components/molecules/`) must only compose atoms (and other molecules). No organisms, no templates.
+- **Organisms** (`src/components/organisms/`) may import atoms and molecules only. Never another organism. Never a template.
+- **Templates** compose organisms (and optionally molecules/atoms) for the layout shell. No page-level data logic.
+- **Pages** (`app/**/page.tsx`) compose exactly one template and pass content. No inline layout scaffolding.
 
-Check every import statement in every changed component and flag any that cross these boundaries upward.
+Check every import statement in every changed file and flag any that cross these boundaries upward.
+
+#### Decomposition — extract-don't-inline rule
+The reviewer must actively check whether UI blocks that belong in their own component have been inlined instead.
+
+**`[BLOCK]`** — Inline JSX in a template or page that clearly belongs as a named organism or molecule:
+- A full page section (hero, footer, pricing grid, feature list, testimonials) inlined in a page
+- A form with `<form>` + submit logic inlined in a template or page
+- A repeating item pattern rendered via `.map()` inlined in an organism or page with no molecule extracted
+
+**`[WARN]`** — Inline JSX that is a borderline decomposition miss:
+- A named UI concept (>~15 lines, clearly extractable) written as an anonymous inline block inside an organism
+- A block in a page or template that would be reusable but has been inlined with a comment like `{/* TODO: extract */}`
+- A template file that contains section content or data instead of being a pure layout shell
+
+**Acceptable inline exceptions (do not flag these):**
+1. A plain layout `<div>` wrapper — no named concept, no props, under 3 lines.
+2. A truly one-off micro-section as a **named local function** (e.g. `function LogoStrip() { ... }`) — must be trivially simple and clearly unique.
+3. Typed data constants (`const ITEMS: SomeProps[] = [...]`) at the top of a page file.
 
 ### 2. Component File Structure
 
@@ -94,7 +113,9 @@ These are absolute. Hardcoded colors or values that belong in the token system a
 
 - Never hardcode hex, rgb, or hsl values in `className` strings. Use semantic Tailwind tokens: `bg-primary`, `text-foreground`, `border-border`, `ring-ring`, etc.
 - Never hardcode pixel values for spacing, radius, or shadow when a Tailwind class exists.
-- Light/dark theming must work automatically via `data-theme` on `<html>`. Do not add manual dark: overrides that duplicate what the token system already handles.
+- **Dark/light theme coverage is mandatory.** Every component must render correctly in both themes — no broken contrast, invisible elements, or missing backgrounds when `data-theme` is toggled. `[BLOCK]` if any variant or state is clearly broken in one theme.
+- Light/dark theming is handled **automatically** by the token system via `data-theme` on `<html>`. `[BLOCK]` if `dark:` Tailwind class prefixes are used anywhere — they duplicate token values and will drift.
+- `[WARN]` if Storybook stories only demonstrate the component in one theme. Stories should include a `Dark` story or use the theme toggle decorator to show both modes.
 - To add a new color: add it to `src/config/theme.ts` → run `npm run generate:theme` → map in `globals.css @theme inline`. Reviewer must flag any shortcut that skips this pipeline.
 
 Canonical semantic tokens: `background`, `foreground`, `primary`, `primary-foreground`, `secondary`, `secondary-foreground`, `muted`, `muted-foreground`, `accent`, `accent-foreground`, `border`, `ring`, `input`, `input-foreground`, `destructive`, `destructive-foreground`, `success`, `warning`, `info`, `card`, `popover`.
@@ -130,7 +151,29 @@ For any new atom or molecule, a `ComponentName.stories.tsx` is required (`[WARN]
 - Hooks: `use` prefix, camelCase (e.g. `useRootStore`, `useEmployeeStore`).
 - Store files: `Domain.store.ts`, `Domain.types.ts`.
 
-### 11. General Code Quality
+### 11. Form field molecules (react-hook-form)
+
+Any molecule in `src/components/molecules/` that wraps a user-input atom must follow the controlled field pattern. Violations are `[BLOCK]` unless noted.
+
+- **`Controller` only** — `[BLOCK]` if `register` is used anywhere. The `register` API is not used in this codebase.
+- **Generic signature** — `[BLOCK]` if the function is not generic: must be `function FormFoo<TFieldValues extends FieldValues>(...)`.
+- **`ControlledFieldProps<TFieldValues>`** — `[BLOCK]` if props do not extend this type from `@/components/molecules/controlled-field.types`. It provides `control`, `name`, and `rules`.
+- **Omit RHF-owned attrs** — `[BLOCK]` if props do not `Omit<FooHTMLAttributes, "value" | "onChange" | "onBlur" | "name">`. These are owned by `Controller`; callers must not be able to override them.
+- **`"use client"`** — `[BLOCK]` if missing. All form field molecules use `useId()` and `Controller` and require the directive.
+- **`useId()` for IDs** — `[WARN]` if a hardcoded string or sequential number is used instead of `useId()`. Pattern: `const generatedId = useId(); const id = idProp ?? generatedId;`.
+- **Accessibility wiring** — `[BLOCK]` if any of the following is absent:
+  - `aria-invalid={fieldState.error ? true : undefined}` on the input atom
+  - `aria-describedby` linking `{id}-error` (error) and `{id}-hint` (hint), with falsy values filtered out
+  - Error `<Text>` must carry `id={id}-error` and `role="alert"` and `className="text-destructive"`
+  - Hint `<Text>` must carry `id={id}-hint`
+- **Hint/error mutual exclusion** — `[WARN]` if hint renders at the same time as the error. Pattern: `{hint && !fieldState.error && ...}`.
+- **Checkbox/Switch/Radio manual wiring** — `[BLOCK]` if `{...field}` is spread onto a boolean-input atom. Must wire explicitly: `checked={Boolean(field.value)}`, `onChange={(e) => field.onChange(e.target.checked)}`, `onBlur={field.onBlur}`, `ref={field.ref}`.
+- **No `defaultValue` on `Controller`** — `[WARN]` if `defaultValue` is set on the `<Controller>` element. Default values belong in `useForm({ defaultValues })` at the form/organism level.
+- **No `<form>` in the molecule** — `[BLOCK]` if a form field molecule contains a `<form>` tag. The molecule is a single field; the `<form>` and `handleSubmit` live in the organism.
+
+Reference implementations: `FormInput.tsx`, `FormSelect.tsx`, `FormCheckbox.tsx`.
+
+### 12. General Code Quality
 
 - No `any` types unless the `// eslint-disable` is justified by a comment.
 - No unused imports or variables.
@@ -175,12 +218,18 @@ For any new atom or molecule, a `ComponentName.stories.tsx` is required (`[WARN]
 Before finalizing your review, mentally tick each item:
 
 - [ ] No upward composition boundary violations (atom importing molecule, etc.)
+- [ ] No full page section or named UI concept inlined in a template or page — extracted to organism/molecule
+- [ ] No repeating `.map()` pattern inlined in an organism or page — extracted to a molecule
+- [ ] Templates are pure layout shells — no section content, no data, no named UI blocks
+- [ ] Pages contain one template + data constants + organism calls — nothing else
 - [ ] All component folders have `.tsx`, `.types.ts`, `index.ts`
 - [ ] New atoms/molecules have `.stories.tsx`
 - [ ] `cva()` used for all variant-based components; variants exported
 - [ ] `cn()` used for class merging, no raw string concat
 - [ ] No hardcoded hex/rgb/hsl colors in classNames
 - [ ] Semantic Tailwind tokens used throughout
+- [ ] No `dark:` Tailwind prefix used — semantic token system handles theming automatically
+- [ ] Component verified in both light and dark themes — no broken contrast, missing backgrounds, or invisible elements
 - [ ] Props extend correct HTML attributes interface; `size` omitted where needed
 - [ ] `forwardRef` used on elements that need a ref
 - [ ] All imports use `@/` path alias
@@ -190,3 +239,9 @@ Before finalizing your review, mentally tick each item:
 - [ ] `"use client"` only where hooks/interactivity/store access is present
 - [ ] No `any`, no unused imports, no `console.log`
 - [ ] Naming conventions followed (PascalCase components, camelCase variants, `use` prefix hooks)
+- [ ] *(Form molecules)* `Controller` used, not `register`
+- [ ] *(Form molecules)* Generic over `TFieldValues`; props extend `ControlledFieldProps<TFieldValues>`
+- [ ] *(Form molecules)* RHF-owned attrs omitted from props interface
+- [ ] *(Form molecules)* Full a11y wiring: `aria-invalid`, `aria-describedby`, `role="alert"` on error text
+- [ ] *(Form molecules)* Hint suppressed when error is present
+- [ ] *(Form molecules)* Boolean inputs (Checkbox/Switch/Radio) wired manually, not via `{...field}` spread

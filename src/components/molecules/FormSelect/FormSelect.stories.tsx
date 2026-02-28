@@ -52,7 +52,17 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormSelect control={control} name="department" {...args} />
+        <FormSelect
+          control={control}
+          name="department"
+          options={args.options}
+          label={args.label}
+          placeholder={args.placeholder}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+          size={args.size}
+        />
       )}
     </FormWrapper>
   ),

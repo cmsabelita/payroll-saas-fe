@@ -46,7 +46,16 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormInput control={control} name="email" {...args} />
+        <FormInput
+          control={control}
+          name="email"
+          label={args.label}
+          placeholder={args.placeholder}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+          size={args.size}
+        />
       )}
     </FormWrapper>
   ),
@@ -61,7 +70,16 @@ export const WithHint: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormInput control={control} name="username" {...args} />
+        <FormInput
+          control={control}
+          name="username"
+          label={args.label}
+          placeholder={args.placeholder}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+          size={args.size}
+        />
       )}
     </FormWrapper>
   ),

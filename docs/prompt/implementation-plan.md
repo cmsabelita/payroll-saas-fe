@@ -34,6 +34,37 @@ Your plan must be exhaustive enough that a mid-level developer can follow it ste
 | Template | `src/components/templates/` | organisms, molecules, atoms |
 | Page | `src/app/**/page.tsx` | one template + pass content |
 
+### Decomposition-first planning rule
+
+**Before placing any UI block in a template or page, ask: does this belong in its own component?** The instinct to inline is wrong by default. Extract into the correct layer unless the exception criteria below apply.
+
+#### When to create a new component (extract, don't inline)
+
+| Signal | Extract to |
+|--------|-----------|
+| The block has a clear domain name (e.g. "FeatureCard", "PricingCard", "AlertsPanel") | Molecule or Organism |
+| The block is rendered in a `.map()` or repeated in 2+ places | Molecule |
+| The block accepts 3 or more distinct configurable props | Molecule or Organism |
+| The block is a full page section (hero, footer, features, pricing, testimonials) | Organism |
+| The block contains form fields and a submit action | Organism |
+| The JSX is longer than ~15 lines and represents a named concept | Molecule or Organism |
+| The template or page file is becoming hard to read | Extract the next largest block |
+
+#### Layer assignment guide
+- **Molecule** — repeating item patterns (card, row, list item), any display block made of 2+ atoms, all form fields
+- **Organism** — full page sections, forms with submit logic, self-contained feature blocks, nav/header/footer shells
+- **Template** — layout shell only: slot structure (nav + `{children}` + footer). No content, no data
+- **Page** — one `<Template>` + typed data constants + calls to section organisms. Nothing else
+
+#### When inline is acceptable (narrow exceptions)
+These are the only cases where inlining in a template or page is permitted:
+
+1. **Pure layout wrapper** — a `<div className="...">` with no named concept, no props, under 3 lines
+2. **Truly one-off micro-section** — something so simple and unique it would be absurd as a file (e.g. 5 placeholder logo chips in a marketing page). Must be a local named function, not anonymous JSX, and clearly commented as intentionally inline.
+3. **Static data constants** — `const FEATURES = [...]` typed arrays passed as props to organisms
+
+When in doubt, extract. A file with a clear name is always better than an anonymous inline block.
+
 ### Required files per component
 ```
 ComponentName/
@@ -53,9 +84,109 @@ ComponentName/
 - `"use client"` as the very first line only when hooks, event handlers, or stores are used
 - MobX: `makeAutoObservable(this)` in every store constructor; access only via `useRootStore()`
 
+### Form field molecules (react-hook-form)
+
+Every form field in `src/components/molecules/` that wraps a user-input atom is a **controlled field molecule** integrated with `react-hook-form`. This is a hard constraint — there is no uncontrolled or plain-props form field pattern in this codebase.
+
+**Naming convention:** `Form` prefix — `FormInput`, `FormSelect`, `FormCheckbox`, `FormTextarea`, `FormSwitch`, `FormRadioGroup`, `FormDateInput`.
+
+**Shared base type:** All controlled field molecules extend `ControlledFieldProps<TFieldValues>` from `@/components/molecules/controlled-field.types`. Import as a type-only import.
+
+```ts
+// controlled-field.types.ts (already exists — do not recreate)
+export interface ControlledFieldProps<TFieldValues extends FieldValues = FieldValues> {
+  control: Control<TFieldValues>;
+  name: FieldPath<TFieldValues>;
+  rules?: RegisterOptions<TFieldValues, FieldPath<TFieldValues>>;
+}
+```
+
+**Props shape:**
+```ts
+// FormFoo.types.ts
+export interface FormFooProps<TFieldValues extends FieldValues = FieldValues>
+  extends Omit<FooHTMLAttributes, "value" | "onChange" | "onBlur" | "name">,
+    ControlledFieldProps<TFieldValues> {
+  label: string;
+  required?: boolean;
+  hint?: string;
+  id?: string;
+  className?: string;
+  // field-specific extras (e.g. options, placeholder, size)
+}
+```
+Omit `"value" | "onChange" | "onBlur" | "name"` from the HTML attributes interface — `Controller` owns those. Also omit `"size"` if the atom defines its own `size` prop.
+
+**Implementation skeleton:**
+```tsx
+"use client";
+
+import { useId } from "react";
+import { Controller } from "react-hook-form";
+import type { FieldPath, FieldValues } from "react-hook-form";
+import { FooAtom, Label, Text } from "@/components/atoms";
+import { cn } from "@/utils";
+import type { FormFooProps } from "./FormFoo.types";
+
+export function FormFoo<TFieldValues extends FieldValues>({
+  control, name, rules,
+  label, required, hint,
+  id: idProp, className,
+  ...atomProps
+}: FormFooProps<TFieldValues>) {
+  const generatedId = useId();
+  const id = idProp ?? generatedId;
+
+  return (
+    <Controller
+      control={control}
+      name={name as FieldPath<TFieldValues>}
+      rules={rules}
+      render={({ field, fieldState }) => (
+        <div className={cn("flex flex-col gap-1.5", className)}>
+          <Label htmlFor={id} required={required}>{label}</Label>
+          <FooAtom
+            id={id}
+            aria-invalid={fieldState.error ? true : undefined}
+            aria-describedby={
+              [fieldState.error && `${id}-error`, hint && `${id}-hint`]
+                .filter(Boolean).join(" ") || undefined
+            }
+            {...field}
+            {...atomProps}
+          />
+          {fieldState.error && (
+            <Text id={`${id}-error`} variant="caption" className="text-destructive" role="alert">
+              {fieldState.error.message}
+            </Text>
+          )}
+          {hint && !fieldState.error && (
+            <Text id={`${id}-hint`} variant="caption">{hint}</Text>
+          )}
+        </div>
+      )}
+    />
+  );
+}
+```
+
+**Key rules for every plan step involving a form field molecule:**
+1. Always use `Controller` — never `register`. The `register` API is not used anywhere in this codebase.
+2. The component is always generic: `function FormFoo<TFieldValues extends FieldValues>(...)`.
+3. Always `"use client"` — required for `useId()` and `Controller`.
+4. `useId()` generates the input ID; accept an optional `id` prop override: `const id = idProp ?? generatedId`.
+5. Spread `{...field}` onto the atom to wire `value`, `onChange`, `onBlur`, `name`, `ref`.
+6. **Checkbox/Switch/Radio exception:** these atoms do not accept `value`/`onChange` in the standard way. Wire manually: `checked={Boolean(field.value)}`, `onChange={(e) => field.onChange(e.target.checked)}`, `onBlur={field.onBlur}`, `ref={field.ref}`.
+7. Error message: `<Text variant="caption" className="text-destructive" role="alert">` with `id={id}-error`.
+8. Hint text: only render when there is no error — `{hint && !fieldState.error && ...}`.
+9. Never pass `defaultValue` to `Controller` — set field defaults via `useForm({ defaultValues: { ... } })` at the form level.
+10. Do not wrap in a `<form>` element — the molecule is a field, not a form.
+
 ### Theming
 - Semantic tokens: `bg-primary`, `text-foreground`, `border-border`, `ring-ring`, `bg-muted`, `text-muted-foreground`, `text-destructive`, `bg-card`, `bg-input`, `text-input-foreground`, etc.
 - New tokens: edit `src/config/theme.ts` → `npm run generate:theme` → map in `globals.css @theme inline`
+- **Dark/light mode is automatic** — the token system drives theming via `data-theme` on `<html>`. Never add `dark:` Tailwind prefixed overrides; they duplicate token behaviour and will drift.
+- Every component must render correctly in **both** themes. Plan verification in Storybook by toggling themes.
 
 ### Route groups
 - `(auth)` — centered card, no sidebar
@@ -71,11 +202,12 @@ ComponentName/
 Before writing the plan, work through these steps internally:
 
 1. **Understand the task** — What is being built? What layer does it live in? Is it net-new or modifying existing?
-2. **Audit dependencies** — What atoms/molecules/organisms already exist that this task builds on or must not violate?
-3. **Identify all files to create or modify** — Be exhaustive. Include barrel updates, store additions, page wiring, and stories.
-4. **Pre-resolve design decisions** — Variant names, prop interfaces, token choices, `"use client"` necessity, `forwardRef` need. Make every decision explicit so the implementer has nothing to guess.
-5. **Identify lint/type traps** — What will `npm run lint` or `tsc --noEmit` flag if done wrong? Call those out in the relevant steps.
-6. **Sequence steps** — Order from foundational to dependent. A step's output must be complete before the next step can begin.
+2. **Decompose the UI** — Walk through every block of UI the task requires. Apply the decomposition-first rule: for each block, decide whether it is a molecule, organism, or template — or one of the narrow inline exceptions. Do this before identifying files, not after. A block that "could be inlined" should default to extracted.
+3. **Audit dependencies** — What atoms/molecules/organisms already exist that this task builds on or must not violate? Do not plan new components for things that already exist.
+4. **Identify all files to create or modify** — Be exhaustive. Include barrel updates, store additions, page wiring, and stories. Every component identified in step 2 is a file.
+5. **Pre-resolve design decisions** — Variant names, prop interfaces, token choices, `"use client"` necessity, `forwardRef` need. Make every decision explicit so the implementer has nothing to guess.
+6. **Identify lint/type traps** — What will `npm run lint` or `tsc --noEmit` flag if done wrong? Call those out in the relevant steps.
+7. **Sequence steps** — Order from foundational to dependent. A step's output must be complete before the next step can begin.
 
 ---
 
@@ -183,12 +315,19 @@ Before opening a PR, the implementer must confirm all of the following pass with
 - [ ] `npm run storybook` — stories render without console errors
 - [ ] All variants render correctly in Storybook
 - [ ] No hardcoded hex/rgb/hsl values in any className string
+- [ ] No `dark:` Tailwind prefix in any className — theming is handled by the semantic token system
+- [ ] Component verified in both light and dark themes — no broken contrast, missing backgrounds, or invisible elements
 - [ ] All imports use `@/` alias (no `../../`)
 - [ ] `import type` used for all type-only imports
 - [ ] `"use client"` absent unless hooks/interactivity confirmed necessary
 - [ ] Barrel (`index.ts`) updated and exports match types file
 - [ ] Atom barrel (`src/components/atoms/index.ts`) updated
 - [ ] No composition boundary violated (atom imports no `@/components` members)
+- [ ] *(Form molecules only)* Uses `Controller`, not `register`
+- [ ] *(Form molecules only)* Generic over `TFieldValues extends FieldValues`
+- [ ] *(Form molecules only)* Props extend `ControlledFieldProps<TFieldValues>` and `Omit` RHF-owned attributes
+- [ ] *(Form molecules only)* `aria-invalid`, `aria-describedby`, `role="alert"` on error text — accessibility wired correctly
+- [ ] *(Form molecules only)* Hint suppressed when error is present
 ```
 
 ---

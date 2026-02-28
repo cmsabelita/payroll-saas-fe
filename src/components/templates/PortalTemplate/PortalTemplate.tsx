@@ -1,0 +1,17 @@
+import { cn } from "@/utils";
+import type { PortalTemplateProps } from "./PortalTemplate.types";
+
+export function PortalTemplate({
+  topbar,
+  children,
+  className,
+}: PortalTemplateProps) {
+  return (
+    <div className={cn("flex min-h-screen flex-col bg-muted", className)}>
+      {topbar != null && <>{topbar}</>}
+      <main className="flex-1 py-7">
+        <div className="mx-auto max-w-5xl px-6">{children}</div>
+      </main>
+    </div>
+  );
+}

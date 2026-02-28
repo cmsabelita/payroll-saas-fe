@@ -40,7 +40,13 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormSwitch control={control} name="enabled" {...args} />
+        <FormSwitch
+          control={control}
+          name="enabled"
+          label={args.label}
+          hint={args.hint}
+          disabled={args.disabled}
+        />
       )}
     </FormWrapper>
   ),
@@ -54,7 +60,13 @@ export const WithHint: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormSwitch control={control} name="enabled" {...args} />
+        <FormSwitch
+          control={control}
+          name="enabled"
+          label={args.label}
+          hint={args.hint}
+          disabled={args.disabled}
+        />
       )}
     </FormWrapper>
   ),

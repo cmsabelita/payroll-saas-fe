@@ -17,14 +17,34 @@ const inputVariants = cva(
         false: "border-border",
       },
       hasLeftAdornment: {
-        true: "rounded-l-none border-l-0 pl-2",
+        true: "rounded-l-none border-0 border-l-0 pl-3 bg-transparent",
         false: "",
       },
       hasRightAdornment: {
-        true: "rounded-r-none border-r-0 pr-2",
+        true: "rounded-r-none border-0 border-r-0 pr-3 bg-transparent",
         false: "",
       },
     },
+    compoundVariants: [
+      {
+        hasLeftAdornment: true,
+        hasRightAdornment: false,
+        class:
+          "focus-visible:ring-0 focus-visible:ring-offset-0",
+      },
+      {
+        hasLeftAdornment: false,
+        hasRightAdornment: true,
+        class:
+          "focus-visible:ring-0 focus-visible:ring-offset-0",
+      },
+      {
+        hasLeftAdornment: true,
+        hasRightAdornment: true,
+        class:
+          "focus-visible:ring-0 focus-visible:ring-offset-0",
+      },
+    ],
     defaultVariants: {
       size: "md",
       error: false,
@@ -35,7 +55,7 @@ const inputVariants = cva(
 );
 
 const wrapperVariants = cva(
-  "inline-flex w-full items-center overflow-hidden rounded-md border bg-input focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background",
+  "inline-flex w-full items-center overflow-visible rounded-md border bg-input focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background",
   {
     variants: {
       size: {
@@ -91,7 +111,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       data-input-wrapper
     >
       {leftAdornment && (
-        <div className="flex shrink-0 items-center justify-center pl-3 text-muted-foreground [&_button]:-my-1 [&_svg]:size-4">
+        <div className="relative z-10 flex min-w-[2.5rem] shrink-0 items-center justify-center overflow-visible pl-5 text-muted-foreground [&_button]:-my-1 [&_svg]:size-4">
           {leftAdornment}
         </div>
       )}
@@ -108,7 +128,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         {...rest}
       />
       {rightAdornment && (
-        <div className="flex shrink-0 items-center justify-center pr-1 text-muted-foreground [&_button]:-my-1 [&_svg]:size-4">
+        <div className="relative z-10 flex min-w-[2.5rem] shrink-0 items-center justify-center overflow-visible pr-3 text-muted-foreground [&_button]:-my-1 [&_svg]:size-4">
           {rightAdornment}
         </div>
       )}

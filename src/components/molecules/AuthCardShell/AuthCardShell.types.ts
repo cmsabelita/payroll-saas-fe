@@ -8,7 +8,7 @@ export interface AuthCardShellProps {
   /** Optional icon + heading block (centered, for forgot/verify) */
   headingBlock?: ReactNode;
   /** Main content (form or message) */
-  children: ReactNode;
+  children?: ReactNode;
   /** Optional footer (e.g. "Back to Sign In" link) */
   footer?: ReactNode;
   /** Center content (for verify-email style) */

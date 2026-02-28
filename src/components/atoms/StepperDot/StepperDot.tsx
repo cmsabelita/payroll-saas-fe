@@ -1,5 +1,7 @@
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { cva } from "class-variance-authority";
 import { cn } from "@/utils";
+import { FaIcon } from "../FaIcon";
 import type { StepperDotProps } from "./StepperDot.types";
 
 const stepperDotVariants = cva(
@@ -20,12 +22,6 @@ const stepperDotVariants = cva(
   }
 );
 
-const CheckSvg = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-);
-
 export { stepperDotVariants };
 
 export function StepperDot({
@@ -44,7 +40,7 @@ export function StepperDot({
       >
         {showCheck ? (
           <span className="size-4">
-            <CheckSvg />
+            <FaIcon icon={faCheck} size="sm" />
           </span>
         ) : (
           step ?? ""

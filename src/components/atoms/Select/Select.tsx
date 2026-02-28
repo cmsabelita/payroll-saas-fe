@@ -1,6 +1,8 @@
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { cva } from "class-variance-authority";
 import { forwardRef } from "react";
 import { cn } from "@/utils";
+import { FaIcon } from "../FaIcon";
 import type { SelectProps } from "./Select.types";
 
 const selectVariants = cva(
@@ -26,29 +28,30 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   ref
 ) {
   return (
-    <select
-      ref={ref}
-      className={cn(
-        selectVariants({ size }),
-        "bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%3E%3Cpath%20d%3D%22M3%204.5L6%207.5L9%204.5%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1rem] bg-[right_0.5rem_center] bg-no-repeat pr-8",
-        className
-      )}
-      {...rest}
-    >
-      {placeholder != null && (
-        <option value="" disabled>
-          {placeholder}
-        </option>
-      )}
-      {options.map((opt) => (
-        <option
-          key={opt.value}
-          value={opt.value}
-          disabled={opt.disabled}
-        >
-          {opt.label}
-        </option>
-      ))}
-    </select>
+    <div className="relative inline-block w-full">
+      <select
+        ref={ref}
+        className={cn(selectVariants({ size }), "pr-10", className)}
+        {...rest}
+      >
+        {placeholder != null && (
+          <option value="" disabled>
+            {placeholder}
+          </option>
+        )}
+        {options.map((opt) => (
+          <option
+            key={opt.value}
+            value={opt.value}
+            disabled={opt.disabled}
+          >
+            {opt.label}
+          </option>
+        ))}
+      </select>
+      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+        <FaIcon icon={faChevronDown} size="sm" aria-hidden />
+      </span>
+    </div>
   );
 });

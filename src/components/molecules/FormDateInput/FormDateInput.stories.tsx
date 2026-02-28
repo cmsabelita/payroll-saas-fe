@@ -41,7 +41,14 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormDateInput control={control} name="startDate" {...args} />
+        <FormDateInput
+          control={control}
+          name="startDate"
+          label={args.label}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+        />
       )}
     </FormWrapper>
   ),
@@ -55,7 +62,14 @@ export const Required: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormDateInput control={control} name="startDate" {...args} />
+        <FormDateInput
+          control={control}
+          name="startDate"
+          label={args.label}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+        />
       )}
     </FormWrapper>
   ),

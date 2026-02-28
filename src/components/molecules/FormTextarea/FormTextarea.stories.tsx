@@ -43,7 +43,15 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormTextarea control={control} name="bio" {...args} />
+        <FormTextarea
+          control={control}
+          name="bio"
+          label={args.label}
+          placeholder={args.placeholder}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+        />
       )}
     </FormWrapper>
   ),
@@ -58,7 +66,15 @@ export const WithHint: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormTextarea control={control} name="bio" {...args} />
+        <FormTextarea
+          control={control}
+          name="bio"
+          label={args.label}
+          placeholder={args.placeholder}
+          hint={args.hint}
+          required={args.required}
+          disabled={args.disabled}
+        />
       )}
     </FormWrapper>
   ),

@@ -1,12 +1,9 @@
-import type { InputHTMLAttributes } from "react";
 import type { FieldValues } from "react-hook-form";
+import type { InputProps } from "@/components/atoms";
 import type { ControlledFieldProps } from "../controlled-field.types";
 
 export interface FormInputProps<TFieldValues extends FieldValues = FieldValues>
-  extends Omit<
-      InputHTMLAttributes<HTMLInputElement>,
-      "value" | "onChange" | "onBlur" | "name" | "size"
-    >,
+  extends Omit<InputProps, "value" | "onChange" | "onBlur" | "name" | "size">,
     ControlledFieldProps<TFieldValues> {
   label: string;
   required?: boolean;

@@ -12,6 +12,11 @@ const buttonSizeClasses = {
   large: "h-12 w-12 rounded-xl",
 } as const;
 
+const iconWrapperClasses = {
+  default: "size-4 flex items-center justify-center [&_svg]:size-4",
+  large: "size-5 flex items-center justify-center [&_svg]:size-5",
+} as const;
+
 export function SocialLoginButtons({
   buttons,
   size = "default",
@@ -37,7 +42,9 @@ export function SocialLoginButtons({
           disabled={btn.disabled}
           aria-label={btn.label}
         >
-          {btn.icon}
+          <span className={iconWrapperClasses[size]}>
+            {btn.icon}
+          </span>
         </IconButton>
       ))}
     </div>

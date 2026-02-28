@@ -1,13 +1,13 @@
 "use client";
 
-import {
-  createPortal,
+import React, {
   useCallback,
   useEffect,
   useId,
   useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/utils";
 import type { TooltipPlacement, TooltipProps } from "./Tooltip.types";
 
@@ -56,7 +56,7 @@ function TooltipContent({
   triggerRef,
   contentId,
 }: {
-  content: ReactNode;
+  content: React.ReactNode;
   contentClassName?: string;
   placement: TooltipPlacement;
   triggerRef: React.RefObject<HTMLDivElement | null>;

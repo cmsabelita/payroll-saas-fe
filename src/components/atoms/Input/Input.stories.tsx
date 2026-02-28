@@ -1,23 +1,6 @@
+import { faMagnifyingGlass, faEye, faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Icon, IconButton, Input, Label } from "@/components/atoms";
-
-const SearchSvg = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="11" cy="11" r="8" />
-    <path d="m21 21-4.35-4.35" />
-  </svg>
-);
-const EyeSvg = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-    <circle cx="12" cy="12" r="3" />
-  </svg>
-);
-const XSvg = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M18 6 6 18M6 6l12 12" />
-  </svg>
-);
+import { FaIcon, IconButton, Input, Label } from "@/components/atoms";
 
 const meta: Meta<typeof Input> = {
   title: "Atoms/Input",
@@ -85,11 +68,7 @@ export const WithAdornments: Story = {
           id="search"
           type="search"
           placeholder="Search..."
-          leftAdornment={
-            <Icon size="sm">
-              <SearchSvg />
-            </Icon>
-          }
+          leftAdornment={<FaIcon icon={faMagnifyingGlass} size="sm" />}
         />
       </div>
       <div className="flex flex-col gap-1">
@@ -104,9 +83,7 @@ export const WithAdornments: Story = {
               size="sm"
               aria-label="Toggle password visibility"
             >
-              <Icon size="sm">
-                <EyeSvg />
-              </Icon>
+              <FaIcon icon={faEye} size="sm" />
             </IconButton>
           }
         />
@@ -116,16 +93,10 @@ export const WithAdornments: Story = {
         <Input
           id="both"
           placeholder="With both adornments"
-          leftAdornment={
-            <Icon size="sm">
-              <SearchSvg />
-            </Icon>
-          }
+          leftAdornment={<FaIcon icon={faMagnifyingGlass} size="sm" />}
           rightAdornment={
             <IconButton variant="ghost" size="sm" aria-label="Clear">
-              <Icon size="sm">
-                <XSvg />
-              </Icon>
+              <FaIcon icon={faXmark} size="sm" />
             </IconButton>
           }
         />

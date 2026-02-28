@@ -40,7 +40,15 @@ export const Default: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormCheckbox control={control} name="agree" {...args} />
+        <FormCheckbox
+          control={control}
+          name="agree"
+          label={args.label}
+          hint={args.hint}
+          disabled={args.disabled}
+          id={args.id}
+          className={args.className}
+        />
       )}
     </FormWrapper>
   ),
@@ -54,7 +62,15 @@ export const WithHint: Story = {
   render: (args) => (
     <FormWrapper>
       {(control) => (
-        <FormCheckbox control={control} name="agree" {...args} />
+        <FormCheckbox
+          control={control}
+          name="agree"
+          label={args.label}
+          hint={args.hint}
+          disabled={args.disabled}
+          id={args.id}
+          className={args.className}
+        />
       )}
     </FormWrapper>
   ),
