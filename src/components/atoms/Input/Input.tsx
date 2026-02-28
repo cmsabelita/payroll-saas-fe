@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { forwardRef } from "react";
 import { cn } from "@/utils";
 import type { InputProps } from "./Input.types";
 
@@ -56,20 +57,24 @@ const wrapperVariants = cva(
 
 export { inputVariants };
 
-export function Input({
-  size = "md",
-  error = false,
-  leftAdornment,
-  rightAdornment,
-  className,
-  ...rest
-}: InputProps) {
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  {
+    size = "md",
+    error = false,
+    leftAdornment,
+    rightAdornment,
+    className,
+    ...rest
+  },
+  ref
+) {
   const hasLeft = Boolean(leftAdornment);
   const hasRight = Boolean(rightAdornment);
 
   if (!hasLeft && !hasRight) {
     return (
       <input
+        ref={ref}
         className={cn(inputVariants({ size, error }), className)}
         {...rest}
       />
@@ -91,6 +96,7 @@ export function Input({
         </div>
       )}
       <input
+        ref={ref}
         className={cn(
           inputVariants({
             size,
@@ -108,4 +114,4 @@ export function Input({
       )}
     </div>
   );
-}
+});

@@ -3,7 +3,7 @@ import { cn } from "@/utils";
 import type { StepperConnectorProps } from "./StepperConnector.types";
 
 const stepperConnectorVariants = cva(
-  "inline-block h-0.5 w-6 shrink-0 self-center transition-colors",
+  "block h-0.5 min-w-0 self-center transition-colors mx-0 px-0",
   {
     variants: {
       done: {

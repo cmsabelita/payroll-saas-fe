@@ -1,5 +1,5 @@
 import type { FieldValues } from "react-hook-form";
-import type { DateInputProps } from "@/components/atoms/DateInput/DateInput.types";
+import type { DateInputProps } from "@/components/atoms";
 import type { ControlledFieldProps } from "../controlled-field.types";
 
 export interface FormDateInputProps<

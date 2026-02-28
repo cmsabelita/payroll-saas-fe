@@ -10,7 +10,12 @@ export interface SocialLoginButtonItem {
   disabled?: boolean;
 }
 
+/** "default" = compact. "large" = 48px buttons, rounded-xl, gap-3 (login mockup). */
+export type SocialLoginButtonsSize = "default" | "large";
+
 export interface SocialLoginButtonsProps {
   buttons: SocialLoginButtonItem[];
+  /** "large" for login mockup (w-12 h-12, rounded-xl, gap-3) */
+  size?: SocialLoginButtonsSize;
   className?: string;
 }

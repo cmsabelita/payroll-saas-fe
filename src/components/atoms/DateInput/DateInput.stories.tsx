@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { DateInput } from "./DateInput";
-import { Label } from "../Label";
+import { DateInput, Label } from "@/components/atoms";
 
 const meta: Meta<typeof DateInput> = {
   title: "Atoms/DateInput",

@@ -55,7 +55,6 @@ export function Rating({
   value,
   max = 5,
   size = "md",
-  readOnly = true,
   className,
   ...rest
 }: RatingProps) {

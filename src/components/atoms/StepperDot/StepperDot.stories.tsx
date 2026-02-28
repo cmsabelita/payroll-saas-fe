@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { StepperDot } from "./StepperDot";
-import { StepperConnector } from "../StepperConnector";
+import { StepperConnector, StepperDot } from "@/components/atoms";
 
 const meta: Meta<typeof StepperDot> = {
   title: "Atoms/StepperDot",

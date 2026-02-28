@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Employee — Review & Confirm — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .step-dot { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0; }
+    .step-connector { flex:1;height:2px;background:#3ECF8E; }
+    .review-card { background:white;border:1px solid #F3F4F6;border-radius:12px;overflow:hidden;margin-bottom:12px; }
+    .review-card-header { display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #F9FAFB; }
+    .review-row { display:flex;padding:8px 16px;gap:8px; }
+    .review-row:nth-child(even) { background:#FAFAFA; }
+    .review-label { font-size:.75rem;color:#9CA3AF;width:160px;flex-shrink:0; }
+    .review-value { font-size:.8125rem;color:#111827;font-weight:500; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="employees.html" class="hover:text-gray-700">Employees</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">Add Employee</span>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <!-- Step bar — all done -->
+    <div class="bg-white border-b border-gray-100 px-6 py-4 shrink-0">
+      <div class="max-w-4xl mx-auto flex items-center gap-0">
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Personal Info</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Employment</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Gov't IDs</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Salary</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Tax Info</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">App Access</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#3ECF8E;color:white;">7</div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Review</span></div>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <!-- Header -->
+        <div class="bg-white border border-gray-100 rounded-xl p-6 mb-4 flex items-center gap-4">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center text-white text-lg font-bold shrink-0" style="background:linear-gradient(135deg,#6EE7B7,#059669);">JD</div>
+          <div class="flex-1">
+            <h2 class="text-base font-semibold text-gray-900">Juan Reyes</h2>
+            <p class="text-sm text-gray-400">Software Engineer · Engineering · EMP-00091</p>
+          </div>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">Pending save</span>
+        </div>
+
+        <!-- Step 1: Personal Info -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Personal Information</p>
+            <a href="employees-new.html" class="text-xs font-medium text-emerald-600 hover:underline">Edit</a>
+          </div>
+          <div class="review-row"><span class="review-label">Full Name</span><span class="review-value">Juan Reyes</span></div>
+          <div class="review-row"><span class="review-label">Date of Birth</span><span class="review-value">March 12, 1992</span></div>
+          <div class="review-row"><span class="review-label">Gender</span><span class="review-value">Male</span></div>
+          <div class="review-row"><span class="review-label">Civil Status</span><span class="review-value">Single</span></div>
+          <div class="review-row"><span class="review-label">Mobile</span><span class="review-value">+63 917 555 0199</span></div>
+          <div class="review-row"><span class="review-label">Address</span><span class="review-value">Unit 4A, 55 Maharlika St., Pasig City, 1600</span></div>
+        </div>
+
+        <!-- Step 2: Employment -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Employment Details</p>
+            <a href="employees-new-2.html" class="text-xs font-medium text-emerald-600 hover:underline">Edit</a>
+          </div>
+          <div class="review-row"><span class="review-label">Employee ID</span><span class="review-value">EMP-00091</span></div>
+          <div class="review-row"><span class="review-label">Department</span><span class="review-value">Engineering</span></div>
+          <div class="review-row"><span class="review-label">Job Title</span><span class="review-value">Software Engineer</span></div>
+          <div class="review-row"><span class="review-label">Employment Type</span><span class="review-value">Probationary <span class="text-xs text-gray-400">(until Aug 31, 2026)</span></span></div>
+          <div class="review-row"><span class="review-label">Date Hired</span><span class="review-value">March 1, 2026</span></div>
+          <div class="review-row"><span class="review-label">Shift</span><span class="review-value">Standard (8AM–5PM, Mon–Fri)</span></div>
+          <div class="review-row"><span class="review-label">Work Location</span><span class="review-value">Hybrid</span></div>
+        </div>
+
+        <!-- Step 3: Gov't IDs -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Government IDs</p>
+            <a href="employees-new-3.html" class="text-xs font-medium text-emerald-600 hover:underline">Edit</a>
+          </div>
+          <div class="review-row"><span class="review-label">SSS No.</span><span class="review-value">34-5678901-2</span></div>
+          <div class="review-row"><span class="review-label">PhilHealth (PIN)</span><span class="review-value">12-345678901-2</span></div>
+          <div class="review-row"><span class="review-label">Pag-IBIG MID</span><span class="review-value">1234-5678-9012</span></div>
+          <div class="review-row"><span class="review-label">TIN</span><span class="review-value">123-456-789-000</span></div>
+          <div class="review-row"><span class="review-label">BIR RDO</span><span class="review-value">044 — Pasig City</span></div>
+        </div>
+
+        <!-- Step 4: Salary -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Salary & Compensation</p>
+            <a href="employees-new-4.html" class="text-xs font-medium text-emerald-600 hover:underline">Edit</a>
+          </div>
+          <div class="review-row"><span class="review-label">Basic Salary</span><span class="review-value">₱35,000.00 / month</span></div>
+          <div class="review-row"><span class="review-label">Pay Frequency</span><span class="review-value">Semi-monthly (1st & 15th)</span></div>
+          <div class="review-row"><span class="review-label">Meal Allowance</span><span class="review-value">₱2,000.00 / month</span></div>
+          <div class="review-row"><span class="review-label">Rice Subsidy</span><span class="review-value">₱2,000.00 / month</span></div>
+          <div class="review-row"><span class="review-label">Bank</span><span class="review-value">BDO Unibank — 1234-5678-90</span></div>
+        </div>
+
+        <!-- Step 5: Tax -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">Tax Information</p>
+            <a href="employees-new-5.html" class="text-xs font-medium text-emerald-600 hover:underline">Edit</a>
+          </div>
+          <div class="review-row"><span class="review-label">Tax Status</span><span class="review-value">S / ME — Single, no dependents</span></div>
+          <div class="review-row"><span class="review-label">MWE</span><span class="review-value">No</span></div>
+          <div class="review-row"><span class="review-label">13th Month Pay</span><span class="review-value">Yes — Regular Employee</span></div>
+        </div>
+
+        <!-- Step 6: Access -->
+        <div class="review-card">
+          <div class="review-card-header">
+            <p class="text-xs font-semibold text-gray-700 uppercase tracking-wide">App Access</p>
+            <a href="employees-new-6.html" class="text-xs font-medium text-emerald-600 hover:underline">Edit</a>
+          </div>
+          <div class="review-row"><span class="review-label">Portal Access</span><span class="review-value text-emerald-600">Enabled</span></div>
+          <div class="review-row"><span class="review-label">Login Email</span><span class="review-value">juan.reyes@acmecorp.com</span></div>
+          <div class="review-row"><span class="review-label">Admin Role</span><span class="review-value">None — portal only</span></div>
+          <div class="review-row"><span class="review-label">Welcome Email</span><span class="review-value text-emerald-600">Will be sent on save</span></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="flex items-center justify-between py-2 mt-2">
+          <a href="employees-new-6.html" class="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back
+          </a>
+          <a href="employees-profile.html" class="flex items-center gap-2 text-sm font-semibold text-white px-6 py-2.5 rounded-lg hover:opacity-90" style="background:#3ECF8E;">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Create Employee
+          </a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "generate:theme": "npx tsx scripts/generate-theme-css.ts",
-    "prebuild": "npm run generate:theme"
+    "prebuild": "npm run generate:theme",
+    "mockups": "npx serve docs/mockups -l 4000"
   },
   "dependencies": {
     "axios": "^1.7.0",

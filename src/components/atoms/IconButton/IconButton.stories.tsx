@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { IconButton } from "./IconButton";
-import { Icon } from "../Icon";
+import { Icon, IconButton } from "@/components/atoms";
 
 const SampleIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

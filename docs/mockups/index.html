@@ -3,468 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payro — Design Mockups</title>
+  <title>Payro — Mockup Index</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .card { display:block;background:white;border:1.5px solid #F3F4F6;border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .15s,box-shadow .15s; }
+    .card:hover { box-shadow:0 4px 16px rgba(0,0,0,.07); }
+    .card-green:hover   { border-color:#3ECF8E; }
+    .card-blue:hover    { border-color:#60A5FA; }
+    .card-purple:hover  { border-color:#A78BFA; }
+    .card-orange:hover  { border-color:#FB923C; }
+    .card-gray:hover    { border-color:#9CA3AF; }
+    .card-emerald:hover { border-color:#34D399; }
+    .card-red:hover     { border-color:#F87171; }
+    .card-yellow:hover  { border-color:#FBBF24; }
+    .card-teal:hover    { border-color:#2DD4BF; }
+    .badge { display:inline-block;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:20px;text-transform:uppercase;letter-spacing:.04em; }
+    .section-header { display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1.5px solid #F3F4F6; }
+  </style>
 </head>
-<body class="min-h-screen bg-gray-50 py-12 px-6">
-  <div class="max-w-5xl mx-auto">
+<body class="bg-gray-50 min-h-screen">
 
-    <!-- Header -->
-    <div class="flex items-center gap-3 mb-2">
-      <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#3ECF8E;">
-        <svg class="w-5 h-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
-        </svg>
+  <!-- Top bar -->
+  <div class="sticky top-0 z-10 bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#3ECF8E,#059669);">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       </div>
-      <h1 class="text-2xl font-bold text-gray-900">Payro — HTML Mockups</h1>
+      <span class="text-sm font-bold text-gray-900">Payro</span>
+      <span class="text-gray-300">·</span>
+      <span class="text-sm text-gray-500">UI Mockup Index</span>
     </div>
-    <p class="text-sm text-gray-500 mb-10 ml-12">62 static prototypes · Tailwind CSS CDN · DM Sans · No framework required</p>
+    <div class="text-xs text-gray-400">85 mockups · Philippine Payroll SaaS</div>
+  </div>
 
-    <div class="space-y-10">
+  <div class="max-w-6xl mx-auto px-6 py-8 space-y-10">
 
-      <!-- Auth -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white" style="background:#3ECF8E;">Auth</span>
-          <h2 class="text-sm font-semibold text-gray-700">Authentication</h2>
-          <span class="text-xs text-gray-400">— Kezak-inspired split-card layout</span>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="login.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/login</p>
-            <p class="text-xs text-gray-400 mt-1">Sign in · Sign up tabs</p>
-          </a>
-          <a href="signup.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/signup</p>
-            <p class="text-xs text-gray-400 mt-1">Register new account</p>
-          </a>
-          <a href="verify-email.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/verify-email</p>
-            <p class="text-xs text-gray-400 mt-1">Email OTP confirmation</p>
-          </a>
-          <a href="forgot-password.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/forgot-password</p>
-            <p class="text-xs text-gray-400 mt-1">Request reset link</p>
-          </a>
-          <a href="reset-password.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/reset-password</p>
-            <p class="text-xs text-gray-400 mt-1">Set new password</p>
-          </a>
-          <a href="invalid-company.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/invalid-company</p>
-            <p class="text-xs text-gray-400 mt-1">Unknown subdomain error</p>
-          </a>
-        </div>
-      </section>
+    <!-- AUTH -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#DBEAFE;color:#1D4ED8;">Auth</span>
+        <h2 class="text-sm font-semibold text-gray-700">Authentication</h2>
+        <span class="text-xs text-gray-400 ml-auto">5 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        <a href="login.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Login</p><p class="text-xs text-gray-400 mt-0.5">/login</p></a>
+        <a href="signup.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Sign Up</p><p class="text-xs text-gray-400 mt-0.5">/signup</p></a>
+        <a href="forgot-password.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Forgot Password</p><p class="text-xs text-gray-400 mt-0.5">/forgot-password</p></a>
+        <a href="reset-password.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Reset Password</p><p class="text-xs text-gray-400 mt-0.5">/reset-password</p></a>
+        <a href="verify-email.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Verify Email</p><p class="text-xs text-gray-400 mt-0.5">/verify-email</p></a>
+      </div>
+    </section>
 
-      <!-- Onboarding -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-teal-500">Onboard</span>
-          <h2 class="text-sm font-semibold text-gray-700">Company Onboarding Wizard</h2>
-          <span class="text-xs text-gray-400">— 4-step wizard layout, no sidebar</span>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="onboarding-company.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-teal-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-teal-700">Step 1 — Company</p>
-            <p class="text-xs text-gray-400 mt-1">Name, industry, size</p>
-          </a>
-          <a href="onboarding-business.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-teal-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-teal-700">Step 2 — Business</p>
-            <p class="text-xs text-gray-400 mt-1">TIN, SSS/PhilHealth/HDMF</p>
-          </a>
-          <a href="onboarding-payroll-settings.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-teal-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-teal-700">Step 3 — Payroll</p>
-            <p class="text-xs text-gray-400 mt-1">Frequency, cut-off, schedule</p>
-          </a>
-          <a href="onboarding-plan.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-teal-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-teal-700">Step 4 — Plan</p>
-            <p class="text-xs text-gray-400 mt-1">Starter / Growth / Enterprise</p>
-          </a>
-        </div>
-      </section>
+    <!-- ONBOARDING -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#F3E8FF;color:#7C3AED;">Onboarding</span>
+        <h2 class="text-sm font-semibold text-gray-700">Company Onboarding Wizard</h2>
+        <span class="text-xs text-gray-400 ml-auto">4 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="onboarding-business.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Step 1 — Business Info</p><p class="text-xs text-gray-400 mt-0.5">/onboarding/business</p></a>
+        <a href="onboarding-company.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Step 2 — Company Profile</p><p class="text-xs text-gray-400 mt-0.5">/onboarding/company</p></a>
+        <a href="onboarding-payroll-settings.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Step 3 — Payroll Settings</p><p class="text-xs text-gray-400 mt-0.5">/onboarding/payroll</p></a>
+        <a href="onboarding-plan.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Step 4 — Choose Plan</p><p class="text-xs text-gray-400 mt-0.5">/onboarding/plan</p></a>
+      </div>
+    </section>
 
-      <!-- Admin Dashboard -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-blue-500">Admin</span>
-          <h2 class="text-sm font-semibold text-gray-700">Admin Shell — Dashboard</h2>
-          <span class="text-xs text-gray-400">— Flup-inspired sidebar layout</span>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="dashboard.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/dashboard</p>
-            <p class="text-xs text-gray-400 mt-1">KPIs, payroll trend, alerts</p>
-          </a>
-        </div>
-      </section>
+    <!-- DASHBOARD -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#DCFCE7;color:#15803D;">Dashboard</span>
+        <h2 class="text-sm font-semibold text-gray-700">Dashboard</h2>
+        <span class="text-xs text-gray-400 ml-auto">1 page</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="dashboard.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Dashboard</p><p class="text-xs text-gray-400 mt-0.5">/dashboard</p></a>
+      </div>
+    </section>
 
-      <!-- People -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-blue-500">People</span>
-          <h2 class="text-sm font-semibold text-gray-700">Employees & Organization</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="employees.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees</p>
-            <p class="text-xs text-gray-400 mt-1">DataTable, filters, pagination</p>
-          </a>
-          <a href="employees-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees/new</p>
-            <p class="text-xs text-gray-400 mt-1">7-step add employee wizard</p>
-          </a>
-          <a href="employees-profile.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Profile overview, tabs</p>
-          </a>
-          <a href="employees-edit.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees/[id]/edit</p>
-            <p class="text-xs text-gray-400 mt-1">Edit employee — tabbed form</p>
-          </a>
-          <a href="employees-salary.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees/[id]/salary</p>
-            <p class="text-xs text-gray-400 mt-1">Compensation, allowances</p>
-          </a>
-          <a href="employees-separation.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees/[id]/separation</p>
-            <p class="text-xs text-gray-400 mt-1">Offboarding, reason, date</p>
-          </a>
-          <a href="employees-finalpay.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/employees/[id]/finalpay</p>
-            <p class="text-xs text-gray-400 mt-1">Back pay computation</p>
-          </a>
-          <a href="organization-departments.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/organization/departments</p>
-            <p class="text-xs text-gray-400 mt-1">Dept list, headcount</p>
-          </a>
-          <a href="organization-positions.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-blue-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-blue-700">/organization/positions</p>
-            <p class="text-xs text-gray-400 mt-1">Job levels, salary bands</p>
-          </a>
-        </div>
-      </section>
+    <!-- EMPLOYEES -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#DCFCE7;color:#15803D;">Employees</span>
+        <h2 class="text-sm font-semibold text-gray-700">Employees</h2>
+        <span class="text-xs text-gray-400 ml-auto">18 pages</span>
+      </div>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">List &amp; Profile</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-4">
+        <a href="employees.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Employee List</p><p class="text-xs text-gray-400 mt-0.5">/employees</p></a>
+        <a href="employees-profile.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Employee Profile</p><p class="text-xs text-gray-400 mt-0.5">/employees/:id</p></a>
+        <a href="employees-salary.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Salary History</p><p class="text-xs text-gray-400 mt-0.5">/employees/:id/salary</p></a>
+        <a href="employees-finalpay.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Final Pay</p><p class="text-xs text-gray-400 mt-0.5">/employees/:id/final-pay</p></a>
+        <a href="employees-separation.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Separation</p><p class="text-xs text-gray-400 mt-0.5">/employees/:id/separation</p></a>
+      </div>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Add Employee Wizard (7 steps)</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-4">
+        <a href="employees-new.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 1 — Personal Info</p><p class="text-xs text-gray-400 mt-0.5">/employees/new</p></a>
+        <a href="employees-new-2.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 2 — Employment</p><p class="text-xs text-gray-400 mt-0.5">wizard step 2</p></a>
+        <a href="employees-new-3.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 3 — Gov't IDs</p><p class="text-xs text-gray-400 mt-0.5">wizard step 3</p></a>
+        <a href="employees-new-4.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 4 — Salary</p><p class="text-xs text-gray-400 mt-0.5">wizard step 4</p></a>
+        <a href="employees-new-5.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 5 — Tax Info</p><p class="text-xs text-gray-400 mt-0.5">wizard step 5</p></a>
+        <a href="employees-new-6.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 6 — App Access</p><p class="text-xs text-gray-400 mt-0.5">wizard step 6</p></a>
+        <a href="employees-new-7.html" class="card card-emerald"><p class="text-sm font-semibold text-gray-800">Step 7 — Review &amp; Confirm</p><p class="text-xs text-gray-400 mt-0.5">wizard step 7</p></a>
+      </div>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Edit Employee (6 tabs)</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <a href="employees-edit.html" class="card card-teal"><p class="text-sm font-semibold text-gray-800">Edit — Personal Info</p><p class="text-xs text-gray-400 mt-0.5">/employees/:id/edit</p></a>
+        <a href="employees-edit-employment.html" class="card card-teal"><p class="text-sm font-semibold text-gray-800">Edit — Employment</p><p class="text-xs text-gray-400 mt-0.5">edit tab 2</p></a>
+        <a href="employees-edit-govids.html" class="card card-teal"><p class="text-sm font-semibold text-gray-800">Edit — Gov't IDs</p><p class="text-xs text-gray-400 mt-0.5">edit tab 3</p></a>
+        <a href="employees-edit-salary.html" class="card card-teal"><p class="text-sm font-semibold text-gray-800">Edit — Salary</p><p class="text-xs text-gray-400 mt-0.5">edit tab 4</p></a>
+        <a href="employees-edit-tax.html" class="card card-teal"><p class="text-sm font-semibold text-gray-800">Edit — Tax Info</p><p class="text-xs text-gray-400 mt-0.5">edit tab 5</p></a>
+        <a href="employees-edit-access.html" class="card card-teal"><p class="text-sm font-semibold text-gray-800">Edit — App Access</p><p class="text-xs text-gray-400 mt-0.5">edit tab 6</p></a>
+      </div>
+    </section>
 
-      <!-- Time & Attendance -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-sky-500">Time</span>
-          <h2 class="text-sm font-semibold text-gray-700">Attendance & Time Tracking</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="attendance.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-sky-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-sky-700">/attendance</p>
-            <p class="text-xs text-gray-400 mt-1">Daily log, calendar, summary</p>
-          </a>
-          <a href="attendance-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-sky-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-sky-700">/attendance/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Employee attendance detail</p>
-          </a>
-        </div>
-      </section>
+    <!-- ORGANIZATION -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#FEF9C3;color:#854D0E;">Organization</span>
+        <h2 class="text-sm font-semibold text-gray-700">Organization</h2>
+        <span class="text-xs text-gray-400 ml-auto">2 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="organization-departments.html" class="card card-yellow"><p class="text-sm font-semibold text-gray-800">Departments</p><p class="text-xs text-gray-400 mt-0.5">/organization/departments</p></a>
+        <a href="organization-positions.html" class="card card-yellow"><p class="text-sm font-semibold text-gray-800">Positions</p><p class="text-xs text-gray-400 mt-0.5">/organization/positions</p></a>
+      </div>
+    </section>
 
-      <!-- Approvals -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-amber-500">Approvals</span>
-          <h2 class="text-sm font-semibold text-gray-700">Request Approvals</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="approvals.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-amber-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-amber-700">/approvals</p>
-            <p class="text-xs text-gray-400 mt-1">Leave & OT queue, badge counts</p>
-          </a>
-          <a href="approvals-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-amber-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-amber-700">/approvals/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Approve / Reject detail view</p>
-          </a>
-        </div>
-      </section>
+    <!-- ATTENDANCE -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#FFEDD5;color:#C2410C;">Attendance</span>
+        <h2 class="text-sm font-semibold text-gray-700">Attendance</h2>
+        <span class="text-xs text-gray-400 ml-auto">2 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="attendance.html" class="card card-orange"><p class="text-sm font-semibold text-gray-800">Attendance Log</p><p class="text-xs text-gray-400 mt-0.5">/attendance</p></a>
+        <a href="attendance-id.html" class="card card-orange"><p class="text-sm font-semibold text-gray-800">Employee Daily Log</p><p class="text-xs text-gray-400 mt-0.5">/attendance/:id</p></a>
+      </div>
+    </section>
 
-      <!-- Team Management -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-violet-500">Team</span>
-          <h2 class="text-sm font-semibold text-gray-700">Team / User Management</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="team.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-violet-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-violet-700">/team</p>
-            <p class="text-xs text-gray-400 mt-1">Admin user list, roles, status</p>
-          </a>
-          <a href="team-invite.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-violet-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-violet-700">/team/invite</p>
-            <p class="text-xs text-gray-400 mt-1">Invite by email, assign role</p>
-          </a>
-          <a href="team-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-violet-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-violet-700">/team/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Edit role, deactivate member</p>
-          </a>
-        </div>
-      </section>
+    <!-- APPROVALS -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#FEE2E2;color:#B91C1C;">Approvals</span>
+        <h2 class="text-sm font-semibold text-gray-700">Approvals</h2>
+        <span class="text-xs text-gray-400 ml-auto">2 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="approvals.html" class="card card-red"><p class="text-sm font-semibold text-gray-800">Approvals Queue</p><p class="text-xs text-gray-400 mt-0.5">/approvals</p></a>
+        <a href="approvals-id.html" class="card card-red"><p class="text-sm font-semibold text-gray-800">Approval Detail</p><p class="text-xs text-gray-400 mt-0.5">/approvals/:id</p></a>
+      </div>
+    </section>
 
-      <!-- Payroll -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-purple-500">Payroll</span>
-          <h2 class="text-sm font-semibold text-gray-700">Payroll Management</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="payroll.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll</p>
-            <p class="text-xs text-gray-400 mt-1">Period list, YTD summary</p>
-          </a>
-          <a href="payroll-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll/new</p>
-            <p class="text-xs text-gray-400 mt-1">Create payroll period</p>
-          </a>
-          <a href="payroll-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Period detail, stepper, approve</p>
-          </a>
-          <a href="payroll-employees.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll/[id]/employees</p>
-            <p class="text-xs text-gray-400 mt-1">Per-employee earnings table</p>
-          </a>
-          <a href="payroll-employee-breakdown.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll/[id]/employees/[eid]</p>
-            <p class="text-xs text-gray-400 mt-1">Full pay breakdown, deductions</p>
-          </a>
-          <a href="payroll-payslips.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll/[id]/payslips</p>
-            <p class="text-xs text-gray-400 mt-1">Distribute payslips, send email</p>
-          </a>
-          <a href="payroll-adjust.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-purple-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-purple-700">/payroll/[id]/adjust</p>
-            <p class="text-xs text-gray-400 mt-1">Manual adjustments & one-offs</p>
-          </a>
-        </div>
-      </section>
+    <!-- PAYROLL -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#DCFCE7;color:#15803D;">Payroll</span>
+        <h2 class="text-sm font-semibold text-gray-700">Payroll</h2>
+        <span class="text-xs text-gray-400 ml-auto">7 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <a href="payroll.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Payroll Periods</p><p class="text-xs text-gray-400 mt-0.5">/payroll</p></a>
+        <a href="payroll-new.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">New Period</p><p class="text-xs text-gray-400 mt-0.5">/payroll/new</p></a>
+        <a href="payroll-id.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Period Detail</p><p class="text-xs text-gray-400 mt-0.5">/payroll/:id</p></a>
+        <a href="payroll-employees.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Period — Employees</p><p class="text-xs text-gray-400 mt-0.5">/payroll/:id/employees</p></a>
+        <a href="payroll-employee-breakdown.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Employee Breakdown</p><p class="text-xs text-gray-400 mt-0.5">/payroll/:id/employees/:empId</p></a>
+        <a href="payroll-adjust.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Adjustments</p><p class="text-xs text-gray-400 mt-0.5">/payroll/:id/adjustments</p></a>
+        <a href="payroll-payslips.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Payslips</p><p class="text-xs text-gray-400 mt-0.5">/payroll/:id/payslips</p></a>
+      </div>
+    </section>
 
-      <!-- Compliance -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-red-500">Compliance</span>
-          <h2 class="text-sm font-semibold text-gray-700">Government Compliance & BIR</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="compliance.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance</p>
-            <p class="text-xs text-gray-400 mt-1">Compliance overview, deadlines</p>
-          </a>
-          <a href="compliance-remittances.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/remittances</p>
-            <p class="text-xs text-gray-400 mt-1">SSS, PhilHealth, Pag-IBIG</p>
-          </a>
-          <a href="compliance-bir-1601c.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/bir-1601c</p>
-            <p class="text-xs text-gray-400 mt-1">Monthly withholding tax filing</p>
-          </a>
-          <a href="compliance-bir-2316.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/bir-2316</p>
-            <p class="text-xs text-gray-400 mt-1">Annual COE / BIR Form 2316</p>
-          </a>
-          <a href="compliance-alphalist.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/alphalist</p>
-            <p class="text-xs text-gray-400 mt-1">Alphalist DAT file export</p>
-          </a>
-          <a href="compliance-remittances-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/remittances/new</p>
-            <p class="text-xs text-gray-400 mt-1">Record SSS/PH/HDMF payment</p>
-          </a>
-          <a href="compliance-incidents.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/incidents</p>
-            <p class="text-xs text-gray-400 mt-1">HR incidents, DOLE log</p>
-          </a>
-          <a href="compliance-incidents-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/incidents/new</p>
-            <p class="text-xs text-gray-400 mt-1">Report workplace incident</p>
-          </a>
-          <a href="compliance-incidents-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/incidents/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Incident detail, timeline</p>
-          </a>
-          <a href="compliance-training.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/training</p>
-            <p class="text-xs text-gray-400 mt-1">Mandatory training tracker</p>
-          </a>
-          <a href="compliance-training-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/training/new</p>
-            <p class="text-xs text-gray-400 mt-1">Add training / seminar record</p>
-          </a>
-          <a href="compliance-training-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/training/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Training detail, participants</p>
-          </a>
-          <a href="compliance-disciplinary.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/disciplinary</p>
-            <p class="text-xs text-gray-400 mt-1">NTE, memo, disciplinary log</p>
-          </a>
-          <a href="compliance-disciplinary-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/disciplinary/new</p>
-            <p class="text-xs text-gray-400 mt-1">Issue NTE / written warning</p>
-          </a>
-          <a href="compliance-disciplinary-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-red-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-red-700">/compliance/disciplinary/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Due process checklist, timeline</p>
-          </a>
-        </div>
-      </section>
+    <!-- COMPLIANCE -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#F3E8FF;color:#7C3AED;">Compliance</span>
+        <h2 class="text-sm font-semibold text-gray-700">Compliance</h2>
+        <span class="text-xs text-gray-400 ml-auto">15 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <a href="compliance.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Compliance Overview</p><p class="text-xs text-gray-400 mt-0.5">/compliance</p></a>
+        <a href="compliance-remittances.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Remittances</p><p class="text-xs text-gray-400 mt-0.5">/compliance/remittances</p></a>
+        <a href="compliance-remittances-new.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Record Remittance</p><p class="text-xs text-gray-400 mt-0.5">/compliance/remittances/new</p></a>
+        <a href="compliance-bir-1601c.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">BIR Form 1601-C</p><p class="text-xs text-gray-400 mt-0.5">/compliance/bir/1601c</p></a>
+        <a href="compliance-bir-2316.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">BIR Form 2316</p><p class="text-xs text-gray-400 mt-0.5">/compliance/bir/2316</p></a>
+        <a href="compliance-alphalist.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Alphalist</p><p class="text-xs text-gray-400 mt-0.5">/compliance/bir/alphalist</p></a>
+        <a href="compliance-incidents.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Incidents</p><p class="text-xs text-gray-400 mt-0.5">/compliance/incidents</p></a>
+        <a href="compliance-incidents-new.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Report Incident</p><p class="text-xs text-gray-400 mt-0.5">/compliance/incidents/new</p></a>
+        <a href="compliance-incidents-id.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Incident Detail</p><p class="text-xs text-gray-400 mt-0.5">/compliance/incidents/:id</p></a>
+        <a href="compliance-training.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Training Records</p><p class="text-xs text-gray-400 mt-0.5">/compliance/training</p></a>
+        <a href="compliance-training-new.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Add Training</p><p class="text-xs text-gray-400 mt-0.5">/compliance/training/new</p></a>
+        <a href="compliance-training-id.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Training Detail</p><p class="text-xs text-gray-400 mt-0.5">/compliance/training/:id</p></a>
+        <a href="compliance-disciplinary.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Disciplinary Actions</p><p class="text-xs text-gray-400 mt-0.5">/compliance/disciplinary</p></a>
+        <a href="compliance-disciplinary-new.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">New Disciplinary</p><p class="text-xs text-gray-400 mt-0.5">/compliance/disciplinary/new</p></a>
+        <a href="compliance-disciplinary-id.html" class="card card-purple"><p class="text-sm font-semibold text-gray-800">Disciplinary Detail</p><p class="text-xs text-gray-400 mt-0.5">/compliance/disciplinary/:id</p></a>
+      </div>
+    </section>
 
-      <!-- Reports -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-indigo-500">Reports</span>
-          <h2 class="text-sm font-semibold text-gray-700">Analytics & Reports</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="reports.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-indigo-700">/reports</p>
-            <p class="text-xs text-gray-400 mt-1">Reports hub, quick exports</p>
-          </a>
-          <a href="reports-payroll.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-indigo-700">/reports/payroll</p>
-            <p class="text-xs text-gray-400 mt-1">Payroll cost, trend chart</p>
-          </a>
-          <a href="reports-headcount.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-indigo-700">/reports/headcount</p>
-            <p class="text-xs text-gray-400 mt-1">Headcount by dept & month</p>
-          </a>
-          <a href="reports-leave.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-indigo-700">/reports/leave</p>
-            <p class="text-xs text-gray-400 mt-1">Leave utilization, top absences</p>
-          </a>
-          <a href="reports-attendance.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-indigo-700">/reports/attendance</p>
-            <p class="text-xs text-gray-400 mt-1">Late / absent / OT summary</p>
-          </a>
-          <a href="reports-government.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-indigo-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-indigo-700">/reports/government</p>
-            <p class="text-xs text-gray-400 mt-1">SSS/PhilHealth/HDMF/BIR reports</p>
-          </a>
-        </div>
-      </section>
+    <!-- REPORTS -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#DBEAFE;color:#1D4ED8;">Reports</span>
+        <h2 class="text-sm font-semibold text-gray-700">Reports</h2>
+        <span class="text-xs text-gray-400 ml-auto">6 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <a href="reports.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Reports Hub</p><p class="text-xs text-gray-400 mt-0.5">/reports</p></a>
+        <a href="reports-payroll.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Payroll Report</p><p class="text-xs text-gray-400 mt-0.5">/reports/payroll</p></a>
+        <a href="reports-attendance.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Attendance Report</p><p class="text-xs text-gray-400 mt-0.5">/reports/attendance</p></a>
+        <a href="reports-leave.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Leave Report</p><p class="text-xs text-gray-400 mt-0.5">/reports/leave</p></a>
+        <a href="reports-headcount.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Headcount Report</p><p class="text-xs text-gray-400 mt-0.5">/reports/headcount</p></a>
+        <a href="reports-government.html" class="card card-blue"><p class="text-sm font-semibold text-gray-800">Government Report</p><p class="text-xs text-gray-400 mt-0.5">/reports/government</p></a>
+      </div>
+    </section>
 
-      <!-- Settings -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-gray-500">Settings</span>
-          <h2 class="text-sm font-semibold text-gray-700">Settings</h2>
-          <span class="text-xs text-gray-400">— Inner left-nav within admin shell</span>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="settings-company.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/general</p>
-            <p class="text-xs text-gray-400 mt-1">Company info, logo, address</p>
-          </a>
-          <a href="settings-payroll-config.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/payroll-config</p>
-            <p class="text-xs text-gray-400 mt-1">Frequency, cut-off, pay date</p>
-          </a>
-          <a href="settings-holidays.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/holidays</p>
-            <p class="text-xs text-gray-400 mt-1">PH holidays, custom dates</p>
-          </a>
-          <a href="settings-leave-policies.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/leave-policies</p>
-            <p class="text-xs text-gray-400 mt-1">VL, SL, Maternity, VAWC…</p>
-          </a>
-          <a href="settings-team.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/team</p>
-            <p class="text-xs text-gray-400 mt-1">Admin users, roles, permissions</p>
-          </a>
-          <a href="settings-billing.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/billing</p>
-            <p class="text-xs text-gray-400 mt-1">Plan, usage, invoices</p>
-          </a>
-          <a href="settings-integrations.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-300 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-gray-700">/settings/integrations</p>
-            <p class="text-xs text-gray-400 mt-1">Slack, QuickBooks, BancNet, API</p>
-          </a>
-        </div>
-      </section>
+    <!-- SETTINGS -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#F3F4F6;color:#374151;">Settings</span>
+        <h2 class="text-sm font-semibold text-gray-700">Settings</h2>
+        <span class="text-xs text-gray-400 ml-auto">7 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <a href="settings-company.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">General / Company</p><p class="text-xs text-gray-400 mt-0.5">/settings</p></a>
+        <a href="settings-payroll-config.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Payroll Config</p><p class="text-xs text-gray-400 mt-0.5">/settings/payroll</p></a>
+        <a href="settings-holidays.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Holidays</p><p class="text-xs text-gray-400 mt-0.5">/settings/holidays</p></a>
+        <a href="settings-leave-policies.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Leave Policies</p><p class="text-xs text-gray-400 mt-0.5">/settings/leave-policies</p></a>
+        <a href="settings-team.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Team Members</p><p class="text-xs text-gray-400 mt-0.5">/settings/team</p></a>
+        <a href="settings-billing.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Billing &amp; Plan</p><p class="text-xs text-gray-400 mt-0.5">/settings/billing</p></a>
+        <a href="settings-integrations.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Integrations</p><p class="text-xs text-gray-400 mt-0.5">/settings/integrations</p></a>
+      </div>
+    </section>
 
-      <!-- Employee Portal -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white bg-orange-400">Portal</span>
-          <h2 class="text-sm font-semibold text-gray-700">Employee Self-Service</h2>
-          <span class="text-xs text-gray-400">— PortalTemplate, no sidebar, viewer role</span>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="portal.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/dashboard</p>
-            <p class="text-xs text-gray-400 mt-1">Payslip, leave balance, timeline</p>
-          </a>
-          <a href="my-payslips.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/payslips</p>
-            <p class="text-xs text-gray-400 mt-1">Payslip history, download</p>
-          </a>
-          <a href="my-payslips-detail.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/payslips/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Formal payslip viewer, print</p>
-          </a>
-          <a href="my-attendance.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/attendance</p>
-            <p class="text-xs text-gray-400 mt-1">Calendar + daily time log</p>
-          </a>
-          <a href="my-requests.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/requests</p>
-            <p class="text-xs text-gray-400 mt-1">Leave & OT request history</p>
-          </a>
-          <a href="my-requests-leave-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/requests/leave/new</p>
-            <p class="text-xs text-gray-400 mt-1">File leave request form</p>
-          </a>
-          <a href="my-requests-ot-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/requests/ot/new</p>
-            <p class="text-xs text-gray-400 mt-1">File OT request + pay preview</p>
-          </a>
-          <a href="my-requests-id.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/requests/[id]</p>
-            <p class="text-xs text-gray-400 mt-1">Request detail, status timeline</p>
-          </a>
-          <a href="my-requests-attendance-new.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/requests/attendance/new</p>
-            <p class="text-xs text-gray-400 mt-1">File attendance correction / dispute</p>
-          </a>
-          <a href="my-profile.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-orange-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-orange-600">/my/profile</p>
-            <p class="text-xs text-gray-400 mt-1">Personal info, gov't IDs</p>
-          </a>
-        </div>
-      </section>
+    <!-- TEAM -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#FEF9C3;color:#854D0E;">Team</span>
+        <h2 class="text-sm font-semibold text-gray-700">Admin Team Management</h2>
+        <span class="text-xs text-gray-400 ml-auto">3 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="team.html" class="card card-yellow"><p class="text-sm font-semibold text-gray-800">Team List</p><p class="text-xs text-gray-400 mt-0.5">/team</p></a>
+        <a href="team-id.html" class="card card-yellow"><p class="text-sm font-semibold text-gray-800">Team Member Detail</p><p class="text-xs text-gray-400 mt-0.5">/team/:id</p></a>
+        <a href="team-invite.html" class="card card-yellow"><p class="text-sm font-semibold text-gray-800">Invite Member</p><p class="text-xs text-gray-400 mt-0.5">/team/invite</p></a>
+      </div>
+    </section>
 
-      <!-- Marketing -->
-      <section>
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-xs font-bold px-2 py-0.5 rounded-full text-white" style="background:#3ECF8E;">Marketing</span>
-          <h2 class="text-sm font-semibold text-gray-700">Public Marketing Pages</h2>
-          <span class="text-xs text-gray-400">— No auth, standalone layout</span>
-        </div>
-        <div class="grid grid-cols-4 gap-3">
-          <a href="marketing-landing.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/ (Landing)</p>
-            <p class="text-xs text-gray-400 mt-1">Hero, features, pricing teaser, CTA</p>
-          </a>
-          <a href="marketing-pricing.html" class="group bg-white border border-gray-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition block">
-            <p class="text-sm font-semibold text-gray-900 group-hover:text-emerald-700">/pricing</p>
-            <p class="text-xs text-gray-400 mt-1">3-tier cards, comparison table, FAQ</p>
-          </a>
-        </div>
-      </section>
+    <!-- PORTAL -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#ECFDF5;color:#059669;">Portal</span>
+        <h2 class="text-sm font-semibold text-gray-700">Employee Self-Service Portal</h2>
+        <span class="text-xs text-gray-400 ml-auto">10 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <a href="portal.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Portal Home</p><p class="text-xs text-gray-400 mt-0.5">/my</p></a>
+        <a href="my-payslips.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">My Payslips</p><p class="text-xs text-gray-400 mt-0.5">/my/payslips</p></a>
+        <a href="my-payslips-detail.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Payslip Detail</p><p class="text-xs text-gray-400 mt-0.5">/my/payslips/:id</p></a>
+        <a href="my-attendance.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">My Attendance</p><p class="text-xs text-gray-400 mt-0.5">/my/attendance</p></a>
+        <a href="my-requests.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">My Requests</p><p class="text-xs text-gray-400 mt-0.5">/my/requests</p></a>
+        <a href="my-requests-id.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">Request Detail</p><p class="text-xs text-gray-400 mt-0.5">/my/requests/:id</p></a>
+        <a href="my-requests-leave-new.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">File Leave Request</p><p class="text-xs text-gray-400 mt-0.5">/my/requests/leave/new</p></a>
+        <a href="my-requests-ot-new.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">File OT Request</p><p class="text-xs text-gray-400 mt-0.5">/my/requests/ot/new</p></a>
+        <a href="my-requests-attendance-new.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">File Attendance Correction</p><p class="text-xs text-gray-400 mt-0.5">/my/requests/attendance/new</p></a>
+        <a href="my-profile.html" class="card card-green"><p class="text-sm font-semibold text-gray-800">My Profile</p><p class="text-xs text-gray-400 mt-0.5">/my/profile</p></a>
+      </div>
+    </section>
 
-    </div>
+    <!-- MARKETING -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#FEE2E2;color:#B91C1C;">Marketing</span>
+        <h2 class="text-sm font-semibold text-gray-700">Marketing Pages</h2>
+        <span class="text-xs text-gray-400 ml-auto">2 pages</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="marketing-landing.html" class="card card-red"><p class="text-sm font-semibold text-gray-800">Landing Page</p><p class="text-xs text-gray-400 mt-0.5">payro.ph</p></a>
+        <a href="marketing-pricing.html" class="card card-red"><p class="text-sm font-semibold text-gray-800">Pricing Page</p><p class="text-xs text-gray-400 mt-0.5">payro.ph/pricing</p></a>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <div class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
-      <p>Payro · Philippine Payroll SaaS · 75 mockups</p>
-      <p>Tailwind CSS CDN · DM Sans · Flup + Kezak inspired</p>
-    </div>
+    <!-- OTHER -->
+    <section>
+      <div class="section-header">
+        <span class="badge" style="background:#F3F4F6;color:#6B7280;">Other</span>
+        <h2 class="text-sm font-semibold text-gray-700">Other</h2>
+        <span class="text-xs text-gray-400 ml-auto">1 page</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="invalid-company.html" class="card card-gray"><p class="text-sm font-semibold text-gray-800">Invalid Company</p><p class="text-xs text-gray-400 mt-0.5">/invalid-company</p></a>
+      </div>
+    </section>
 
   </div>
+
+  <!-- Footer -->
+  <div class="border-t border-gray-100 mt-10 py-5 text-center text-xs text-gray-400 bg-white">
+    85 mockups · Payro Philippine Payroll SaaS · DM Sans · Tailwind CSS
+  </div>
+
 </body>
 </html>

@@ -200,3 +200,28 @@ body {
 .bar-indeterminate {
   animation: progress-indeterminate 1.5s ease-in-out infinite;
 }
+
+/* Auth branding panel (login mockup right column) — gradient uses primary hue */
+.auth-branding-panel {
+  background: linear-gradient(
+    150deg,
+    hsl(168 68% 12%) 0%,
+    hsl(168 62% 18%) 50%,
+    hsl(168 68% 10%) 100%
+  );
+}
+
+.auth-branding-grid {
+  background-image:
+    linear-gradient(rgba(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.auth-branding-glow {
+  background: radial-gradient(
+    circle,
+    hsl(168 62% 45% / 0.15) 0%,
+    transparent 70%
+  );
+}

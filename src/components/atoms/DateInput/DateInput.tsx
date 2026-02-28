@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { forwardRef } from "react";
 import { cn } from "@/utils";
 import type { DateInputProps } from "./DateInput.types";
 
@@ -19,29 +20,35 @@ const dateInputVariants = cva(
 
 export { dateInputVariants };
 
-export function DateInput({
-  value,
-  onChange,
-  min,
-  max,
-  error = false,
-  className,
-  id,
-  "aria-describedby": ariaDescribedby,
-  ...rest
-}: DateInputProps) {
-  return (
-    <input
-      type="date"
-      id={id}
-      value={value ?? ""}
-      onChange={(e) => onChange?.(e.target.value)}
-      min={min}
-      max={max}
-      className={cn(dateInputVariants({ error }), className)}
-      aria-invalid={error}
-      aria-describedby={ariaDescribedby}
-      {...rest}
-    />
-  );
-}
+export const DateInput = forwardRef<HTMLInputElement, DateInputProps>(
+  function DateInput(
+    {
+      value,
+      onChange,
+      min,
+      max,
+      error = false,
+      className,
+      id,
+      "aria-describedby": ariaDescribedby,
+      ...rest
+    },
+    ref
+  ) {
+    return (
+      <input
+        ref={ref}
+        type="date"
+        id={id}
+        value={value ?? ""}
+        onChange={(e) => onChange?.(e.target.value)}
+        min={min}
+        max={max}
+        className={cn(dateInputVariants({ error }), className)}
+        aria-invalid={error}
+        aria-describedby={ariaDescribedby}
+        {...rest}
+      />
+    );
+  }
+);

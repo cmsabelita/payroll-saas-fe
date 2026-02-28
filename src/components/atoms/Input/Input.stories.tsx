@@ -1,8 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Input } from "./Input";
-import { Label } from "../Label";
-import { Icon } from "../Icon";
-import { IconButton } from "../IconButton";
+import { Icon, IconButton, Input, Label } from "@/components/atoms";
 
 const SearchSvg = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

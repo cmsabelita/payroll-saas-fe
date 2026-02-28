@@ -2,13 +2,28 @@ import { IconButton } from "@/components/atoms";
 import { cn } from "@/utils";
 import type { SocialLoginButtonsProps } from "./SocialLoginButtons.types";
 
+const sizeClasses = {
+  default: "gap-2",
+  large: "gap-3",
+} as const;
+
+const buttonSizeClasses = {
+  default: "",
+  large: "h-12 w-12 rounded-xl",
+} as const;
+
 export function SocialLoginButtons({
   buttons,
+  size = "default",
   className,
 }: SocialLoginButtonsProps) {
   return (
     <div
-      className={cn("flex flex-wrap items-center justify-center gap-2", className)}
+      className={cn(
+        "flex flex-wrap items-center justify-center",
+        sizeClasses[size],
+        className
+      )}
       role="group"
       aria-label="Sign in with social providers"
     >
@@ -16,7 +31,8 @@ export function SocialLoginButtons({
         <IconButton
           key={btn.label}
           variant="outline"
-          size="md"
+          size={size === "large" ? "lg" : "md"}
+          className={buttonSizeClasses[size] || undefined}
           onClick={btn.onClick}
           disabled={btn.disabled}
           aria-label={btn.label}

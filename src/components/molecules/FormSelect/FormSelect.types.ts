@@ -1,5 +1,5 @@
 import type { FieldValues } from "react-hook-form";
-import type { SelectOption } from "@/components/atoms/Select/Select.types";
+import type { SelectOption } from "@/components/atoms";
 import type { ControlledFieldProps } from "../controlled-field.types";
 
 export interface FormSelectProps<TFieldValues extends FieldValues = FieldValues>

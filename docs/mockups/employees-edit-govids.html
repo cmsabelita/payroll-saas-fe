@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee — Government IDs — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-label { display:block;font-size:.8125rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .tab-btn { padding:6px 14px;border-radius:6px;font-size:.8125rem;font-weight:500;color:#6B7280;white-space:nowrap;cursor:pointer;border:none;background:transparent; }
+    .tab-btn.active { background:white;color:#111827;box-shadow:0 1px 3px rgba(0,0,0,.08); }
+    .id-card { background:white;border:1.5px solid #F3F4F6;border-radius:12px;padding:16px 20px;margin-bottom:12px; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="employees.html" class="hover:text-gray-700">Employees</a>
+        <span>›</span>
+        <a href="employees-profile.html" class="hover:text-gray-700">Ana Reyes</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">Edit</span>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <div class="bg-white border-b border-gray-100 px-6 shrink-0">
+      <div class="flex items-center gap-1 bg-gray-100 rounded-xl p-1 w-fit my-2.5">
+        <a href="employees-edit.html" class="tab-btn">Personal Info</a>
+        <a href="employees-edit-employment.html" class="tab-btn">Employment</a>
+        <button class="tab-btn active">Gov't IDs</button>
+        <a href="employees-edit-salary.html" class="tab-btn">Salary</a>
+        <a href="employees-edit-tax.html" class="tab-btn">Tax Info</a>
+        <a href="employees-edit-access.html" class="tab-btn">App Access</a>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto py-6 px-6">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white border border-gray-100 rounded-xl p-8">
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center text-white text-lg font-bold shrink-0" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+            <div>
+              <h2 class="text-base font-semibold text-gray-900">Ana Reyes</h2>
+              <p class="text-sm text-gray-400">EMP-00042 · HR Manager</p>
+            </div>
+          </div>
+
+          <!-- SSS -->
+          <div class="id-card">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#FEF9C3;"><span class="text-xs font-bold text-yellow-700">SSS</span></div>
+              <p class="text-sm font-semibold text-gray-800">Social Security System</p>
+              <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Verified</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">SSS Number</label>
+                <input type="text" class="form-input" value="09-1234567-8">
+              </div>
+              <div>
+                <label class="form-label">Contribution Type</label>
+                <select class="form-input" style="appearance:none;cursor:pointer;">
+                  <option selected>Regular Employee</option>
+                  <option>Kasambahay</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- PhilHealth -->
+          <div class="id-card">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#DBEAFE;"><span class="text-xs font-bold text-blue-700">PH</span></div>
+              <p class="text-sm font-semibold text-gray-800">PhilHealth (PHIC)</p>
+              <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Verified</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">PhilHealth Number (PIN)</label>
+                <input type="text" class="form-input" value="21-098765432-1">
+              </div>
+              <div>
+                <label class="form-label">Membership Type</label>
+                <select class="form-input" style="appearance:none;cursor:pointer;">
+                  <option selected>Employed</option>
+                  <option>Indirect Contributor</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pag-IBIG -->
+          <div class="id-card">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#DCFCE7;"><span class="text-xs font-bold text-emerald-700">PG</span></div>
+              <p class="text-sm font-semibold text-gray-800">Pag-IBIG / HDMF</p>
+              <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">Pending</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Pag-IBIG MID Number</label>
+                <input type="text" class="form-input" placeholder="XXXX-XXXX-XXXX">
+              </div>
+              <div>
+                <label class="form-label">Monthly Contribution</label>
+                <select class="form-input" style="appearance:none;cursor:pointer;">
+                  <option selected>Minimum (₱100)</option>
+                  <option>₱200</option>
+                  <option>₱500</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- BIR -->
+          <div class="id-card" style="margin-bottom:0;">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background:#FFEDD5;"><span class="text-xs font-bold text-orange-700">BIR</span></div>
+              <p class="text-sm font-semibold text-gray-800">Bureau of Internal Revenue</p>
+              <span class="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Verified</span>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-3">
+              <div>
+                <label class="form-label">TIN <span class="text-red-400">*</span></label>
+                <input type="text" class="form-input" value="321-654-987-000">
+              </div>
+              <div>
+                <label class="form-label">RDO Code</label>
+                <input type="text" class="form-input" value="044">
+              </div>
+            </div>
+            <div>
+              <label class="form-label">RDO Name</label>
+              <input type="text" class="form-input" value="RDO No. 44 — Pasig City">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between mt-4 py-2">
+          <a href="employees-profile.html" class="text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100">Cancel</a>
+          <div class="flex items-center gap-3">
+            <button class="text-sm font-medium text-gray-700 px-4 py-2.5 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Save & Stay</button>
+            <button class="text-sm font-semibold text-white px-5 py-2.5 rounded-lg" style="background:#3ECF8E;">Save Changes →</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { forwardRef } from "react";
 import { cn } from "@/utils";
 import type { TextareaProps } from "./Textarea.types";
 
@@ -26,31 +27,37 @@ const textareaVariants = cva(
 
 export { textareaVariants };
 
-export function Textarea({
-  error = false,
-  resize = "vertical",
-  minRows,
-  maxRows,
-  rows = 3,
-  className,
-  style,
-  ...rest
-}: TextareaProps) {
-  const resolvedRows =
-    minRows !== undefined && maxRows !== undefined
-      ? Math.min(Math.max(rows, minRows), maxRows)
-      : minRows !== undefined
-        ? Math.max(rows, minRows)
-        : maxRows !== undefined
-          ? Math.min(rows, maxRows)
-          : rows;
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  function Textarea(
+    {
+      error = false,
+      resize = "vertical",
+      minRows,
+      maxRows,
+      rows = 3,
+      className,
+      style,
+      ...rest
+    },
+    ref
+  ) {
+    const resolvedRows =
+      minRows !== undefined && maxRows !== undefined
+        ? Math.min(Math.max(rows, minRows), maxRows)
+        : minRows !== undefined
+          ? Math.max(rows, minRows)
+          : maxRows !== undefined
+            ? Math.min(rows, maxRows)
+            : rows;
 
-  return (
-    <textarea
-      className={cn(textareaVariants({ resize, error }), className)}
-      rows={resolvedRows}
-      style={style}
-      {...rest}
-    />
-  );
-}
+    return (
+      <textarea
+        ref={ref}
+        className={cn(textareaVariants({ resize, error }), className)}
+        rows={resolvedRows}
+        style={style}
+        {...rest}
+      />
+    );
+  }
+);

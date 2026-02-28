@@ -1,5 +1,5 @@
 import type { FieldValues } from "react-hook-form";
-import type { TextareaProps } from "@/components/atoms/Textarea/Textarea.types";
+import type { TextareaProps } from "@/components/atoms";
 import type { ControlledFieldProps } from "../controlled-field.types";
 
 export interface FormTextareaProps<

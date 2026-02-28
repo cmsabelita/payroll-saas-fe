@@ -28,7 +28,7 @@ export function AlertBanner({
     >
       {icon != null && (
         <Box
-          className="flex shrink-0 items-center justify-center rounded-md bg-black/10 p-1.5 dark:bg-white/10"
+          className="flex shrink-0 items-center justify-center rounded-md bg-foreground/10 p-1.5"
           aria-hidden
         >
           {icon}

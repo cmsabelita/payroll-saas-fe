@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Employee — Tax Information — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .step-dot { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0; }
+    .step-connector { flex:1;height:2px;background:#E5E7EB; }
+    .step-connector.done { background:#3ECF8E; }
+    .radio-card { flex:1;border:1.5px solid #E5E7EB;border-radius:10px;padding:10px 14px;cursor:pointer;transition:border-color .15s; }
+    .radio-card:hover { border-color:#3ECF8E; }
+    .radio-card.selected { border-color:#3ECF8E;background:#F0FDF4; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="employees.html" class="hover:text-gray-700">Employees</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">Add Employee</span>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <!-- Step bar -->
+    <div class="bg-white border-b border-gray-100 px-6 py-4 shrink-0">
+      <div class="max-w-4xl mx-auto flex items-center gap-0">
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Personal Info</span></div>
+        <div class="step-connector done mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Employment</span></div>
+        <div class="step-connector done mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Gov't IDs</span></div>
+        <div class="step-connector done mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Salary</span></div>
+        <div class="step-connector done mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#3ECF8E;color:white;">5</div><span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Tax Info</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">6</div><span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">App Access</span></div>
+        <div class="step-connector mx-2"></div>
+        <div class="flex flex-col items-center gap-1.5"><div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">7</div><span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Review</span></div>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8 mb-6">
+          <div class="mb-6">
+            <h2 class="text-base font-semibold text-gray-900">Tax Information</h2>
+            <p class="text-sm text-gray-500 mt-0.5">Step 5 of 7 — BIR withholding tax configuration per TRAIN Law (RA 10963)</p>
+          </div>
+
+          <!-- MWE toggle -->
+          <div class="flex items-center justify-between p-4 bg-amber-50 border border-amber-100 rounded-xl mb-5">
+            <div>
+              <p class="text-sm font-semibold text-gray-800">Minimum Wage Earner (MWE)</p>
+              <p class="text-xs text-gray-500 mt-0.5">MWEs are exempt from income tax withholding under the TRAIN Law.</p>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" class="sr-only peer">
+              <div class="w-10 h-6 bg-gray-200 rounded-full peer peer-checked:bg-emerald-500 transition-colors"></div>
+              <div class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-4"></div>
+            </label>
+          </div>
+
+          <!-- Tax Filing Status -->
+          <div class="mb-5">
+            <label class="form-label">BIR Withholding Tax Status <span style="color:#EF4444;">*</span></label>
+            <p class="text-xs text-gray-400 mb-3">From employee's BIR Form 2316 / TIN application. Affects withholding computation.</p>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="radio-card selected flex items-start gap-2.5 cursor-pointer">
+                <input type="radio" name="tax_status" class="mt-0.5 accent-emerald-500" checked>
+                <div>
+                  <p class="text-sm font-semibold text-gray-800">S / ME</p>
+                  <p class="text-xs text-gray-500">Single / Married Employee — no qualified dependents</p>
+                </div>
+              </label>
+              <label class="radio-card flex items-start gap-2.5 cursor-pointer">
+                <input type="radio" name="tax_status" class="mt-0.5 accent-emerald-500">
+                <div>
+                  <p class="text-sm font-semibold text-gray-800">ME1 – ME4</p>
+                  <p class="text-xs text-gray-500">Married Employee with 1–4 qualified dependents</p>
+                </div>
+              </label>
+              <label class="radio-card flex items-start gap-2.5 cursor-pointer">
+                <input type="radio" name="tax_status" class="mt-0.5 accent-emerald-500">
+                <div>
+                  <p class="text-sm font-semibold text-gray-800">HF / HF1 – HF4</p>
+                  <p class="text-xs text-gray-500">Head of Family (solo parent) with or without dependents</p>
+                </div>
+              </label>
+              <label class="radio-card flex items-start gap-2.5 cursor-pointer">
+                <input type="radio" name="tax_status" class="mt-0.5 accent-emerald-500">
+                <div>
+                  <p class="text-sm font-semibold text-gray-800">S1 – S4</p>
+                  <p class="text-xs text-gray-500">Single with 1–4 qualified dependents</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Number of dependents -->
+          <div class="mb-5">
+            <label class="form-label">Number of Qualified Dependents</label>
+            <div class="flex items-center gap-3">
+              <select class="form-select" style="max-width:180px;">
+                <option selected>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+              <p class="text-xs text-gray-400">Max 4 qualified dependents recognized by BIR</p>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 my-5"></div>
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Additional Withholding Settings</p>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Withholding Agent</label>
+              <select class="form-select">
+                <option selected>This company (primary employer)</option>
+                <option>Employee is self-employed / freelancer</option>
+                <option>Employee has multiple employers</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">13th Month Pay Eligible</label>
+              <select class="form-select">
+                <option selected>Yes — Regular Employee</option>
+                <option>No — Contractual / Project-Based</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="flex items-start gap-2.5 cursor-pointer">
+            <input type="checkbox" class="mt-0.5 w-4 h-4 rounded accent-emerald-500">
+            <div>
+              <p class="text-sm font-medium text-gray-700">Employee is a Night Differential worker</p>
+              <p class="text-xs text-gray-400 mt-0.5">Night differential pay (10PM–6AM) is not subject to income tax per BIR rules.</p>
+            </div>
+          </label>
+
+          <div class="mt-4 p-3 bg-blue-50 border border-blue-100 rounded-xl text-xs text-blue-700">
+            <strong>TRAIN Law note:</strong> Employees earning ≤ ₱250,000/year are exempt from income tax. Withholding computations use the graduated tax table from RR 11-2018.
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between py-2">
+          <a href="employees-new-4.html" class="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back
+          </a>
+          <a href="employees-new-6.html" class="flex items-center gap-2 text-sm font-semibold text-white px-5 py-2.5 rounded-lg hover:opacity-90" style="background:#3ECF8E;">
+            Next: App Access
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

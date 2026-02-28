@@ -1,3 +1,3 @@
 import type { HTMLAttributes } from "react";
 
-export interface BoxProps extends HTMLAttributes<HTMLDivElement> {}
+export type BoxProps = HTMLAttributes<HTMLDivElement>;

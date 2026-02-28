@@ -41,6 +41,7 @@ export function Avatar({
       {...rest}
     >
       {showImg ? (
+        // eslint-disable-next-line @next/next/no-img-element -- Avatar uses img for dynamic/remote URLs and fallback; next/image requires dimensions.
         <img
           src={src}
           alt={alt}

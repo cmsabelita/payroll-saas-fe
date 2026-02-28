@@ -10,7 +10,17 @@ const meta: Meta<typeof Header> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    title: { control: "text" },
+    title: {
+      control: "text",
+      description: "Page or app title",
+    },
+    actions: {
+      control: false,
+      description: "Slot for action buttons (e.g. primary CTA, links)",
+      table: {
+        type: { summary: "ReactNode" },
+      },
+    },
   },
 };
 

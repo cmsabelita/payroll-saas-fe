@@ -10,9 +10,23 @@ const tabSegmentVariants = cva(
         true: "bg-primary text-primary-foreground shadow-sm",
         false: "bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground",
       },
+      /** "card" = white active tab + shadow (auth/login mockup) */
+      appearance: {
+        default: "",
+        card: "",
+      },
     },
+    compoundVariants: [
+      {
+        active: true,
+        appearance: "card",
+        class: "rounded-lg bg-background text-foreground shadow-sm",
+      },
+      { appearance: "card", class: "rounded-lg" },
+    ],
     defaultVariants: {
       active: false,
+      appearance: "default",
     },
   }
 );
@@ -21,6 +35,7 @@ export { tabSegmentVariants };
 
 export function TabSegment({
   active = false,
+  appearance = "default",
   count,
   className,
   children,
@@ -31,7 +46,7 @@ export function TabSegment({
       type="button"
       role="tab"
       aria-selected={active}
-      className={cn(tabSegmentVariants({ active }), className)}
+      className={cn(tabSegmentVariants({ active, appearance }), className)}
       {...rest}
     >
       {children}

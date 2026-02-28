@@ -50,11 +50,11 @@ export function StepperDot({
           step ?? ""
         )}
       </span>
-      {label && (
+      {label ? (
         <span className="text-xs text-muted-foreground text-center max-w-[4rem]">
           {label}
         </span>
-      )}
+      ) : null}
     </span>
   );
 }

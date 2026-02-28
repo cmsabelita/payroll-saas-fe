@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Employee — Employment — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-label { display:block;font-size:.8125rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .tab-btn { padding:6px 14px;border-radius:6px;font-size:.8125rem;font-weight:500;color:#6B7280;white-space:nowrap;cursor:pointer;border:none;background:transparent; }
+    .tab-btn.active { background:white;color:#111827;box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="employees.html" class="hover:text-gray-700">Employees</a>
+        <span>›</span>
+        <a href="employees-profile.html" class="hover:text-gray-700">Ana Reyes</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">Edit</span>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <div class="bg-white border-b border-gray-100 px-6 shrink-0">
+      <div class="flex items-center gap-1 bg-gray-100 rounded-xl p-1 w-fit my-2.5">
+        <a href="employees-edit.html" class="tab-btn">Personal Info</a>
+        <button class="tab-btn active">Employment</button>
+        <a href="employees-edit-govids.html" class="tab-btn">Gov't IDs</a>
+        <a href="employees-edit-salary.html" class="tab-btn">Salary</a>
+        <a href="employees-edit-tax.html" class="tab-btn">Tax Info</a>
+        <a href="employees-edit-access.html" class="tab-btn">App Access</a>
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto py-6 px-6">
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-white border border-gray-100 rounded-xl p-8">
+
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center text-white text-lg font-bold shrink-0" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+            <div>
+              <h2 class="text-base font-semibold text-gray-900">Ana Reyes</h2>
+              <p class="text-sm text-gray-400">EMP-00042 · HR Manager</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Employee ID</label>
+              <input type="text" class="form-input bg-gray-50" value="EMP-00042" readonly>
+            </div>
+            <div>
+              <label class="form-label">Date Hired <span class="text-red-400">*</span></label>
+              <input type="date" class="form-input" value="2021-06-01">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Department <span class="text-red-400">*</span></label>
+              <select class="form-select">
+                <option>Engineering</option>
+                <option selected>Human Resources</option>
+                <option>Finance & Accounting</option>
+                <option>Operations</option>
+                <option>Sales</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Job Title <span class="text-red-400">*</span></label>
+              <input type="text" class="form-input" value="HR Manager">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Employment Type <span class="text-red-400">*</span></label>
+              <select class="form-select">
+                <option selected>Regular</option>
+                <option>Probationary</option>
+                <option>Project-Based / Contractual</option>
+                <option>Part-time</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Employment Status</label>
+              <select class="form-select">
+                <option selected>Active</option>
+                <option>On Leave</option>
+                <option>Suspended</option>
+                <option>Resigned</option>
+                <option>Terminated</option>
+                <option>Separated</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Direct Supervisor</label>
+              <input type="text" class="form-input" value="Mark Santos">
+            </div>
+            <div>
+              <label class="form-label">Work Location</label>
+              <select class="form-select">
+                <option>On-site / Office</option>
+                <option selected>Remote</option>
+                <option>Hybrid</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Shift Schedule <span class="text-red-400">*</span></label>
+              <select class="form-select">
+                <option selected>Standard (8AM–5PM, Mon–Fri)</option>
+                <option>Morning (6AM–3PM)</option>
+                <option>Flexible / Flexi</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Cost Center / Branch</label>
+              <input type="text" class="form-input" value="Head Office">
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 my-5"></div>
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Separation Details <span class="font-normal text-gray-400 normal-case">(fill only if employee is leaving)</span></p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Separation Type</label>
+              <select class="form-select">
+                <option value="">— Not applicable —</option>
+                <option>Resignation</option>
+                <option>Termination (just cause)</option>
+                <option>Termination (authorized cause)</option>
+                <option>Retirement</option>
+                <option>End of Contract</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Last Day of Work</label>
+              <input type="date" class="form-input">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between mt-4 py-2">
+          <a href="employees-profile.html" class="text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100">Cancel</a>
+          <div class="flex items-center gap-3">
+            <button class="text-sm font-medium text-gray-700 px-4 py-2.5 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Save & Stay</button>
+            <button class="text-sm font-semibold text-white px-5 py-2.5 rounded-lg" style="background:#3ECF8E;">Save Changes →</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

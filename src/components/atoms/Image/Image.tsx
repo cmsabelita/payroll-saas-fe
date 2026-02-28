@@ -54,6 +54,7 @@ export function Image({
   }
 
   return (
+    // eslint-disable-next-line @next/next/no-img-element -- Generic Image accepts arbitrary src; next/image requires known dimensions.
     <img
       alt={alt}
       className={cn(imageVariants({ variant }), className)}

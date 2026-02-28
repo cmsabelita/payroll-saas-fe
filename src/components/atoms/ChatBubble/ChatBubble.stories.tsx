@@ -47,7 +47,7 @@ export const Conversation: Story = {
   render: () => (
     <div className="flex flex-col gap-2 w-80">
       <ChatBubble sender="other">Hey, how are you?</ChatBubble>
-      <ChatBubble sender="user">I'm good, thanks!</ChatBubble>
+      <ChatBubble sender="user">I&apos;m good, thanks!</ChatBubble>
       <ChatBubble sender="other">Want to grab coffee later?</ChatBubble>
       <ChatBubble sender="user">Sure, 3pm works.</ChatBubble>
     </div>
