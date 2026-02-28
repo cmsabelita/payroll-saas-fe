@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Config — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="settings">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div><h1 class="text-base font-semibold text-gray-900">Payroll Configuration</h1><p class="text-xs text-gray-400">Pay schedules, overtime rates & deduction rules</p></div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+    <main class="flex-1 flex p-6 gap-6">
+
+      <!-- Settings sidebar nav -->
+      <div class="w-48 shrink-0">
+        <nav class="space-y-0.5">
+          <a href="settings-company.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">General</a>
+          <a href="settings-payroll-config.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">Payroll Config</a>
+          <a href="settings-holidays.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Holidays</a>
+          <a href="settings-leave-policies.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Leave Policies</a>
+          <a href="settings-billing.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Billing & Plan</a>
+          <a href="settings-integrations.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Integrations</a>
+        </nav>
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 max-w-2xl space-y-5">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Pay Schedule</h2>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"><input type="radio" name="schedule" class="mt-0.5 accent-emerald-500"><div><p class="text-sm font-medium text-gray-900">Monthly</p><p class="text-xs text-gray-400">Once per month, last day</p></div></label>
+            <label class="flex items-start gap-3 p-3 border-2 border-emerald-400 rounded-lg cursor-pointer bg-emerald-50"><input type="radio" name="schedule" checked class="mt-0.5 accent-emerald-500"><div><p class="text-sm font-medium text-gray-900">Semi-monthly</p><p class="text-xs text-gray-500">15th and last day of month</p></div></label>
+            <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"><input type="radio" name="schedule" class="mt-0.5 accent-emerald-500"><div><p class="text-sm font-medium text-gray-900">Bi-weekly</p><p class="text-xs text-gray-400">Every 2 weeks</p></div></label>
+            <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50"><input type="radio" name="schedule" class="mt-0.5 accent-emerald-500"><div><p class="text-sm font-medium text-gray-900">Weekly</p><p class="text-xs text-gray-400">Every Friday</p></div></label>
+          </div>
+          <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+            <p class="text-xs text-gray-600"><span class="font-medium">Current:</span> 1st–15th (pay date: 15th) and 16th–EOM (pay date: last day)</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Working Hours</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <div><label class="form-label">Daily Hours</label><input type="number" class="form-input" value="8" min="1" max="12"></div>
+            <div><label class="form-label">Lunch Break</label><select class="form-select"><option selected>1 hour (not counted)</option><option>30 mins (counted)</option><option>No break</option></select></div>
+          </div>
+          <div class="mt-4">
+            <label class="form-label">Work Week</label>
+            <div class="flex gap-2">
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" checked class="accent-emerald-500"> Mon</label>
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" checked class="accent-emerald-500"> Tue</label>
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" checked class="accent-emerald-500"> Wed</label>
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" checked class="accent-emerald-500"> Thu</label>
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" checked class="accent-emerald-500"> Fri</label>
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" class="accent-emerald-500"> Sat</label>
+              <label class="flex items-center gap-1.5 text-sm"><input type="checkbox" class="accent-emerald-500"> Sun</label>
+            </div>
+          </div>
+          <div class="mt-4"><label class="form-label">Grace Period (minutes)</label><input type="number" class="form-input w-32" value="15" min="0" max="60"><p class="text-xs text-gray-400 mt-1">Employees arriving within 15 mins of start time are not marked late.</p></div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Overtime Rates</h2>
+          <table class="w-full">
+            <thead class="bg-gray-50 rounded-lg">
+              <tr>
+                <th class="px-3 py-2 text-left text-xs font-semibold text-gray-500">OT Type</th>
+                <th class="px-3 py-2 text-right text-xs font-semibold text-gray-500">Multiplier</th>
+                <th class="px-3 py-2 text-left text-xs font-semibold text-gray-500">Legal Basis</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+              <tr><td class="px-3 py-2.5 text-sm text-gray-700">Regular Overtime</td><td class="px-3 py-2.5 text-sm text-right font-medium text-gray-900">1.25×</td><td class="px-3 py-2.5 text-xs text-gray-400">Labor Code Art. 87</td></tr>
+              <tr><td class="px-3 py-2.5 text-sm text-gray-700">Rest Day OT</td><td class="px-3 py-2.5 text-sm text-right font-medium text-gray-900">1.30×</td><td class="px-3 py-2.5 text-xs text-gray-400">Labor Code Art. 93</td></tr>
+              <tr><td class="px-3 py-2.5 text-sm text-gray-700">Special Holiday OT</td><td class="px-3 py-2.5 text-sm text-right font-medium text-gray-900">1.30×</td><td class="px-3 py-2.5 text-xs text-gray-400">DOLE Rules</td></tr>
+              <tr><td class="px-3 py-2.5 text-sm text-gray-700">Regular Holiday OT</td><td class="px-3 py-2.5 text-sm text-right font-medium text-gray-900">2.00×</td><td class="px-3 py-2.5 text-xs text-gray-400">Labor Code Art. 94</td></tr>
+              <tr><td class="px-3 py-2.5 text-sm text-gray-700">Night Differential</td><td class="px-3 py-2.5 text-sm text-right font-medium text-gray-900">+10%</td><td class="px-3 py-2.5 text-xs text-gray-400">Labor Code Art. 86</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Government Contributions</h2>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg"><span class="text-gray-700">SSS</span><span class="text-gray-500">Per SSS contribution table (auto-computed)</span></div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg"><span class="text-gray-700">PhilHealth</span><span class="text-gray-500">5% of basic salary (employee 2.5% + employer 2.5%)</span></div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg"><span class="text-gray-700">Pag-IBIG (HDMF)</span><span class="text-gray-500">₱100 employee + ₱100 employer (max per month)</span></div>
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg"><span class="text-gray-700">Withholding Tax</span><span class="text-gray-500">Per TRAIN Law (RA 10963) tax brackets</span></div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-1">De Minimis Benefits</h2>
+          <p class="text-xs text-gray-400 mb-4">Tax-exempt amounts per BIR regulations</p>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-900">Rice Allowance</p><p class="text-xs text-gray-400">Max ₱2,000/month</p></div><div class="flex items-center gap-2"><input type="number" class="form-input w-24 text-right" value="2000"><span class="text-xs text-gray-400">/mo</span></div></div>
+            <div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-900">Clothing Allowance</p><p class="text-xs text-gray-400">Max ₱6,000/year</p></div><div class="flex items-center gap-2"><input type="number" class="form-input w-24 text-right" value="6000"><span class="text-xs text-gray-400">/yr</span></div></div>
+            <div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-900">Medical Allowance</p><p class="text-xs text-gray-400">Max ₱10,000/year</p></div><div class="flex items-center gap-2"><input type="number" class="form-input w-24 text-right" value="10000"><span class="text-xs text-gray-400">/yr</span></div></div>
+            <div class="flex items-center justify-between"><div><p class="text-sm font-medium text-gray-900">Transportation</p><p class="text-xs text-gray-400">Max ₱3,000/month</p></div><div class="flex items-center gap-2"><input type="number" class="form-input w-24 text-right" value="3000"><span class="text-xs text-gray-400">/mo</span></div></div>
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <button class="px-5 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Save Configuration</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

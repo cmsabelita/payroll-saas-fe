@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workplace Incidents — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .badge { font-size:.6875rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap; }
+    .badge-green  { background:#DCFCE7;color:#15803D; }
+    .badge-yellow { background:#FEF9C3;color:#A16207; }
+    .badge-blue   { background:#DBEAFE;color:#1D4ED8; }
+    .badge-orange { background:#FFEDD5;color:#C2410C; }
+    .badge-gray   { background:#F3F4F6;color:#374151; }
+    .badge-red    { background:#FEE2E2;color:#B91C1C; }
+    .badge-purple { background:#F3E8FF;color:#7C3AED; }
+    th { font-size:.75rem;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.04em; }
+    td { font-size:.8125rem;color:#374151; }
+    tr:hover td { background:#FAFAFA; }
+    .form-input { padding:8px 12px;font-size:.8125rem;background:white;border:1.5px solid #E5E7EB;border-radius:8px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-select { padding:8px 12px;font-size:.8125rem;background:white;border:1.5px solid #E5E7EB;border-radius:8px;color:#374151;outline:none;cursor:pointer; }
+    .underline-tab { padding:10px 4px;font-size:.875rem;font-weight:500;color:#6B7280;cursor:pointer;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap; }
+    .underline-tab.active { color:#111827;border-bottom-color:#111827; }
+    .underline-tab:hover:not(.active) { color:#374151; }
+    .kpi-card { background:white;border:1.5px solid #F3F4F6;border-radius:12px;padding:18px 20px; }
+    .action-btn { padding:5px 12px;font-size:.8125rem;font-weight:500;border-radius:7px;border:1.5px solid #E5E7EB;background:white;color:#374151;cursor:pointer;transition:background .12s; }
+    .action-btn:hover { background:#F9FAFB; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="compliance">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1">
+        <h1 class="text-base font-semibold text-gray-900">Workplace Incidents</h1>
+        <p class="text-xs text-gray-400 leading-tight">OSH incident &amp; near-miss reporting (RA 11058)</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="relative p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6">
+
+      <!-- Underline tabs -->
+      <div class="flex items-center gap-6 border-b border-gray-200 mb-6">
+        <a href="compliance-incidents.html" class="underline-tab active">Incidents</a>
+        <a href="compliance-training.html" class="underline-tab">Training</a>
+        <a href="compliance-disciplinary.html" class="underline-tab">Disciplinary</a>
+      </div>
+
+      <!-- KPI strip -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="kpi-card flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:#FEF9C3;">
+            <svg class="w-5 h-5" style="color:#A16207;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-gray-900">3</p>
+            <p class="text-xs text-gray-400 font-medium">YTD Incidents</p>
+          </div>
+        </div>
+        <div class="kpi-card flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:#F3E8FF;">
+            <svg class="w-5 h-5" style="color:#7C3AED;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-gray-900">1</p>
+            <p class="text-xs text-gray-400 font-medium">Near-Misses</p>
+          </div>
+        </div>
+        <div class="kpi-card flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:#DCFCE7;">
+            <svg class="w-5 h-5" style="color:#059669;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-gray-900">4.2 <span class="text-base font-semibold text-gray-500">days</span></p>
+            <p class="text-xs text-gray-400 font-medium">Avg Resolution Time</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="flex items-center gap-3 mb-4">
+        <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white" style="background:#3ECF8E;">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Report Incident
+        </button>
+        <div class="flex items-center gap-2 ml-auto">
+          <label class="text-xs text-gray-500 font-medium">Date range</label>
+          <select class="form-select">
+            <option>All time</option>
+            <option selected>2024</option>
+            <option>Q1 2024</option>
+            <option>Q2 2024</option>
+          </select>
+          <label class="text-xs text-gray-500 font-medium ml-2">Severity</label>
+          <select class="form-select">
+            <option value="">All severities</option>
+            <option>Minor</option>
+            <option>Moderate</option>
+            <option>Major</option>
+            <option>Near-Miss</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <th class="text-left px-5 py-3">Incident #</th>
+              <th class="text-left px-5 py-3">Date</th>
+              <th class="text-left px-5 py-3">Employee Involved</th>
+              <th class="text-left px-5 py-3">Description</th>
+              <th class="text-left px-5 py-3">Severity</th>
+              <th class="text-left px-5 py-3">Status</th>
+              <th class="px-5 py-3"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr>
+              <td class="px-5 py-3.5 font-mono text-xs font-semibold text-gray-700">INC-2024-003</td>
+              <td class="px-5 py-3.5 text-gray-500">Apr 8, 2024</td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-600 shrink-0">JC</div>
+                  <span class="font-medium text-gray-800">Jose Cruz</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600 max-w-xs truncate">Slipped on wet floor in breakroom</td>
+              <td class="px-5 py-3.5"><span class="badge badge-yellow">Minor</span></td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Resolved</span></td>
+              <td class="px-5 py-3.5">
+                <a href="compliance-incidents-id.html" class="action-btn">View</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3.5 font-mono text-xs font-semibold text-gray-700">INC-2024-002</td>
+              <td class="px-5 py-3.5 text-gray-500">Mar 15, 2024</td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center text-xs font-bold text-pink-600 shrink-0">AR</div>
+                  <span class="font-medium text-gray-800">Ana Reyes</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600 max-w-xs truncate">Paper cut from document shredder</td>
+              <td class="px-5 py-3.5"><span class="badge badge-yellow">Minor</span></td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Resolved</span></td>
+              <td class="px-5 py-3.5">
+                <a href="compliance-incidents-id.html" class="action-btn">View</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3.5 font-mono text-xs font-semibold text-gray-700">INC-2024-001</td>
+              <td class="px-5 py-3.5 text-gray-500">Feb 22, 2024</td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full bg-teal-100 flex items-center justify-center text-xs font-bold text-teal-600 shrink-0">BL</div>
+                  <span class="font-medium text-gray-800">Berto Lim</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-gray-600 max-w-xs truncate">Tripped over loose cable in server room</td>
+              <td class="px-5 py-3.5"><span class="badge badge-orange">Moderate</span></td>
+              <td class="px-5 py-3.5"><span class="badge badge-green">Resolved</span></td>
+              <td class="px-5 py-3.5">
+                <a href="compliance-incidents-id.html" class="action-btn">View</a>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-5 py-3.5 font-mono text-xs font-semibold text-gray-700">NM-2024-001</td>
+              <td class="px-5 py-3.5 text-gray-500">Apr 12, 2024</td>
+              <td class="px-5 py-3.5 text-gray-400 italic text-xs">—</td>
+              <td class="px-5 py-3.5 text-gray-600 max-w-xs truncate">Near-miss: heavy box on high shelf nearly fell</td>
+              <td class="px-5 py-3.5"><span class="badge badge-purple">Near-Miss</span></td>
+              <td class="px-5 py-3.5"><span class="badge badge-yellow">Open</span></td>
+              <td class="px-5 py-3.5 flex items-center gap-2">
+                <a href="compliance-incidents-id.html" class="action-btn">View</a>
+                <button class="px-3 py-1.5 rounded-7px text-xs font-semibold text-white cursor-pointer border-0" style="background:#3ECF8E;border-radius:7px;">Resolve</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- Footer -->
+        <div class="px-5 py-3 border-t border-gray-100 bg-gray-50 flex items-center justify-between">
+          <p class="text-xs text-gray-400">Showing 4 incidents · 2024 YTD</p>
+          <p class="text-xs text-gray-400">RA 11058 — OSH Law compliance</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

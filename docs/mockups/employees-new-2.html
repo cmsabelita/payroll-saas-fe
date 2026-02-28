@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Employee — Employment Details — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer;transition:border-color .15s; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .step-dot { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0; }
+    .step-connector { flex:1;height:2px;background:#E5E7EB; }
+    .step-connector.done { background:#3ECF8E; }
+    .select-wrapper { position:relative; }
+    .select-wrapper::after { content:'';position:absolute;right:12px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #9CA3AF;pointer-events:none; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1">
+        <div class="flex items-center gap-2 text-sm text-gray-500">
+          <a href="employees.html" class="hover:text-gray-700">Employees</a>
+          <span>›</span>
+          <span class="text-gray-900 font-medium">Add Employee</span>
+        </div>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <!-- Wizard Step Header -->
+    <div class="bg-white border-b border-gray-100 px-6 py-4 shrink-0">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-0">
+
+          <!-- Step 1: Personal Info (DONE) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#DCFCE7;color:#059669;">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Personal Info</span>
+          </div>
+          <div class="step-connector done mx-2"></div>
+
+          <!-- Step 2: Employment (ACTIVE) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#3ECF8E;color:white;">2</div>
+            <span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Employment</span>
+          </div>
+          <div class="step-connector mx-2"></div>
+
+          <!-- Step 3: Gov't IDs (PENDING) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">3</div>
+            <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Gov't IDs</span>
+          </div>
+          <div class="step-connector mx-2"></div>
+
+          <!-- Step 4: Salary (PENDING) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">4</div>
+            <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Salary</span>
+          </div>
+          <div class="step-connector mx-2"></div>
+
+          <!-- Step 5: Tax Info (PENDING) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">5</div>
+            <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Tax Info</span>
+          </div>
+          <div class="step-connector mx-2"></div>
+
+          <!-- Step 6: App Access (PENDING) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">6</div>
+            <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">App Access</span>
+          </div>
+          <div class="step-connector mx-2"></div>
+
+          <!-- Step 7: Review (PENDING) -->
+          <div class="flex flex-col items-center gap-1.5">
+            <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">7</div>
+            <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Review</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollable content area -->
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8 mb-6">
+
+          <div class="mb-6">
+            <h2 class="text-base font-semibold text-gray-900">Employment Details</h2>
+            <p class="text-sm text-gray-500 mt-0.5">Step 2 of 7 — Job role, department, and work arrangement</p>
+          </div>
+
+          <!-- Employee ID (auto) -->
+          <div class="mb-4">
+            <label class="form-label">Employee ID</label>
+            <div class="relative">
+              <input type="text" class="form-input bg-gray-50" value="EMP-00091" readonly>
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">Auto-generated</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Department <span style="color:#EF4444;">*</span></label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option value="">Select department…</option>
+                  <option selected>Engineering</option>
+                  <option>Human Resources</option>
+                  <option>Finance & Accounting</option>
+                  <option>Operations</option>
+                  <option>Sales</option>
+                  <option>Marketing</option>
+                  <option>Customer Support</option>
+                  <option>Administration</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Job Title / Position <span style="color:#EF4444;">*</span></label>
+              <input type="text" class="form-input" placeholder="e.g. Software Engineer">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Employment Type <span style="color:#EF4444;">*</span></label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option value="">Select type…</option>
+                  <option selected>Regular</option>
+                  <option>Probationary</option>
+                  <option>Project-Based / Contractual</option>
+                  <option>Part-time</option>
+                  <option>Seasonal</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Date Hired <span style="color:#EF4444;">*</span></label>
+              <input type="date" class="form-input" value="2026-03-01">
+            </div>
+          </div>
+
+          <!-- Probation end date (shown when Probationary is selected) -->
+          <div class="mb-4 p-3 bg-amber-50 border border-amber-100 rounded-xl">
+            <p class="text-xs font-semibold text-amber-700 mb-2">Probationary Details</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">Probation End Date</label>
+                <input type="date" class="form-input" value="2026-08-31">
+              </div>
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">Regularization Date</label>
+                <input type="date" class="form-input" value="2026-09-01">
+              </div>
+            </div>
+            <p class="text-xs text-amber-600 mt-2">Per Labor Code, probationary period must not exceed 6 months.</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Direct Supervisor / Manager</label>
+              <input type="text" class="form-input" placeholder="Search employee…">
+            </div>
+            <div>
+              <label class="form-label">Work Location</label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option>On-site / Office</option>
+                  <option>Remote</option>
+                  <option selected>Hybrid</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="form-label">Shift Schedule <span style="color:#EF4444;">*</span></label>
+              <div class="select-wrapper">
+                <select class="form-select">
+                  <option value="">Select shift…</option>
+                  <option selected>Standard (8AM–5PM, Mon–Fri)</option>
+                  <option>Morning (6AM–3PM)</option>
+                  <option>Afternoon (2PM–11PM)</option>
+                  <option>Night Shift (10PM–7AM)</option>
+                  <option>Flexible / Flexi</option>
+                  <option>Custom…</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Cost Center / Branch</label>
+              <input type="text" class="form-input" placeholder="e.g. Head Office">
+            </div>
+          </div>
+
+          <div class="border-t border-gray-100 my-5"></div>
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Previous Employment</p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Previous Employer <span class="text-gray-400 font-normal">(optional)</span></label>
+              <input type="text" class="form-input" placeholder="Company name">
+            </div>
+            <div>
+              <label class="form-label">Last Working Day There</label>
+              <input type="date" class="form-input">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer actions -->
+        <div class="flex items-center justify-between py-2">
+          <a href="employees-new.html" class="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back
+          </a>
+          <a href="employees-new-3.html" class="flex items-center gap-2 text-sm font-semibold text-white px-5 py-2.5 rounded-lg hover:opacity-90" style="background:#3ECF8E;">
+            Next: Government IDs
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="_sidebar.js"></script>
+</body>
+</html>

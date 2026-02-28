@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrations — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="settings">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div><h1 class="text-base font-semibold text-gray-900">Integrations</h1><p class="text-xs text-gray-400">Connect third-party apps & services</p></div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+    <main class="flex-1 flex p-6 gap-6">
+      <div class="w-48 shrink-0">
+        <nav class="space-y-0.5">
+          <a href="settings-company.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">General</a>
+          <a href="settings-payroll-config.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Payroll Config</a>
+          <a href="settings-holidays.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Holidays</a>
+          <a href="settings-leave-policies.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Leave Policies</a>
+          <a href="settings-billing.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Billing & Plan</a>
+          <a href="settings-integrations.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">Integrations</a>
+        </nav>
+      </div>
+      <div class="flex-1 max-w-2xl space-y-5">
+
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Google Workspace -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-50"><span class="text-blue-600 font-bold text-sm">G</span></div>
+              <span class="badge badge-green">Connected ✓</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-900">Google Workspace</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-3">Sync employee directory from Google Workspace for automatic account provisioning.</p>
+            <button class="w-full py-1.5 text-xs font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50">Manage</button>
+          </div>
+          <!-- Slack -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-purple-50"><span class="text-purple-600 font-bold text-sm">S</span></div>
+              <span class="badge badge-gray">Not connected</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-900">Slack</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-3">Post payroll approval notifications and reminders to your Slack workspace channels.</p>
+            <button class="w-full py-1.5 text-xs font-semibold text-white rounded-lg" style="background:#3ECF8E;">Connect</button>
+          </div>
+          <!-- QuickBooks -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-green-50"><span class="text-green-600 font-bold text-sm">QB</span></div>
+              <span class="badge badge-gray">Not connected</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-900">QuickBooks</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-3">Export payroll journal entries directly to QuickBooks for seamless accounting.</p>
+            <button class="w-full py-1.5 text-xs font-semibold text-white rounded-lg" style="background:#3ECF8E;">Connect</button>
+          </div>
+          <!-- BancNet -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-orange-50"><span class="text-orange-600 font-bold text-sm">BN</span></div>
+              <span class="badge badge-green">Connected ✓</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-900">BancNet Online</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-3">Direct bank transfer for payroll disbursement via BancNet interbank network.</p>
+            <button class="w-full py-1.5 text-xs font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50">Manage</button>
+          </div>
+          <!-- eBIRForms -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-red-50"><span class="text-red-600 font-bold text-sm">BIR</span></div>
+              <span class="badge badge-gray">Not connected</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-900">eBIRForms</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-3">Submit BIR forms (1601-C, 2316, Alphalist) directly via eBIRForms API connection.</p>
+            <button class="w-full py-1.5 text-xs font-semibold text-white rounded-lg" style="background:#3ECF8E;">Connect</button>
+          </div>
+          <!-- UnionBank -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-indigo-50"><span class="text-indigo-600 font-bold text-sm">UB</span></div>
+              <span class="badge badge-gray">Not connected</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-900">UnionBank EasyPayroll</h3>
+            <p class="text-xs text-gray-400 mt-1 mb-3">Batch salary crediting via UnionBank's EasyPayroll service for direct payroll disbursement.</p>
+            <button class="w-full py-1.5 text-xs font-semibold text-white rounded-lg" style="background:#3ECF8E;">Connect</button>
+          </div>
+        </div>
+
+        <!-- API Access -->
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">API Access</h2>
+          <div class="space-y-4">
+            <div>
+              <label class="form-label">API Key</label>
+              <div class="flex gap-2">
+                <input type="text" class="form-input font-mono text-xs" value="pk_live_**********************abc123" readonly>
+                <button class="px-3 py-2 text-xs font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50 whitespace-nowrap">Copy</button>
+                <button class="px-3 py-2 text-xs font-medium text-red-600 border border-red-200 rounded-lg hover:bg-red-50 whitespace-nowrap">Regenerate</button>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Webhook URL</label>
+              <div class="flex gap-2">
+                <input type="url" class="form-input" placeholder="https://yourapp.com/webhooks/payro" value="https://hooks.acmecorp.com/payro">
+                <button class="px-3 py-2 text-xs font-semibold text-white rounded-lg whitespace-nowrap" style="background:#3ECF8E;">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; box-sizing: border-box; }
+    .badge { font-size:.6875rem;font-weight:600;padding:2px 8px;border-radius:20px; }
+    .badge-green { background:#DCFCE7;color:#15803D; }
+    .badge-yellow { background:#FEF9C3;color:#A16207; }
+    .badge-blue { background:#DBEAFE;color:#1D4ED8; }
+    .badge-gray { background:#F3F4F6;color:#374151; }
+    .badge-red { background:#FEE2E2;color:#B91C1C; }
+    .badge-orange { background:#FFEDD5;color:#C2410C; }
+    .badge-purple { background:#F3E8FF;color:#7C3AED; }
+    th { font-size:.75rem;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.04em; }
+    td { font-size:.8125rem; }
+    tr:hover td { background:#FAFAFA; }
+    .avatar { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0; }
+    .action-link { font-size:.8125rem;font-weight:500;color:#6B7280;cursor:pointer;text-decoration:none; }
+    .action-link:hover { color:#111827; }
+    .action-link.danger { color:#EF4444; }
+    .action-link.danger:hover { color:#B91C1C; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="team">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1">
+        <h1 class="text-lg font-semibold text-gray-900">Team</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="team-invite.html" class="flex items-center gap-1.5 text-sm font-semibold text-white px-4 py-1.5 rounded-lg" style="background:#3ECF8E;">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+          Invite Member
+        </a>
+        <button class="relative p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 overflow-y-auto p-6">
+
+      <!-- Info banner -->
+      <div class="flex items-start gap-3 rounded-xl p-3 mb-4 text-xs" style="background:#EFF6FF;border:1px solid #BFDBFE;color:#1D4ED8;">
+        <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
+        <span>Team members are company users with access to the Payro dashboard. This is separate from employee portal access, which is managed automatically.</span>
+      </div>
+
+      <!-- Table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-gray-100">
+              <th class="text-left px-4 py-3">Member</th>
+              <th class="text-left px-4 py-3">Role</th>
+              <th class="text-left px-4 py-3">Status</th>
+              <th class="text-left px-4 py-3">Last Active</th>
+              <th class="text-left px-4 py-3">Joined</th>
+              <th class="text-left px-4 py-3 w-32">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+
+            <!-- 1. Mark Santos — Owner -->
+            <tr>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="avatar" style="background:linear-gradient(135deg,#3ECF8E,#059669);color:white;">MS</div>
+                  <div>
+                    <p class="font-semibold text-gray-900">Mark Santos</p>
+                    <p class="text-xs text-gray-400">mark@acme.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3"><span class="badge badge-purple">Owner</span></td>
+              <td class="px-4 py-3"><span class="badge badge-green">Active</span></td>
+              <td class="px-4 py-3 text-gray-500">Just now</td>
+              <td class="px-4 py-3 text-gray-500">Feb 1, 2023</td>
+              <td class="px-4 py-3 text-gray-300 text-xs">&mdash;</td>
+            </tr>
+
+            <!-- 2. Maria Santos — HR -->
+            <tr>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="avatar" style="background:#FCE7F3;color:#BE185D;">MS</div>
+                  <div>
+                    <p class="font-semibold text-gray-900">Maria Santos</p>
+                    <p class="text-xs text-gray-400">maria@acme.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3"><span class="badge badge-blue">HR</span></td>
+              <td class="px-4 py-3"><span class="badge badge-green">Active</span></td>
+              <td class="px-4 py-3 text-gray-500">2 hrs ago</td>
+              <td class="px-4 py-3 text-gray-500">Mar 1, 2022</td>
+              <td class="px-4 py-3">
+                <a href="team-id.html" class="action-link">Manage</a>
+              </td>
+            </tr>
+
+            <!-- 3. Rosa Perez — Accountant -->
+            <tr>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="avatar" style="background:#CCFBF1;color:#0F766E;">RP</div>
+                  <div>
+                    <p class="font-semibold text-gray-900">Rosa Perez</p>
+                    <p class="text-xs text-gray-400">rosa.p@acme.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3"><span class="badge badge-yellow">Accountant</span></td>
+              <td class="px-4 py-3"><span class="badge badge-green">Active</span></td>
+              <td class="px-4 py-3 text-gray-500">Yesterday</td>
+              <td class="px-4 py-3 text-gray-500">Jun 7, 2022</td>
+              <td class="px-4 py-3">
+                <a href="#" class="action-link">Manage</a>
+              </td>
+            </tr>
+
+            <!-- 4. Alonzo Cruz — Manager -->
+            <tr>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="avatar" style="background:#F5F3FF;color:#6D28D9;">AC</div>
+                  <div>
+                    <p class="font-semibold text-gray-900">Alonzo Cruz</p>
+                    <p class="text-xs text-gray-400">alonzo@acme.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3"><span class="badge badge-orange">Manager</span></td>
+              <td class="px-4 py-3"><span class="badge badge-green">Active</span></td>
+              <td class="px-4 py-3 text-gray-500">Feb 25</td>
+              <td class="px-4 py-3 text-gray-500">Sep 12, 2021</td>
+              <td class="px-4 py-3">
+                <a href="#" class="action-link">Manage</a>
+              </td>
+            </tr>
+
+            <!-- 5. Patrick Gomez — Admin (Invited) -->
+            <tr>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="avatar" style="background:#F3F4F6;color:#6B7280;">PG</div>
+                  <div>
+                    <p class="font-semibold text-gray-900">Patrick Gomez</p>
+                    <p class="text-xs text-gray-400">patrick@acme.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3"><span class="badge badge-red">Admin</span></td>
+              <td class="px-4 py-3"><span class="badge badge-yellow">Invited</span></td>
+              <td class="px-4 py-3 text-gray-400">Never</td>
+              <td class="px-4 py-3 text-gray-400">&mdash;</td>
+              <td class="px-4 py-3 flex items-center gap-2">
+                <a href="#" class="action-link">Resend</a>
+                <span class="text-gray-200">&middot;</span>
+                <a href="#" class="action-link danger">Revoke</a>
+              </td>
+            </tr>
+
+            <!-- 6. Lourdes Reyes — Viewer (Suspended) -->
+            <tr>
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-3">
+                  <div class="avatar" style="background:#EFF6FF;color:#2563EB;">LR</div>
+                  <div>
+                    <p class="font-semibold text-gray-900">Lourdes Reyes</p>
+                    <p class="text-xs text-gray-400">lourdes@acme.com</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Viewer</span></td>
+              <td class="px-4 py-3"><span class="badge badge-red">Suspended</span></td>
+              <td class="px-4 py-3 text-gray-500">Jan 15</td>
+              <td class="px-4 py-3 text-gray-500">Nov 8, 2022</td>
+              <td class="px-4 py-3">
+                <a href="#" class="action-link" style="color:#3ECF8E;">Reactivate</a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="_sidebar.js"></script>
+</body>
+</html>

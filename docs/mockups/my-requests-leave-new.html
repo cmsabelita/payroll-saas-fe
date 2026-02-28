@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Leave Request — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:#3ECF8E;">
+          <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/></svg>
+        </div>
+        <span class="font-semibold text-gray-900 text-sm">Payro</span>
+      </div>
+      <nav class="flex items-center gap-1">
+        <a href="portal.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Dashboard</a>
+        <a href="my-payslips.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Payslips</a>
+        <a href="my-attendance.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Attendance</a>
+        <a href="my-requests.html" class="px-3 py-1.5 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">Requests</a>
+        <a href="my-profile.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">My Profile</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-gray-500">Ana Reyes</span>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-6 py-6">
+
+    <div class="flex items-center gap-2 mb-6">
+      <a href="my-requests.html" class="text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"/></svg>Requests</a>
+      <span class="text-gray-300">/</span>
+      <span class="text-sm font-medium text-gray-700">File Leave Request</span>
+    </div>
+
+    <div class="flex gap-6">
+      <!-- Form -->
+      <div class="flex-1">
+        <div class="bg-white border border-gray-100 rounded-xl p-6">
+          <h1 class="text-base font-semibold text-gray-900 mb-5">Leave Request</h1>
+          <div class="space-y-4">
+            <div>
+              <label class="form-label">Leave Type <span class="text-red-400">*</span></label>
+              <select class="form-select">
+                <option>Vacation Leave</option>
+                <option selected>Sick Leave</option>
+                <option>Emergency Leave</option>
+                <option>Paternity Leave</option>
+                <option>Solo Parent Leave</option>
+                <option>VAWC Leave (RA 9262)</option>
+                <option>Special Leave (Magna Carta)</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Date From <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2024-04-14">
+              </div>
+              <div>
+                <label class="form-label">Date To <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2024-04-15">
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Number of Days</label>
+              <div class="flex items-center gap-2 px-3 py-2 bg-emerald-50 border border-emerald-200 rounded-lg w-fit">
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span class="text-sm font-semibold text-emerald-700">2 days</span>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Reason <span class="text-red-400">*</span></label>
+              <textarea class="form-input resize-none" rows="3" placeholder="Briefly describe the reason for your leave...">I have been feeling unwell with fever and body aches since yesterday. Need to rest and recover.</textarea>
+              <p class="text-xs text-gray-400 mt-1">Required for Sick Leave and Emergency Leave. Medical certificate may be required for 3+ consecutive days of sick leave.</p>
+            </div>
+            <div>
+              <label class="form-label">Supporting Document <span class="text-gray-400 font-normal">(optional)</span></label>
+              <div class="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-emerald-300 transition cursor-pointer">
+                <svg class="w-8 h-8 text-gray-300 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                <p class="text-sm text-gray-500">Drag & drop or <span class="text-emerald-600 font-medium">browse</span></p>
+                <p class="text-xs text-gray-400 mt-1">PDF, JPG, PNG up to 5MB</p>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Note to Approver <span class="text-gray-400 font-normal">(optional)</span></label>
+              <textarea class="form-input resize-none" rows="2" placeholder="Any additional message for your manager..."></textarea>
+            </div>
+          </div>
+          <div class="flex gap-3 mt-6 pt-5 border-t border-gray-100">
+            <a href="my-requests.html" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Cancel</a>
+            <button class="flex-1 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Submit Leave Request →</button>
+          </div>
+          <p class="text-xs text-gray-400 mt-3 text-center">Your request will be reviewed by your manager. You'll be notified by email once approved or rejected.</p>
+        </div>
+      </div>
+
+      <!-- Leave balance sidebar -->
+      <div class="w-64 shrink-0">
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Leave Balances</h2>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1"><span class="text-xs font-medium text-gray-700">Vacation Leave</span><span class="text-xs text-gray-500">12 / 15</span></div>
+              <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="h-1.5 rounded-full" style="width:80%;background:#3ECF8E;"></div></div>
+              <p class="text-xs text-emerald-600 mt-1">12 days remaining</p>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span class="text-xs font-medium text-gray-700">Sick Leave</span><span class="text-xs text-gray-500">9 / 15</span></div>
+              <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="h-1.5 rounded-full" style="width:60%;background:#3ECF8E;"></div></div>
+              <p class="text-xs text-emerald-600 mt-1">9 days remaining</p>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1"><span class="text-xs font-medium text-gray-700">Emergency Leave</span><span class="text-xs text-gray-500">3 / 5</span></div>
+              <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="h-1.5 rounded-full" style="width:60%;background:#3ECF8E;"></div></div>
+              <p class="text-xs text-emerald-600 mt-1">3 days remaining</p>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-100">
+            <p class="text-xs text-gray-500">This request would use <span class="font-semibold text-gray-900">2 Sick Leave days</span>, leaving you with <span class="font-semibold text-emerald-600">7 remaining</span>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

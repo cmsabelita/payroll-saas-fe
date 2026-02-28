@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Employee — Government IDs — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .step-dot { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0; }
+    .step-connector { flex:1;height:2px;background:#E5E7EB; }
+    .step-connector.done { background:#3ECF8E; }
+    .id-card { background:white;border:1.5px solid #E5E7EB;border-radius:12px;padding:16px 20px; }
+    .id-card:focus-within { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.08); }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="employees">
+
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1">
+        <div class="flex items-center gap-2 text-sm text-gray-500">
+          <a href="employees.html" class="hover:text-gray-700">Employees</a>
+          <span>›</span>
+          <span class="text-gray-900 font-medium">Add Employee</span>
+        </div>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <!-- Wizard Step Header -->
+    <div class="bg-white border-b border-gray-100 px-6 py-4 shrink-0">
+      <div class="max-w-4xl mx-auto flex items-center gap-0">
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+          <span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Personal Info</span>
+        </div>
+        <div class="step-connector done mx-2"></div>
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#DCFCE7;color:#059669;"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg></div>
+          <span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Employment</span>
+        </div>
+        <div class="step-connector done mx-2"></div>
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#3ECF8E;color:white;">3</div>
+          <span class="text-xs whitespace-nowrap" style="color:#059669;font-size:.6875rem;font-weight:600;">Gov't IDs</span>
+        </div>
+        <div class="step-connector mx-2"></div>
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">4</div>
+          <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Salary</span>
+        </div>
+        <div class="step-connector mx-2"></div>
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">5</div>
+          <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Tax Info</span>
+        </div>
+        <div class="step-connector mx-2"></div>
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">6</div>
+          <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">App Access</span>
+        </div>
+        <div class="step-connector mx-2"></div>
+
+        <div class="flex flex-col items-center gap-1.5">
+          <div class="step-dot" style="background:#F3F4F6;color:#9CA3AF;">7</div>
+          <span class="text-xs whitespace-nowrap" style="color:#9CA3AF;font-size:.6875rem;">Review</span>
+        </div>
+
+      </div>
+    </div>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8 mb-6">
+
+          <div class="mb-6">
+            <h2 class="text-base font-semibold text-gray-900">Government IDs & Contributions</h2>
+            <p class="text-sm text-gray-500 mt-0.5">Step 3 of 7 — Required for payroll deductions and statutory compliance</p>
+          </div>
+
+          <!-- Info note -->
+          <div class="flex items-start gap-2.5 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3 mb-6 text-xs text-blue-700">
+            <svg class="w-4 h-4 text-blue-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>These IDs are used for SSS, PhilHealth, and Pag-IBIG contribution computations. You can skip and fill them in later on the employee profile.</span>
+          </div>
+
+          <!-- SSS -->
+          <div class="id-card mb-4">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#FEF9C3;"><span class="text-xs font-bold text-yellow-700">SSS</span></div>
+              <p class="text-sm font-semibold text-gray-800">Social Security System (SSS)</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">SSS Number</label>
+                <input type="text" class="form-input" placeholder="XX-XXXXXXX-X" maxlength="12">
+              </div>
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">SSS Contribution Type</label>
+                <select class="form-input" style="appearance:none;cursor:pointer;">
+                  <option selected>Regular Employee</option>
+                  <option>Kasambahay</option>
+                  <option>OFW</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- PhilHealth -->
+          <div class="id-card mb-4">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#DBEAFE;"><span class="text-xs font-bold text-blue-700">PH</span></div>
+              <p class="text-sm font-semibold text-gray-800">PhilHealth (PHIC)</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">PhilHealth Number (PIN)</label>
+                <input type="text" class="form-input" placeholder="XX-XXXXXXXXX-X" maxlength="14">
+              </div>
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">Membership Type</label>
+                <select class="form-input" style="appearance:none;cursor:pointer;">
+                  <option selected>Employed</option>
+                  <option>Indirect Contributor</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- HDMF / Pag-IBIG -->
+          <div class="id-card mb-4">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#DCFCE7;"><span class="text-xs font-bold text-emerald-700">PG</span></div>
+              <p class="text-sm font-semibold text-gray-800">Pag-IBIG / HDMF</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">Pag-IBIG MID Number</label>
+                <input type="text" class="form-input" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+              </div>
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">Monthly Contribution</label>
+                <select class="form-input" style="appearance:none;cursor:pointer;">
+                  <option selected>Minimum (₱100)</option>
+                  <option>₱200</option>
+                  <option>₱500</option>
+                  <option>Custom</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- BIR / TIN -->
+          <div class="id-card">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#FFEDD5;"><span class="text-xs font-bold text-orange-700">BIR</span></div>
+              <p class="text-sm font-semibold text-gray-800">Bureau of Internal Revenue (BIR)</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">TIN <span style="color:#EF4444;">*</span></label>
+                <input type="text" class="form-input" placeholder="XXX-XXX-XXX-XXX" maxlength="15">
+              </div>
+              <div>
+                <label class="form-label" style="font-size:.8125rem;">RDO Code</label>
+                <input type="text" class="form-input" placeholder="e.g. 044 (Pasig)">
+              </div>
+            </div>
+            <div class="mt-3">
+              <label class="form-label" style="font-size:.8125rem;">RDO Name</label>
+              <input type="text" class="form-input" placeholder="e.g. RDO No. 44 — Pasig City">
+            </div>
+            <label class="flex items-center gap-2.5 mt-3 cursor-pointer">
+              <input type="checkbox" class="w-4 h-4 rounded accent-emerald-500">
+              <span class="text-xs text-gray-700">Employee is a <strong>Minimum Wage Earner (MWE)</strong> — exempt from income tax withholding</span>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between py-2">
+          <a href="employees-new-2.html" class="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 font-medium px-3 py-2 rounded-lg hover:bg-gray-100">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back
+          </a>
+          <a href="employees-new-4.html" class="flex items-center gap-2 text-sm font-semibold text-white px-5 py-2.5 rounded-lg hover:opacity-90" style="background:#3ECF8E;">
+            Next: Salary & Compensation
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="_sidebar.js"></script>
+</body>
+</html>

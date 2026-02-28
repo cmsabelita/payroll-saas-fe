@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Training Record — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-label { display:block;font-size:.8125rem;font-weight:500;color:#374151;margin-bottom:5px; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="compliance">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="compliance.html" class="hover:text-gray-700">Compliance</a>
+        <span>›</span>
+        <a href="compliance-training.html" class="hover:text-gray-700">Training</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">Add Training Record</span>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8">
+          <h1 class="text-base font-semibold text-gray-900 mb-1">Add Training / Seminar Record</h1>
+          <p class="text-xs text-gray-400 mb-6">Log mandatory or voluntary trainings for employee development and DOLE compliance.</p>
+
+          <div class="space-y-5">
+
+            <div>
+              <label class="form-label">Training Title <span class="text-red-400">*</span></label>
+              <input type="text" class="form-input" placeholder="e.g. Occupational Safety & Health (OSH) Basic Training" value="OSH Basic Training — DOLE Required">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Training Type <span class="text-red-400">*</span></label>
+                <select class="form-select">
+                  <option>DOLE Mandatory (OSH)</option>
+                  <option>DOLE Mandatory (Labor Standards)</option>
+                  <option>Company-Required</option>
+                  <option selected>Voluntary / Development</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label">Training Provider <span class="text-red-400">*</span></label>
+                <input type="text" class="form-input" placeholder="e.g. DOLE OSHC, TESDA, External trainer" value="DOLE OSHC Accredited Provider">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <label class="form-label">Date From <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2026-02-20">
+              </div>
+              <div>
+                <label class="form-label">Date To <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2026-02-21">
+              </div>
+              <div>
+                <label class="form-label">Hours / Days <span class="text-red-400">*</span></label>
+                <input type="text" class="form-input" placeholder="e.g. 16 hours" value="16 hours (2 days)">
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">Location / Platform</label>
+              <input type="text" class="form-input" placeholder="e.g. Makati Office, Zoom, TESDA center" value="DOLE OSHC Training Center, Quezon City">
+            </div>
+
+            <div>
+              <label class="form-label">Participants <span class="text-red-400">*</span></label>
+              <select class="form-select mb-2">
+                <option>All employees (128)</option>
+                <option selected>Selected employees</option>
+                <option>By department</option>
+                <option>By position</option>
+              </select>
+              <!-- Selected employees tags -->
+              <div class="flex flex-wrap gap-2 mt-2 bg-gray-50 border border-gray-200 rounded-xl p-3 min-h-10">
+                <span class="flex items-center gap-1 text-xs font-medium bg-white border border-gray-200 rounded-full px-2.5 py-1">Ana Reyes <button class="text-gray-400 hover:text-red-500 ml-1">×</button></span>
+                <span class="flex items-center gap-1 text-xs font-medium bg-white border border-gray-200 rounded-full px-2.5 py-1">Jose Reyes <button class="text-gray-400 hover:text-red-500 ml-1">×</button></span>
+                <span class="flex items-center gap-1 text-xs font-medium bg-white border border-gray-200 rounded-full px-2.5 py-1">Maria Santos <button class="text-gray-400 hover:text-red-500 ml-1">×</button></span>
+                <input type="text" placeholder="Add employee…" class="text-xs border-none bg-transparent outline-none flex-1 min-w-24">
+              </div>
+              <p class="text-xs text-gray-400 mt-1">3 participants selected</p>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked class="w-4 h-4 rounded accent-emerald-500">
+                <span class="text-sm text-gray-700">Certificate issued upon completion</span>
+              </label>
+            </div>
+
+            <div>
+              <label class="form-label">Notes / Description</label>
+              <textarea class="form-input resize-none" rows="2" placeholder="Training objectives, agenda, or additional notes…">Covers DOLE Department Order 198-18 OSH requirements for private establishments with 1–199 workers.</textarea>
+            </div>
+
+            <div>
+              <label class="form-label">Attachments <span class="text-gray-400 font-normal">(optional)</span></label>
+              <div class="border-2 border-dashed border-gray-200 rounded-xl px-4 py-4 text-center hover:border-emerald-300 transition cursor-pointer">
+                <svg class="w-5 h-5 text-gray-300 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
+                <p class="text-xs text-gray-400">Training agenda, attendance sheet, certificates</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="flex gap-3 mt-6 pt-5 border-t border-gray-100">
+            <a href="compliance-training.html" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Cancel</a>
+            <button class="flex-1 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Save Training Record →</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

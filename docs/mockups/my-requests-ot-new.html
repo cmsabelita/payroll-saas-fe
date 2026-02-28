@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File OT Request — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:#3ECF8E;">
+          <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/></svg>
+        </div>
+        <span class="font-semibold text-gray-900 text-sm">Payro</span>
+      </div>
+      <nav class="flex items-center gap-1">
+        <a href="portal.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Dashboard</a>
+        <a href="my-payslips.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Payslips</a>
+        <a href="my-attendance.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Attendance</a>
+        <a href="my-requests.html" class="px-3 py-1.5 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">Requests</a>
+        <a href="my-profile.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">My Profile</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-gray-500">Ana Reyes</span>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-6 py-6">
+
+    <div class="flex items-center gap-2 mb-6">
+      <a href="my-requests.html" class="text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"/></svg>Requests</a>
+      <span class="text-gray-300">/</span>
+      <span class="text-sm font-medium text-gray-700">File Overtime Request</span>
+    </div>
+
+    <div class="flex gap-6">
+      <!-- Form -->
+      <div class="flex-1">
+        <div class="bg-white border border-gray-100 rounded-xl p-6">
+          <h1 class="text-base font-semibold text-gray-900 mb-5">Overtime Request</h1>
+          <div class="space-y-4">
+            <div>
+              <label class="form-label">Date <span class="text-red-400">*</span></label>
+              <input type="date" class="form-input" value="2024-04-19">
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">OT Start Time <span class="text-red-400">*</span></label>
+                <input type="time" class="form-input" value="18:00">
+              </div>
+              <div>
+                <label class="form-label">OT End Time <span class="text-red-400">*</span></label>
+                <input type="time" class="form-input" value="21:00">
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Duration</label>
+              <div class="flex items-center gap-2 px-3 py-2 bg-purple-50 border border-purple-200 rounded-lg w-fit">
+                <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-sm font-semibold text-purple-700">3 hours</span>
+              </div>
+            </div>
+            <div>
+              <label class="form-label">OT Type <span class="text-red-400">*</span></label>
+              <select class="form-select">
+                <option selected>Regular Overtime (1.25×)</option>
+                <option>Rest Day OT (1.30×)</option>
+                <option>Special Holiday OT (1.30×)</option>
+                <option>Regular Holiday OT (2.00×)</option>
+                <option>Night Differential (+10%)</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Reason / Project <span class="text-red-400">*</span></label>
+              <textarea class="form-input resize-none" rows="3" placeholder="Describe the work done or project requiring overtime...">Q1 HR audit documentation — completing compliance reports due April 20.</textarea>
+            </div>
+            <div>
+              <label class="form-label">Pre-approval Reference # <span class="text-gray-400 font-normal">(optional)</span></label>
+              <input type="text" class="form-input" placeholder="e.g., PA-2024-042 (if pre-approved by manager)">
+            </div>
+          </div>
+          <div class="flex gap-3 mt-6 pt-5 border-t border-gray-100">
+            <a href="my-requests.html" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Cancel</a>
+            <button class="flex-1 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Submit OT Request →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- OT pay preview sidebar -->
+      <div class="w-64 shrink-0">
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">OT Pay Preview</h2>
+          <div class="space-y-3">
+            <div class="flex justify-between text-sm"><span class="text-gray-500">Hourly rate</span><span class="font-medium text-gray-900">₱439.45</span></div>
+            <div class="flex justify-between text-sm"><span class="text-gray-500">Hours</span><span class="font-medium text-gray-900">3 hrs</span></div>
+            <div class="flex justify-between text-sm"><span class="text-gray-500">OT multiplier</span><span class="font-medium text-gray-900">1.25×</span></div>
+            <div class="border-t border-gray-100 pt-3">
+              <div class="flex justify-between"><span class="text-sm text-gray-500">Estimated OT Pay</span></div>
+              <p class="text-xl font-bold mt-1" style="color:#059669;">₱1,648.44</p>
+              <p class="text-xs text-gray-400 mt-1">₱439.45 × 3 × 1.25</p>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-100 bg-amber-50 rounded-lg p-3">
+            <p class="text-xs text-amber-700">OT pay will be included in your next payroll period upon approval.</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5 mt-4">
+          <h2 class="text-sm font-semibold text-gray-900 mb-3">Rate Reference</h2>
+          <div class="space-y-2 text-xs text-gray-600">
+            <div class="flex justify-between"><span>Regular OT</span><span class="font-medium">1.25×</span></div>
+            <div class="flex justify-between"><span>Rest Day OT</span><span class="font-medium">1.30×</span></div>
+            <div class="flex justify-between"><span>Special Holiday</span><span class="font-medium">1.30×</span></div>
+            <div class="flex justify-between"><span>Regular Holiday</span><span class="font-medium">2.00×</span></div>
+            <div class="flex justify-between"><span>Night Diff</span><span class="font-medium">+10%</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

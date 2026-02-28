@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invite Team Member — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; box-sizing: border-box; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color:#9CA3AF; }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .role-card { display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1.5px solid #E5E7EB;border-radius:10px;cursor:pointer;transition:border-color .15s,background .15s; }
+    .role-card:hover { border-color:#6EE7B7;background:#FAFFFE; }
+    .role-card.selected { border-color:#3ECF8E;background:#F0FDF4; }
+    .radio-dot { width:16px;height:16px;border-radius:50%;border:2px solid #D1D5DB;flex-shrink:0;margin-top:2px;transition:border-color .15s;display:flex;align-items:center;justify-content:center; }
+    .role-card.selected .radio-dot { border-color:#3ECF8E; }
+    .role-card.selected .radio-dot::after { content:'';width:8px;height:8px;border-radius:50%;background:#3ECF8E;display:block; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="team">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm">
+        <a href="team.html" class="text-gray-400 hover:text-gray-600 font-medium">Team</a>
+        <svg class="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <span class="font-semibold text-gray-900">Invite Member</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="relative p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 overflow-y-auto p-6">
+      <div class="max-w-lg mx-auto">
+
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+
+          <div class="mb-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-1">Invite a team member</h2>
+            <p class="text-sm text-gray-500">They'll receive an email to create their Payro account.</p>
+          </div>
+
+          <form class="space-y-5">
+
+            <!-- Email -->
+            <div>
+              <label class="form-label">Email Address <span class="text-red-400">*</span></label>
+              <div class="relative">
+                <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+                </div>
+                <input type="email" class="form-input" style="padding-left:38px;" placeholder="colleague@acme.com">
+              </div>
+            </div>
+
+            <!-- Role -->
+            <div>
+              <label class="form-label">Role <span class="text-red-400">*</span></label>
+              <div class="space-y-2 mt-1">
+
+                <div class="role-card">
+                  <div class="radio-dot"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Owner</p>
+                    <p class="text-xs text-gray-500">Full access including billing management</p>
+                  </div>
+                </div>
+
+                <div class="role-card">
+                  <div class="radio-dot"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Admin</p>
+                    <p class="text-xs text-gray-500">Full access except subscription &amp; billing</p>
+                  </div>
+                </div>
+
+                <div class="role-card selected">
+                  <div class="radio-dot"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">HR</p>
+                    <p class="text-xs text-gray-500">Employees, attendance, leave, compliance management</p>
+                  </div>
+                </div>
+
+                <div class="role-card">
+                  <div class="radio-dot"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Accountant</p>
+                    <p class="text-xs text-gray-500">Payroll, compliance, reports (read &amp; write)</p>
+                  </div>
+                </div>
+
+                <div class="role-card">
+                  <div class="radio-dot"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Manager</p>
+                    <p class="text-xs text-gray-500">Own team attendance and leave approvals</p>
+                  </div>
+                </div>
+
+                <div class="role-card">
+                  <div class="radio-dot"></div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Viewer</p>
+                    <p class="text-xs text-gray-500">Employee self-service portal only (read-only admin)</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Personal message -->
+            <div>
+              <label class="form-label">Personal Message <span class="text-xs text-gray-400 font-normal">(optional)</span></label>
+              <textarea class="form-input" rows="3" placeholder="Add a personalized note to the invite email…" style="resize:vertical;"></textarea>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="send-guide" checked class="mt-0.5 h-4 w-4 rounded border-gray-300 cursor-pointer" style="accent-color:#3ECF8E;">
+              <label for="send-guide" class="text-sm text-gray-600 cursor-pointer">Send onboarding guide with the invitation</label>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="w-full py-2.5 text-sm font-semibold text-white rounded-xl transition cursor-pointer" style="background:#3ECF8E;">
+              Send Invitation
+            </button>
+
+          </form>
+
+          <div class="text-center mt-4">
+            <a href="team.html" class="text-sm text-gray-400 hover:text-gray-600 transition">Cancel</a>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="_sidebar.js"></script>
+</body>
+</html>

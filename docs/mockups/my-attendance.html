@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Attendance — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:#3ECF8E;">
+          <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/></svg>
+        </div>
+        <span class="font-semibold text-gray-900 text-sm">Payro</span>
+      </div>
+      <nav class="flex items-center gap-1">
+        <a href="portal.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Dashboard</a>
+        <a href="my-payslips.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Payslips</a>
+        <a href="my-attendance.html" class="px-3 py-1.5 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">Attendance</a>
+        <a href="my-requests.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Requests</a>
+        <a href="my-profile.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">My Profile</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-gray-500">Ana Reyes</span>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-6 py-6">
+
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-lg font-bold text-gray-900">My Attendance</h1>
+        <p class="text-sm text-gray-400 mt-0.5">Ana Reyes · HR Manager</p>
+      </div>
+      <!-- Month nav -->
+      <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-xl px-4 py-2">
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+        <span class="text-sm font-semibold text-gray-900 px-3">April 2024</span>
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+
+    <!-- Summary strip -->
+    <div class="grid grid-cols-4 gap-4 mb-6">
+      <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Days Present</p><p class="text-xl font-bold text-emerald-600 mt-1">22</p></div>
+      <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Late Arrivals</p><p class="text-xl font-bold text-orange-500 mt-1">1</p></div>
+      <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Leave Days</p><p class="text-xl font-bold text-blue-500 mt-1">2</p></div>
+      <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">OT Hours</p><p class="text-xl font-bold text-purple-500 mt-1">8h</p></div>
+    </div>
+
+    <!-- Calendar -->
+    <div class="bg-white border border-gray-100 rounded-xl p-5 mb-6">
+      <div class="grid grid-cols-7 gap-1 mb-2">
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Mon</div>
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Tue</div>
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Wed</div>
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Thu</div>
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Fri</div>
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Sat</div>
+        <div class="text-xs font-semibold text-gray-400 text-center py-1">Sun</div>
+      </div>
+      <div class="grid grid-cols-7 gap-1">
+        <!-- Week 1: Apr 1-7 -->
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">1</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">2</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">3</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">4</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">5</p><div class="w-2 h-2 rounded-full mx-auto mt-1 bg-orange-400"></div><p class="text-xs text-orange-500 mt-0.5">Late</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50"><p class="text-xs font-medium text-gray-400">6</p><p class="text-xs text-gray-300 mt-1.5">Rest</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50"><p class="text-xs font-medium text-gray-400">7</p><p class="text-xs text-gray-300 mt-1.5">Rest</p></div>
+        <!-- Week 2: Apr 8-14 -->
+        <div class="rounded-lg p-2 text-center border border-transparent bg-amber-50"><p class="text-xs font-medium text-amber-700">8</p><div class="w-2 h-2 rounded-full mx-auto mt-1 bg-amber-400"></div><p class="text-xs text-amber-600 mt-0.5">Hol</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">9</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">10</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">11</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">12</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50"><p class="text-xs font-medium text-gray-400">13</p><p class="text-xs text-gray-300 mt-1.5">Rest</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent bg-blue-50"><p class="text-xs font-medium text-blue-700">14</p><div class="w-2 h-2 rounded-full mx-auto mt-1 bg-blue-400"></div><p class="text-xs text-blue-600 mt-0.5">Leave</p></div>
+        <!-- Week 3: Apr 15-21 -->
+        <div class="rounded-lg p-2 text-center border border-transparent bg-blue-50"><p class="text-xs font-medium text-blue-700">15</p><div class="w-2 h-2 rounded-full mx-auto mt-1 bg-blue-400"></div><p class="text-xs text-blue-600 mt-0.5">Leave</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">16</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">17</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">18</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P</p></div>
+        <div class="rounded-lg p-2 text-center border border-transparent hover:border-gray-200"><p class="text-xs font-medium text-gray-700">19</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-gray-400 mt-0.5">P+OT</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50"><p class="text-xs font-medium text-gray-400">20</p><p class="text-xs text-gray-300 mt-1.5">Rest</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50"><p class="text-xs font-medium text-gray-400">21</p><p class="text-xs text-gray-300 mt-1.5">Rest</p></div>
+        <!-- Week 4: Apr 22-28 -->
+        <div class="rounded-lg p-2 text-center border-2 rounded-lg" style="border-color:#3ECF8E;background:#ECFDF5;"><p class="text-xs font-semibold text-emerald-700">22</p><div class="w-2 h-2 rounded-full mx-auto mt-1" style="background:#3ECF8E;"></div><p class="text-xs text-emerald-600 mt-0.5">Today</p></div>
+        <div class="rounded-lg p-2 text-center border border-gray-100 bg-gray-50 opacity-50"><p class="text-xs font-medium text-gray-400">23</p></div>
+        <div class="rounded-lg p-2 text-center border border-gray-100 bg-gray-50 opacity-50"><p class="text-xs font-medium text-gray-400">24</p></div>
+        <div class="rounded-lg p-2 text-center border border-gray-100 bg-gray-50 opacity-50"><p class="text-xs font-medium text-gray-400">25</p></div>
+        <div class="rounded-lg p-2 text-center border border-gray-100 bg-gray-50 opacity-50"><p class="text-xs font-medium text-gray-400">26</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50 opacity-50"><p class="text-xs font-medium text-gray-400">27</p></div>
+        <div class="rounded-lg p-2 text-center bg-gray-50 opacity-50"><p class="text-xs font-medium text-gray-400">28</p></div>
+      </div>
+      <!-- Legend -->
+      <div class="flex items-center gap-5 mt-4 pt-4 border-t border-gray-100">
+        <div class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full" style="background:#3ECF8E;"></div><span class="text-xs text-gray-500">Present</span></div>
+        <div class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-orange-400"></div><span class="text-xs text-gray-500">Late</span></div>
+        <div class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-blue-400"></div><span class="text-xs text-gray-500">Leave</span></div>
+        <div class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div><span class="text-xs text-gray-500">Holiday</span></div>
+        <div class="flex items-center gap-1.5"><div class="w-2.5 h-2.5 rounded-full bg-gray-300"></div><span class="text-xs text-gray-500">Rest Day</span></div>
+      </div>
+    </div>
+
+    <!-- Time log table -->
+    <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+      <div class="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="text-sm font-semibold text-gray-900">Recent Time Log</h2>
+        <a href="my-requests-attendance-new.html" class="px-3 py-1.5 text-xs font-semibold text-white rounded-lg" style="background:#3ECF8E;">+ File Correction</a>
+      </div>
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b border-gray-100">
+          <tr>
+            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Date</th>
+            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Day In</th>
+            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Day Out</th>
+            <th class="px-4 py-2.5 text-center text-xs font-semibold text-gray-500 uppercase tracking-wide">Hours</th>
+            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">OT</th>
+            <th class="px-4 py-2.5"></th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-50">
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 22 (Mon)</td><td class="px-4 py-3 text-sm text-gray-600">8:02 AM</td><td class="px-4 py-3 text-sm text-gray-600">5:00 PM</td><td class="px-4 py-3 text-sm text-center text-gray-700">8.0h</td><td class="px-4 py-3"><span class="badge badge-green">Present</span></td><td class="px-4 py-3 text-sm text-gray-400">—</td><td class="px-4 py-3"></td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 19 (Fri)</td><td class="px-4 py-3 text-sm text-gray-600">8:00 AM</td><td class="px-4 py-3 text-sm text-gray-600">8:00 PM</td><td class="px-4 py-3 text-sm text-center text-gray-700">12.0h</td><td class="px-4 py-3"><span class="badge badge-green">Present</span></td><td class="px-4 py-3 text-sm font-medium text-purple-600">4h OT</td><td class="px-4 py-3"></td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 18 (Thu)</td><td class="px-4 py-3 text-sm text-gray-600">7:58 AM</td><td class="px-4 py-3 text-sm text-gray-600">5:00 PM</td><td class="px-4 py-3 text-sm text-center text-gray-700">8.0h</td><td class="px-4 py-3"><span class="badge badge-green">Present</span></td><td class="px-4 py-3 text-sm text-gray-400">—</td><td class="px-4 py-3"></td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 17 (Wed)</td><td class="px-4 py-3 text-sm text-gray-600">7:55 AM</td><td class="px-4 py-3 text-sm text-gray-600">5:00 PM</td><td class="px-4 py-3 text-sm text-center text-gray-700">8.0h</td><td class="px-4 py-3"><span class="badge badge-green">Present</span></td><td class="px-4 py-3 text-sm text-gray-400">—</td><td class="px-4 py-3"></td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 16 (Tue)</td><td class="px-4 py-3 text-sm text-gray-600">8:00 AM</td><td class="px-4 py-3 text-sm text-gray-600">5:00 PM</td><td class="px-4 py-3 text-sm text-center text-gray-700">8.0h</td><td class="px-4 py-3"><span class="badge badge-green">Present</span></td><td class="px-4 py-3 text-sm text-gray-400">—</td><td class="px-4 py-3"></td></tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 15 (Mon)</td><td class="px-4 py-3 text-sm text-gray-600">—</td><td class="px-4 py-3 text-sm text-gray-600">—</td><td class="px-4 py-3 text-sm text-center text-gray-700">—</td><td class="px-4 py-3"><span class="badge badge-blue">Sick Leave</span></td><td class="px-4 py-3 text-sm text-gray-400">—</td><td class="px-4 py-3"></td></tr>
+          <!-- Row with missing time-out — shows correction link -->
+          <tr class="bg-orange-50 hover:bg-orange-100">
+            <td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 12 (Fri)</td>
+            <td class="px-4 py-3 text-sm text-gray-600">8:03 AM</td>
+            <td class="px-4 py-3 text-sm text-red-400 font-medium">No record</td>
+            <td class="px-4 py-3 text-sm text-center text-red-400">—</td>
+            <td class="px-4 py-3"><span class="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full bg-red-100 text-red-600">⚠ Incomplete</span></td>
+            <td class="px-4 py-3 text-sm text-gray-400">—</td>
+            <td class="px-4 py-3"><a href="my-requests-attendance-new.html" class="text-xs font-semibold whitespace-nowrap" style="color:#059669;">File correction →</a></td>
+          </tr>
+          <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Apr 5 (Fri)</td><td class="px-4 py-3 text-sm text-orange-600">8:32 AM</td><td class="px-4 py-3 text-sm text-gray-600">5:00 PM</td><td class="px-4 py-3 text-sm text-center text-gray-700">7.5h</td><td class="px-4 py-3"><span class="badge badge-orange">Late</span></td><td class="px-4 py-3 text-sm text-gray-400">—</td><td class="px-4 py-3"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</body>
+</html>

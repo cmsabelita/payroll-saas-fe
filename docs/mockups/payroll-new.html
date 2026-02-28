@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Payroll Period — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-input:disabled { background:#F9FAFB;color:#9CA3AF; }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer;transition:border-color .15s; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="payroll">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="payroll.html" class="hover:text-gray-700">Payroll</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">New Payroll Period</span>
+      </div>
+      <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+      </button>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8">
+          <h1 class="text-base font-semibold text-gray-900 mb-1">Create Payroll Period</h1>
+          <p class="text-xs text-gray-400 mb-6">Define the date range and pay date for this payroll run.</p>
+
+          <!-- Ref to last period -->
+          <div class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 mb-6">
+            <svg class="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <div>
+              <p class="text-xs font-semibold text-gray-700">Last period: Feb 2026 · 1st Half</p>
+              <p class="text-xs text-gray-400">Feb 1–15, 2026 · Paid · Net ₱1,826,730</p>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+
+            <!-- Period name -->
+            <div>
+              <label class="form-label">Period Name <span class="text-red-400">*</span></label>
+              <input type="text" class="form-input" value="Feb 2026 · 2nd Half">
+              <p class="text-xs text-gray-400 mt-1">Auto-generated based on frequency and date range. You may edit this.</p>
+            </div>
+
+            <!-- Frequency (read-only) -->
+            <div>
+              <label class="form-label">Payroll Frequency</label>
+              <input type="text" class="form-input" value="Semi-monthly (1st–15th / 16th–end of month)" disabled>
+              <p class="text-xs text-gray-400 mt-1">Configured in <a href="settings-payroll-config.html" class="text-emerald-600 hover:underline">Payroll Settings</a>.</p>
+            </div>
+
+            <!-- Date range -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Period Start <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2026-02-16">
+              </div>
+              <div>
+                <label class="form-label">Period End <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2026-02-28">
+              </div>
+            </div>
+
+            <!-- Pay date -->
+            <div>
+              <label class="form-label">Pay Date <span class="text-red-400">*</span></label>
+              <input type="date" class="form-input" value="2026-03-05">
+              <p class="text-xs text-gray-400 mt-1">The date salaries will be credited to employee accounts.</p>
+            </div>
+
+            <!-- Include employees -->
+            <div>
+              <label class="form-label">Include Employees</label>
+              <select class="form-select">
+                <option selected>All active employees (128)</option>
+                <option>By department</option>
+                <option>Custom selection</option>
+              </select>
+            </div>
+
+            <!-- Notes -->
+            <div>
+              <label class="form-label">Notes <span class="text-gray-400 font-normal">(optional)</span></label>
+              <textarea class="form-input resize-none" rows="2" placeholder="e.g. Includes 13th month installment, special bonus…"></textarea>
+            </div>
+
+          </div>
+
+          <div class="flex gap-3 mt-6 pt-5 border-t border-gray-100">
+            <a href="payroll.html" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Cancel</a>
+            <button class="flex-1 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Create Period & Start Draft →</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

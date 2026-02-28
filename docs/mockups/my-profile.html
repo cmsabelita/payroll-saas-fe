@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:#3ECF8E;">
+          <svg class="w-3.5 h-3.5 text-white" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/></svg>
+        </div>
+        <span class="font-semibold text-gray-900 text-sm">Payro</span>
+      </div>
+      <nav class="flex items-center gap-1">
+        <a href="portal.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Dashboard</a>
+        <a href="my-payslips.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Payslips</a>
+        <a href="my-attendance.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Attendance</a>
+        <a href="my-requests.html" class="px-3 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Requests</a>
+        <a href="my-profile.html" class="px-3 py-1.5 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">My Profile</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-sm text-gray-500">Ana Reyes</span>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-6 py-6">
+
+    <!-- Profile header card -->
+    <div class="bg-white border border-gray-100 rounded-xl p-6 mb-6 flex items-center gap-5">
+      <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold shrink-0" style="background:linear-gradient(135deg,#3ECF8E,#059669);">AR</div>
+      <div class="flex-1">
+        <div class="flex items-start justify-between">
+          <div>
+            <h1 class="text-xl font-bold text-gray-900">Ana Maria Reyes</h1>
+            <p class="text-sm text-gray-500 mt-0.5">HR Manager · EMP-0023 · Human Resources</p>
+            <div class="flex items-center gap-2 mt-2">
+              <span class="badge badge-blue">HR Admin</span>
+              <span class="badge badge-green">Active</span>
+              <span class="text-xs text-gray-400">Joined March 1, 2024</span>
+            </div>
+          </div>
+          <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Edit Personal Info</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-0 border-b border-gray-200 mb-6">
+      <a href="#" class="px-4 py-2.5 text-sm font-medium border-b-2" style="color:#059669;border-color:#3ECF8E;">Personal Info</a>
+      <a href="#" class="px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent">Employment</a>
+      <a href="#" class="px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent">Government IDs</a>
+      <a href="#" class="px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent">Account Settings</a>
+    </div>
+
+    <!-- Personal Info tab -->
+    <div class="grid grid-cols-2 gap-5">
+      <!-- Left col -->
+      <div class="bg-white border border-gray-100 rounded-xl p-5">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Personal Details</h2>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">First Name</span><span class="text-sm font-medium text-gray-900">Ana</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Last Name</span><span class="text-sm font-medium text-gray-900">Reyes</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Middle Name</span><span class="text-sm font-medium text-gray-900">Maria</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Date of Birth</span><span class="text-sm font-medium text-gray-900">June 15, 1990</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Civil Status</span><span class="text-sm font-medium text-gray-900">Single</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Gender</span><span class="text-sm font-medium text-gray-900">Female</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Blood Type</span><span class="text-sm font-medium text-gray-900">O+</span></div>
+          <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Address</span><span class="text-sm font-medium text-gray-900">12 Sampaguita St., Quezon City, Metro Manila</span></div>
+        </div>
+      </div>
+
+      <!-- Right col -->
+      <div class="space-y-5">
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Contact Information</h2>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Mobile</span><span class="text-sm font-medium text-gray-900">+63 917 555 0123</span></div>
+            <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Personal Email</span><span class="text-sm font-medium text-gray-900">ana.reyes@gmail.com</span></div>
+            <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Work Email</span><span class="text-sm font-medium text-gray-900">ana.reyes@acmecorp.com</span></div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Emergency Contact</h2>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Name</span><span class="text-sm font-medium text-gray-900">Maria Reyes (Mother)</span></div>
+            <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Mobile</span><span class="text-sm font-medium text-gray-900">+63 919 555 0001</span></div>
+            <div class="flex items-start gap-3"><span class="text-xs text-gray-500 w-32 shrink-0 pt-0.5">Relationship</span><span class="text-sm font-medium text-gray-900">Mother</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

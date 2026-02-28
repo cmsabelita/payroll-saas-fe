@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave Request #LR-2024-0041 — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-textarea { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;resize:none;transition:border-color .15s,box-shadow .15s; }
+    .form-textarea:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-label { display:block;font-size:.875rem;font-weight:500;color:#374151;margin-bottom:5px; }
+    .detail-row { display:flex;padding:11px 0;border-bottom:1px solid #F3F4F6; }
+    .detail-label { font-size:.8125rem;font-weight:500;color:#9CA3AF;width:148px;flex-shrink:0; }
+    .detail-value { font-size:.8125rem;color:#111827; }
+    .progress-bar { height:6px;background:#F3F4F6;border-radius:99px;overflow:hidden; }
+    .progress-fill { height:100%;border-radius:99px;transition:width .3s; }
+    .timeline-dot { width:8px;height:8px;border-radius:50%;background:#3ECF8E;flex-shrink:0;margin-top:4px; }
+    .attachment-chip { display:inline-flex;align-items:center;gap:6px;padding:6px 10px;background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:8px;font-size:.8125rem;color:#374151;cursor:pointer;transition:background .12s; }
+    .attachment-chip:hover { background:#F3F4F6; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="approvals">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <!-- Topbar -->
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-3 shrink-0">
+      <a href="approvals.html" class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Approvals
+      </a>
+      <span class="text-gray-200">/</span>
+      <div class="flex-1 min-w-0">
+        <h1 class="text-base font-semibold text-gray-900 leading-tight">Leave Request #LR-2024-0041</h1>
+        <p class="text-xs text-gray-400 leading-none mt-0.5">Maria Santos · Sick Leave</p>
+      </div>
+      <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-50 relative">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+      </button>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto p-6">
+      <div class="flex gap-5 items-start">
+
+        <!-- Left Column (2/3) -->
+        <div class="flex-1 min-w-0 flex flex-col gap-5">
+
+          <!-- Request Details Card -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-sm font-semibold text-gray-900">Request Details</h2>
+              <span class="badge badge-yellow">Pending</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Request Type</span>
+              <span class="detail-value flex items-center gap-2">
+                <span class="badge badge-blue">Leave</span>
+                <span class="font-medium">Sick Leave</span>
+              </span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Filed By</span>
+              <span class="detail-value">
+                <a href="employees-profile.html" class="flex items-center gap-2 hover:underline underline-offset-2 w-fit">
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white shrink-0" style="background:linear-gradient(135deg,#EC4899,#F43F5E);">MS</div>
+                  <span class="font-medium text-gray-900">Maria Santos</span>
+                  <span class="text-gray-400">· EMP-00115</span>
+                </a>
+              </span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Date Range</span>
+              <span class="detail-value">
+                <span class="font-medium">April 14–15, 2024</span>
+                <span class="text-gray-400 ml-2">Monday–Tuesday</span>
+                <span class="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full" style="background:#DBEAFE;color:#1D4ED8;">2 days</span>
+              </span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Reason</span>
+              <span class="detail-value max-w-lg leading-relaxed text-gray-700">I have been feeling unwell since yesterday with fever and body aches. I need to rest and recover before returning to work.</span>
+            </div>
+
+            <div class="detail-row">
+              <span class="detail-label">Document</span>
+              <span class="detail-value">
+                <span class="attachment-chip">
+                  <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                  sick_note.pdf
+                  <svg class="w-3.5 h-3.5 text-gray-400 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                </span>
+              </span>
+            </div>
+
+            <div class="detail-row" style="border-bottom:none;">
+              <span class="detail-label">Filed On</span>
+              <span class="detail-value text-gray-500">April 13, 2024 at 9:02 AM</span>
+            </div>
+          </div>
+
+          <!-- Leave Balance Card -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h2 class="text-sm font-semibold text-gray-900 mb-4">Leave Balance — Maria Santos</h2>
+
+            <div class="flex flex-col gap-4">
+              <!-- Sick Leave -->
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-gray-800">Sick Leave</span>
+                    <span class="badge badge-blue">Requesting 2 days</span>
+                  </div>
+                  <span class="text-xs text-gray-500 font-medium">5 used · <span class="text-gray-900 font-semibold">10 remaining</span> of 15</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:33.3%;background:#3B82F6;"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-gray-400">5 days used</span>
+                  <span class="text-xs font-medium" style="color:#1D4ED8;">10 days remaining</span>
+                </div>
+              </div>
+              <!-- Vacation Leave -->
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-sm font-medium text-gray-800">Vacation Leave</span>
+                  <span class="text-xs text-gray-500 font-medium">8 used · <span class="text-gray-900 font-semibold">7 remaining</span> of 15</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:53.3%;background:#3ECF8E;"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-gray-400">8 days used</span>
+                  <span class="text-xs font-medium text-green-700">7 days remaining</span>
+                </div>
+              </div>
+              <!-- Emergency Leave -->
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-sm font-medium text-gray-800">Emergency Leave</span>
+                  <span class="text-xs text-gray-500 font-medium">0 used · <span class="text-gray-900 font-semibold">5 remaining</span> of 5</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:0%;background:#F59E0B;"></div>
+                </div>
+                <div class="flex justify-between mt-1">
+                  <span class="text-xs text-gray-400">0 days used</span>
+                  <span class="text-xs font-medium text-yellow-700">5 days remaining</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Sidebar (1/3) -->
+        <div class="w-80 shrink-0 flex flex-col gap-4">
+
+          <!-- Status + Action Card -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <div class="flex flex-col items-center py-3 mb-4">
+              <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-2" style="background:#FEF9C3;">
+                <svg class="w-8 h-8" style="color:#A16207;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="badge badge-yellow text-sm px-3 py-1">Pending</span>
+              <p class="text-xs text-gray-400 mt-1.5">Action required</p>
+            </div>
+
+            <div class="flex flex-col gap-2.5 mb-4">
+              <div class="mb-1">
+                <label class="form-label text-xs">Add a remark (optional)</label>
+                <textarea rows="3" class="form-textarea" placeholder="Add a note for the employee…"></textarea>
+              </div>
+              <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm text-white transition-opacity hover:opacity-90" style="background:#3ECF8E;">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                Approve Request
+              </button>
+              <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-semibold text-sm border-2 transition-colors hover:bg-red-50" style="border-color:#FECACA;color:#B91C1C;">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+                Reject Request
+              </button>
+            </div>
+          </div>
+
+          <!-- Request Info Quick Card -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Quick Info</h3>
+            <div class="flex flex-col gap-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400">Request ID</span>
+                <span class="text-xs font-mono font-semibold text-gray-700">#LR-2024-0041</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400">Department</span>
+                <span class="text-xs font-medium text-gray-700">Human Resources</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400">Position</span>
+                <span class="text-xs font-medium text-gray-700">HR Manager</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400">Approver</span>
+                <span class="text-xs font-medium text-gray-700">Mark Santos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Timeline -->
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Activity</h3>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-start gap-3">
+                <div class="timeline-dot mt-1"></div>
+                <div>
+                  <p class="text-sm font-medium text-gray-800">Request submitted</p>
+                  <p class="text-xs text-gray-400 mt-0.5">By Maria Santos</p>
+                  <p class="text-xs text-gray-400">Apr 13, 2024 · 9:02 AM</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-2 h-2 rounded-full bg-gray-200 flex-shrink-0 mt-1"></div>
+                <div>
+                  <p class="text-sm text-gray-400">Awaiting approval from</p>
+                  <p class="text-xs text-gray-500 mt-0.5 font-medium">Mark Santos (Owner)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="_sidebar.js"></script>
+  <style>
+    .badge { font-size:.6875rem;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap; }
+    .badge-yellow { background:#FEF9C3;color:#A16207; }
+    .badge-blue   { background:#DBEAFE;color:#1D4ED8; }
+    .badge-green  { background:#DCFCE7;color:#15803D; }
+  </style>
+</body>
+</html>

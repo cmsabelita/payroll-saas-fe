@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Settings — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="settings">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div><h1 class="text-base font-semibold text-gray-900">Settings</h1><p class="text-xs text-gray-400">Company information & configuration</p></div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+    <main class="flex-1 flex p-6 gap-6">
+
+      <!-- Settings sidebar nav -->
+      <div class="w-48 shrink-0">
+        <nav class="space-y-0.5">
+          <a href="settings-company.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium rounded-lg" style="color:#059669;background:#ECFDF5;">General</a>
+          <a href="settings-payroll-config.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Payroll Config</a>
+          <a href="settings-holidays.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Holidays</a>
+          <a href="settings-leave-policies.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Leave Policies</a>
+          <a href="settings-billing.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Billing & Plan</a>
+          <a href="settings-integrations.html" class="flex items-center gap-2.5 px-3 py-2 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100">Integrations</a>
+        </nav>
+      </div>
+
+      <!-- Content -->
+      <div class="flex-1 max-w-2xl">
+        <div class="bg-white border border-gray-100 rounded-xl p-6 mb-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-5">Company Information</h2>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="form-label">Company Name</label><input type="text" class="form-input" value="Acme Corporation"></div>
+              <div><label class="form-label">Legal Name</label><input type="text" class="form-input" value="Acme Corporation Inc."></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Industry</label>
+                <select class="form-select"><option selected>Information Technology</option><option>Manufacturing</option><option>Retail</option><option>Healthcare</option><option>Finance</option></select>
+              </div>
+              <div>
+                <label class="form-label">Company Size</label>
+                <select class="form-select"><option>1–10</option><option>11–50</option><option selected>51–200</option><option>201–500</option><option>500+</option></select>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="form-label">Tax Identification Number (TIN)</label><input type="text" class="form-input" value="123-456-789-000"></div>
+              <div><label class="form-label">SEC / DTI Registration #</label><input type="text" class="form-input" value="CS202312345"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="form-label">Year Founded</label><input type="number" class="form-input" value="2018"></div>
+              <div>
+                <label class="form-label">Employment Type</label>
+                <select class="form-select"><option selected>Corporation</option><option>Single Proprietorship</option><option>Partnership</option></select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-6 mb-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-5">Contact & Location</h2>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="form-label">Primary Email</label><input type="email" class="form-input" value="hr@acmecorp.com"></div>
+              <div><label class="form-label">Phone</label><input type="tel" class="form-input" value="+63 2 8888 0000"></div>
+            </div>
+            <div><label class="form-label">Website</label><input type="url" class="form-input" value="https://www.acmecorp.com"></div>
+            <div><label class="form-label">Business Address</label><input type="text" class="form-input" value="20F Ayala Tower, 6811 Ayala Ave, Makati City, Metro Manila 1226"></div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-xl p-6 mb-5">
+          <h2 class="text-sm font-semibold text-gray-900 mb-4">Government Employer Numbers</h2>
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="form-label">SSS Employer #</label><input type="text" class="form-input" value="03-1234567-8"></div>
+              <div><label class="form-label">PhilHealth Employer #</label><input type="text" class="form-input" value="PH-000123456"></div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label class="form-label">Pag-IBIG Employer #</label><input type="text" class="form-input" value="0100-123456-7"></div>
+              <div><label class="form-label">BIR RDO Code</label><input type="text" class="form-input" placeholder="e.g., 050 — Makati South"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <button class="px-5 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Save Changes</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

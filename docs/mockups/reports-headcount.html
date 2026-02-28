@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headcount Report — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .bar { border-radius: 4px 4px 0 0; transition: opacity 0.15s; }
+    .bar:hover { opacity: 0.8; }
+  </style>
+</head>
+<body class="bg-gray-50 flex" data-page="reports">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+
+    <!-- Topbar -->
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div>
+        <h1 class="text-base font-semibold text-gray-900">Headcount Report</h1>
+        <p class="text-xs text-gray-400">Employee counts, hiring trends &amp; turnover</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+
+    <main class="flex-1 p-6 space-y-5">
+
+      <!-- Filter bar -->
+      <div class="flex items-center gap-3 flex-wrap">
+        <div class="flex items-center gap-2">
+          <label class="text-xs font-medium text-gray-500">Year</label>
+          <select class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:border-transparent" style="--tw-ring-color:#3ECF8E;">
+            <option selected>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-xs font-medium text-gray-500">Quarter</label>
+          <select class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-700 focus:outline-none">
+            <option selected>All</option>
+            <option>Q1</option>
+            <option>Q2</option>
+            <option>Q3</option>
+            <option>Q4</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-2">
+          <label class="text-xs font-medium text-gray-500">Department</label>
+          <select class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-700 focus:outline-none">
+            <option selected>All Departments</option>
+            <option>Executive</option>
+            <option>HR</option>
+            <option>Finance</option>
+            <option>IT</option>
+            <option>Operations</option>
+            <option>Sales</option>
+          </select>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <button class="flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-lg border border-gray-200 bg-white text-gray-700 hover:bg-gray-50">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="grid grid-cols-4 gap-4">
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+          </div>
+          <div class="text-2xl font-bold text-gray-900 mb-0.5">87</div>
+          <div class="text-xs text-gray-400 font-medium">Total Employees</div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center" style="background:#ECFDF5;">
+              <svg class="w-5 h-5" style="color:#059669;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+            </div>
+            <span class="badge badge-green">YTD</span>
+          </div>
+          <div class="text-2xl font-bold text-gray-900 mb-0.5">14</div>
+          <div class="text-xs text-gray-400 font-medium">New Hires YTD</div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6"/></svg>
+            </div>
+            <span class="badge badge-red">YTD</span>
+          </div>
+          <div class="text-2xl font-bold text-gray-900 mb-0.5">6</div>
+          <div class="text-xs text-gray-400 font-medium">Separations YTD</div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between mb-3">
+            <div class="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+          </div>
+          <div class="text-2xl font-bold text-gray-900 mb-0.5">6.9%</div>
+          <div class="text-xs text-gray-400 font-medium">Turnover Rate</div>
+        </div>
+      </div>
+
+      <!-- Charts row -->
+      <div class="grid grid-cols-2 gap-4">
+
+        <!-- Monthly Headcount -->
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Monthly Headcount</h3>
+              <p class="text-xs text-gray-400 mt-0.5">Jan–Apr 2024</p>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-500">
+              <span class="w-2.5 h-2.5 rounded-sm inline-block" style="background:#3ECF8E;"></span>
+              Employees
+            </div>
+          </div>
+          <!-- Bar chart -->
+          <div class="flex items-end gap-6" style="height:140px;">
+            <!-- Jan -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <span class="text-xs font-semibold text-gray-600">78</span>
+              <div class="w-full bar" style="height:86%; background:#3ECF8E; opacity:0.75;"></div>
+              <span class="text-xs text-gray-400">Jan</span>
+            </div>
+            <!-- Feb -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <span class="text-xs font-semibold text-gray-600">80</span>
+              <div class="w-full bar" style="height:89%; background:#3ECF8E; opacity:0.8;"></div>
+              <span class="text-xs text-gray-400">Feb</span>
+            </div>
+            <!-- Mar -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <span class="text-xs font-semibold text-gray-600">84</span>
+              <div class="w-full bar" style="height:94%; background:#3ECF8E; opacity:0.9;"></div>
+              <span class="text-xs text-gray-400">Mar</span>
+            </div>
+            <!-- Apr -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <span class="text-xs font-semibold" style="color:#059669;">87</span>
+              <div class="w-full bar" style="height:100%; background:#3ECF8E; box-shadow:0 4px 12px rgba(62,207,142,0.3);"></div>
+              <span class="text-xs font-semibold" style="color:#059669;">Apr</span>
+            </div>
+          </div>
+          <!-- Y-axis labels hint -->
+          <div class="flex justify-between mt-2 px-0.5">
+            <span class="text-xs text-gray-300">0</span>
+            <span class="text-xs text-gray-300">50</span>
+            <span class="text-xs text-gray-300">100</span>
+          </div>
+        </div>
+
+        <!-- Monthly Hires vs Separations -->
+        <div class="bg-white border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-900">Hires vs. Separations</h3>
+              <p class="text-xs text-gray-400 mt-0.5">Jan–Apr 2024</p>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-gray-500">
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm inline-block" style="background:#3ECF8E;"></span>Hires</span>
+              <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm inline-block bg-red-300"></span>Separations</span>
+            </div>
+          </div>
+          <!-- Grouped bars -->
+          <div class="flex items-end gap-4" style="height:140px;">
+            <!-- Jan: 3/1 -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full flex items-end gap-1" style="height:116px;">
+                <div class="flex-1 bar" style="height:60%; background:#3ECF8E;"></div>
+                <div class="flex-1 bar" style="height:20%; background:#FCA5A5;"></div>
+              </div>
+              <span class="text-xs text-gray-400">Jan</span>
+              <span class="text-xs text-gray-500 font-medium">3 / 1</span>
+            </div>
+            <!-- Feb: 2/2 -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full flex items-end gap-1" style="height:116px;">
+                <div class="flex-1 bar" style="height:40%; background:#3ECF8E;"></div>
+                <div class="flex-1 bar" style="height:40%; background:#FCA5A5;"></div>
+              </div>
+              <span class="text-xs text-gray-400">Feb</span>
+              <span class="text-xs text-gray-500 font-medium">2 / 2</span>
+            </div>
+            <!-- Mar: 5/2 -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full flex items-end gap-1" style="height:116px;">
+                <div class="flex-1 bar" style="height:100%; background:#3ECF8E;"></div>
+                <div class="flex-1 bar" style="height:40%; background:#FCA5A5;"></div>
+              </div>
+              <span class="text-xs text-gray-400">Mar</span>
+              <span class="text-xs text-gray-500 font-medium">5 / 2</span>
+            </div>
+            <!-- Apr: 4/1 -->
+            <div class="flex-1 flex flex-col items-center gap-2">
+              <div class="w-full flex items-end gap-1" style="height:116px;">
+                <div class="flex-1 bar" style="height:80%; background:#3ECF8E;"></div>
+                <div class="flex-1 bar" style="height:20%; background:#FCA5A5;"></div>
+              </div>
+              <span class="text-xs text-gray-400">Apr</span>
+              <span class="text-xs text-gray-500 font-medium">4 / 1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department headcount table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+          <h3 class="text-sm font-semibold text-gray-900">Department Headcount</h3>
+          <span class="text-xs text-gray-400">6 departments · April 2024</span>
+        </div>
+        <table class="w-full">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-100">
+              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Department</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Headcount</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Avg Tenure (yrs)</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">New Hires (YTD)</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Separations (YTD)</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Vacancy</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-purple-50 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-800">Executive</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-900">3</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">4.2</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">0</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">0</td>
+              <td class="px-5 py-3.5 text-right"><span class="text-sm text-gray-400">—</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-pink-50 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-800">HR</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-900">8</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">2.8</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">1</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">0</td>
+              <td class="px-5 py-3.5 text-right">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold bg-yellow-50 text-yellow-700">1</span>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-emerald-50 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-800">Finance</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-900">12</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">3.5</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">2</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">1</td>
+              <td class="px-5 py-3.5 text-right"><span class="text-sm text-gray-400">—</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-800">IT</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-900">15</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">2.1</td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold" style="color:#059669;">5</td>
+              <td class="px-5 py-3.5 text-right text-sm text-red-500 font-medium">2</td>
+              <td class="px-5 py-3.5 text-right">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold bg-red-50 text-red-600">2</span>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-orange-50 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-800">Operations</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-900">22</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">1.9</td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold" style="color:#059669;">4</td>
+              <td class="px-5 py-3.5 text-right text-sm text-red-500 font-medium">2</td>
+              <td class="px-5 py-3.5 text-right">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold bg-yellow-50 text-yellow-700">1</span>
+              </td>
+            </tr>
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-teal-50 flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-800">Sales</span>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-900">18</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">1.5</td>
+              <td class="px-5 py-3.5 text-right text-sm text-gray-600">2</td>
+              <td class="px-5 py-3.5 text-right text-sm text-red-500 font-medium">1</td>
+              <td class="px-5 py-3.5 text-right">
+                <span class="inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold bg-red-50 text-red-600">3</span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot class="border-t border-gray-200">
+            <tr class="bg-gray-50">
+              <td class="px-5 py-3.5 text-sm font-semibold text-gray-900">Total</td>
+              <td class="px-5 py-3.5 text-right text-sm font-bold text-gray-900">87</td>
+              <td class="px-5 py-3.5 text-right text-sm font-semibold text-gray-700">2.7</td>
+              <td class="px-5 py-3.5 text-right text-sm font-bold" style="color:#059669;">14</td>
+              <td class="px-5 py-3.5 text-right text-sm font-bold text-red-500">6</td>
+              <td class="px-5 py-3.5 text-right text-sm font-bold text-yellow-700">7</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="_sidebar.js"></script>
+</body>
+</html>

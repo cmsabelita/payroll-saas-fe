@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIR Form 2316 — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="compliance">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+
+    <!-- Topbar -->
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div>
+        <h1 class="text-base font-semibold text-gray-900">BIR Form 2316</h1>
+        <p class="text-xs text-gray-400">Certificate of Compensation Payment / Tax Withheld — Annual</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        </button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+
+    <!-- Underline tabs -->
+    <div class="bg-white border-b border-gray-100 px-6">
+      <nav class="flex gap-0">
+        <a href="compliance.html" class="text-sm font-medium px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">Overview</a>
+        <a href="compliance-remittances.html" class="text-sm font-medium px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">Remittances</a>
+        <a href="compliance-bir-1601c.html" class="text-sm font-medium px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">BIR 1601-C</a>
+        <a href="compliance-bir-2316.html" class="text-sm font-medium px-4 py-3 border-b-2 border-green-500 text-green-600 whitespace-nowrap">BIR 2316</a>
+        <a href="compliance-alphalist.html" class="text-sm font-medium px-4 py-3 border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">Alphalist</a>
+      </nav>
+    </div>
+
+    <main class="flex-1 p-6">
+
+      <!-- Info banner -->
+      <div class="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 mb-5">
+        <svg class="w-5 h-5 text-blue-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-sm text-blue-700">
+          <span class="font-semibold">Form 2316</span> must be issued to all employees on or before <strong>January 31</strong> of the following year. For Year 2023, the deadline was January 31, 2024.
+        </p>
+      </div>
+
+      <!-- Controls row -->
+      <div class="flex items-center gap-4 mb-5">
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium text-gray-700">Tax Year:</label>
+          <div class="flex items-center gap-2">
+            <button class="text-sm font-semibold px-3 py-1.5 rounded-lg text-white" style="background:#3ECF8E;">2023</button>
+            <button class="text-sm font-medium px-3 py-1.5 rounded-lg text-gray-400 border border-gray-200 bg-white cursor-not-allowed" disabled>2024 (Upcoming)</button>
+          </div>
+        </div>
+
+        <div class="ml-auto flex items-center gap-2">
+          <div class="relative">
+            <input type="text" placeholder="Search employee..." class="text-sm border border-gray-200 rounded-lg pl-8 pr-3 py-1.5 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200 focus:border-green-400 w-48">
+            <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            Filter
+          </button>
+          <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white" style="background:#3ECF8E;">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Generate All
+          </button>
+          <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Email to All Employees
+          </button>
+        </div>
+      </div>
+
+      <!-- Summary KPI cards -->
+      <div class="grid grid-cols-4 gap-4 mb-5">
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">Total Employees</p>
+          <p class="text-2xl font-bold text-gray-900">87</p>
+          <p class="text-xs text-gray-400 mt-0.5">For tax year 2023</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">Generated</p>
+          <div class="flex items-end gap-1">
+            <p class="text-2xl font-bold text-gray-900">87</p>
+            <p class="text-sm text-gray-400 mb-1">/ 87</p>
+          </div>
+          <div class="flex items-center gap-1.5 mt-1">
+            <div class="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
+              <div class="h-full rounded-full" style="width:100%;background:#3ECF8E;"></div>
+            </div>
+            <span class="text-xs text-gray-400">100%</span>
+          </div>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">Distributed</p>
+          <div class="flex items-end gap-1">
+            <p class="text-2xl font-bold text-gray-900">72</p>
+            <p class="text-sm text-gray-400 mb-1">/ 87</p>
+          </div>
+          <div class="flex items-center gap-1.5 mt-1">
+            <div class="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
+              <div class="h-full rounded-full bg-blue-400" style="width:82.7%;"></div>
+            </div>
+            <span class="text-xs text-gray-400">83%</span>
+          </div>
+        </div>
+        <div class="bg-white border border-orange-100 rounded-xl p-4">
+          <p class="text-xs text-gray-400 font-medium mb-1">Pending Distribution</p>
+          <p class="text-2xl font-bold text-orange-500">15</p>
+          <p class="text-xs text-gray-400 mt-0.5">Employees not yet notified</p>
+        </div>
+      </div>
+
+      <!-- Employee table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-gray-900">Employee 2316 Forms — Year 2023</h2>
+          <div class="flex items-center gap-2">
+            <button class="text-xs font-medium px-2.5 py-1 rounded-lg bg-gray-100 text-gray-600">All 87</button>
+            <button class="text-xs font-medium px-2.5 py-1 rounded-lg text-gray-500 hover:bg-gray-50">Distributed 72</button>
+            <button class="text-xs font-medium px-2.5 py-1 rounded-lg text-orange-500 hover:bg-orange-50">Pending 15</button>
+          </div>
+        </div>
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Employee</th>
+              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">TIN</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Compensation</th>
+              <th class="text-right px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Tax Withheld</th>
+              <th class="text-center px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Generated</th>
+              <th class="text-center px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Distributed</th>
+              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Maria Santos</p>
+                    <p class="text-xs text-gray-400">Senior Manager</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-sm text-gray-600 font-mono">123-456-001-000</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱2,100,000.00</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱410,500.00</td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">View</button>
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">Email</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:linear-gradient(135deg,#60A5FA,#2563EB);">AR</div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Ana Reyes</p>
+                    <p class="text-xs text-gray-400">HR Specialist</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-sm text-gray-600 font-mono">123-456-002-000</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱900,000.00</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱119,700.00</td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">View</button>
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">Email</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:linear-gradient(135deg,#F59E0B,#D97706);">JC</div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Jose Cruz</p>
+                    <p class="text-xs text-gray-400">Software Engineer</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-sm text-gray-600 font-mono">123-456-003-000</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱1,020,000.00</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱153,000.00</td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-orange-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">View</button>
+                  <button class="text-xs font-semibold px-2.5 py-1 rounded-lg text-white" style="background:#3ECF8E;">Email</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:linear-gradient(135deg,#A78BFA,#7C3AED);">RL</div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Rosa Lim</p>
+                    <p class="text-xs text-gray-400">Accountant</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-sm text-gray-600 font-mono">123-456-004-000</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱780,000.00</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱89,400.00</td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">View</button>
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">Email</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 cursor-pointer">
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0" style="background:linear-gradient(135deg,#6EE7B7,#059669);">BT</div>
+                  <div>
+                    <p class="text-sm font-semibold text-gray-900">Ben Torres</p>
+                    <p class="text-xs text-gray-400">Operations Staff</p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-5 py-3.5 text-sm text-gray-600 font-mono">123-456-005-000</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱456,000.00</td>
+              <td class="px-5 py-3.5 text-right text-sm font-medium text-gray-900">₱28,200.00</td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+              </td>
+              <td class="px-5 py-3.5 text-center">
+                <svg class="w-4 h-4 text-orange-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              </td>
+              <td class="px-5 py-3.5">
+                <div class="flex items-center gap-2">
+                  <button class="text-xs font-medium px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50">View</button>
+                  <button class="text-xs font-semibold px-2.5 py-1 rounded-lg text-white" style="background:#3ECF8E;">Email</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr class="bg-gray-50">
+              <td colspan="7" class="px-5 py-3.5 text-center text-xs text-gray-400">
+                Showing 5 of 87 employees &mdash;
+                <button class="text-green-600 font-medium hover:underline">View all 87 records</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <div class="px-5 py-4 border-t border-gray-100 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg text-white" style="background:#3ECF8E;">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Generate All
+            </button>
+            <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              Email to All Employees
+            </button>
+            <button class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Download All PDFs
+            </button>
+          </div>
+          <p class="text-xs text-gray-400">15 employees pending distribution</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

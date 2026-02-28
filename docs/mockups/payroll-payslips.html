@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distribute Payslips — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="payroll">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div class="flex items-center gap-2">
+        <a href="payroll.html" class="text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"/></svg>
+          April 2024 Payroll
+        </a>
+        <span class="text-gray-300">/</span>
+        <div>
+          <h1 class="text-base font-semibold text-gray-900">Distribute Payslips</h1>
+          <p class="text-xs text-gray-400">Send payslips to all 87 employees</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+    <main class="flex-1 p-6">
+
+      <!-- Approved banner -->
+      <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-5 py-3.5 flex items-center gap-3 mb-6">
+        <svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-sm text-emerald-800">Payroll Approved on April 30, 2024. You can now distribute payslips to employees.</p>
+      </div>
+
+      <!-- Distribution options -->
+      <div class="bg-white border border-gray-100 rounded-xl p-5 mb-5">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Distribution Method</h2>
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+            <input type="radio" name="method" class="mt-0.5 accent-emerald-500">
+            <div>
+              <p class="text-sm font-medium text-gray-900">Email all employees</p>
+              <p class="text-xs text-gray-500 mt-0.5">Send payslip PDF to each employee's registered email address</p>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3 border-2 border-emerald-400 rounded-lg cursor-pointer bg-emerald-50">
+            <input type="radio" name="method" checked class="mt-0.5 accent-emerald-500">
+            <div>
+              <p class="text-sm font-medium text-gray-900">Portal only <span class="ml-1 text-xs font-semibold px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Recommended</span></p>
+              <p class="text-xs text-gray-500 mt-0.5">Employees view their payslip in the self-service portal. No email sent.</p>
+            </div>
+          </label>
+          <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+            <input type="radio" name="method" class="mt-0.5 accent-emerald-500">
+            <div>
+              <p class="text-sm font-medium text-gray-900">Both email + portal</p>
+              <p class="text-xs text-gray-500 mt-0.5">Publish to portal and also send email notification with PDF attachment</p>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Employee table -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-5 py-3.5 border-b border-gray-100 flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-gray-900">Employees <span class="text-gray-400 font-normal">(87)</span></h2>
+          <span class="text-xs text-gray-500">0 of 87 sent</span>
+        </div>
+        <table class="w-full">
+          <thead class="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th class="w-10 px-4 py-2.5 text-left"><input type="checkbox" class="accent-emerald-500"></th>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Employee</th>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Email</th>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Portal Access</th>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3"><input type="checkbox" checked class="accent-emerald-500"></td>
+              <td class="px-4 py-3"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div><div><p class="text-sm font-medium text-gray-900">Maria Santos</p><p class="text-xs text-gray-400">CEO · EMP-0001</p></div></div></td>
+              <td class="px-4 py-3 text-sm text-gray-600">ceo@acmecorp.com</td>
+              <td class="px-4 py-3"><span class="text-xs font-medium text-emerald-700">✓ Active</span></td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Not sent</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3"><input type="checkbox" checked class="accent-emerald-500"></td>
+              <td class="px-4 py-3"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold bg-blue-400">AR</div><div><p class="text-sm font-medium text-gray-900">Ana Reyes</p><p class="text-xs text-gray-400">HR Manager · EMP-0023</p></div></div></td>
+              <td class="px-4 py-3 text-sm text-gray-600">ana.reyes@acmecorp.com</td>
+              <td class="px-4 py-3"><span class="text-xs font-medium text-emerald-700">✓ Active</span></td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Not sent</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3"><input type="checkbox" checked class="accent-emerald-500"></td>
+              <td class="px-4 py-3"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold bg-purple-400">RL</div><div><p class="text-sm font-medium text-gray-900">Roberto Lim</p><p class="text-xs text-gray-400">CFO · EMP-0008</p></div></div></td>
+              <td class="px-4 py-3 text-sm text-gray-600">roberto@acmecorp.com</td>
+              <td class="px-4 py-3"><span class="text-xs font-medium text-emerald-700">✓ Active</span></td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Not sent</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3"><input type="checkbox" checked class="accent-emerald-500"></td>
+              <td class="px-4 py-3"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold bg-orange-400">JC</div><div><p class="text-sm font-medium text-gray-900">Jose Cruz</p><p class="text-xs text-gray-400">Sr. Developer · EMP-0041</p></div></div></td>
+              <td class="px-4 py-3 text-sm text-gray-600">jose.cruz@acmecorp.com</td>
+              <td class="px-4 py-3"><span class="text-xs font-medium text-emerald-700">✓ Active</span></td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Not sent</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3"><input type="checkbox" class="accent-emerald-500"></td>
+              <td class="px-4 py-3"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold bg-pink-400">PG</div><div><p class="text-sm font-medium text-gray-900">Pedro Garcia</p><p class="text-xs text-gray-400">Operations Staff · EMP-0055</p></div></div></td>
+              <td class="px-4 py-3 text-sm text-gray-600">pedro.garcia@acmecorp.com</td>
+              <td class="px-4 py-3"><span class="text-xs font-medium text-red-500">✗ No portal</span></td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Not sent</span></td>
+            </tr>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-3"><input type="checkbox" checked class="accent-emerald-500"></td>
+              <td class="px-4 py-3"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold bg-teal-400">TF</div><div><p class="text-sm font-medium text-gray-900">Teresa Flores</p><p class="text-xs text-gray-400">COO · EMP-0004</p></div></div></td>
+              <td class="px-4 py-3 text-sm text-gray-600">teresa@acmecorp.com</td>
+              <td class="px-4 py-3"><span class="text-xs font-medium text-emerald-700">✓ Active</span></td>
+              <td class="px-4 py-3"><span class="badge badge-gray">Not sent</span></td>
+            </tr>
+            <tr class="bg-gray-50 border-t border-gray-100">
+              <td colspan="5" class="px-4 py-2.5 text-center text-xs text-gray-400">+ 81 more employees</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="px-5 py-4 border-t border-gray-100 flex items-center justify-between">
+          <p class="text-sm text-gray-500"><span class="font-medium text-gray-900">85</span> employees selected</p>
+          <div class="flex items-center gap-3">
+            <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Download All as ZIP</button>
+            <button class="px-4 py-2 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Send to 85 Employees →</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Contributions Report — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="reports">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div class="flex items-center gap-2">
+        <a href="reports.html" class="text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"/></svg>Reports</a>
+        <span class="text-gray-300">/</span>
+        <div><h1 class="text-base font-semibold text-gray-900">Government Contributions Report</h1><p class="text-xs text-gray-400">SSS, PhilHealth, Pag-IBIG & BIR summary</p></div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Export Excel</button>
+        <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Export PDF</button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+    <main class="flex-1 p-6">
+
+      <div class="flex items-center gap-3 mb-6">
+        <select class="form-select w-28"><option>2024</option><option>2023</option></select>
+      </div>
+
+      <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded bg-blue-100 flex items-center justify-center"><span class="text-xs font-bold text-blue-700">S</span></div><p class="text-xs font-semibold text-gray-600">SSS YTD</p></div>
+          <p class="text-lg font-bold text-gray-900">₱257,400</p>
+          <p class="text-xs text-gray-400 mt-1">₱193,200 employee · ₱64,200 employer</p>
+          <p class="text-xs text-emerald-600 mt-1">4/4 months filed ✓</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded bg-green-100 flex items-center justify-center"><span class="text-xs font-bold text-green-700">P</span></div><p class="text-xs font-semibold text-gray-600">PhilHealth YTD</p></div>
+          <p class="text-lg font-bold text-gray-900">₱210,000</p>
+          <p class="text-xs text-gray-400 mt-1">₱105,000 employee · ₱105,000 employer</p>
+          <p class="text-xs text-emerald-600 mt-1">4/4 months filed ✓</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded bg-orange-100 flex items-center justify-center"><span class="text-xs font-bold text-orange-700">H</span></div><p class="text-xs font-semibold text-gray-600">Pag-IBIG YTD</p></div>
+          <p class="text-lg font-bold text-gray-900">₱34,800</p>
+          <p class="text-xs text-gray-400 mt-1">₱17,400 employee · ₱17,400 employer</p>
+          <p class="text-xs text-yellow-600 mt-1">3/4 months filed</p>
+        </div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2"><div class="w-6 h-6 rounded bg-red-100 flex items-center justify-center"><span class="text-xs font-bold text-red-700">B</span></div><p class="text-xs font-semibold text-gray-600">BIR Withheld YTD</p></div>
+          <p class="text-lg font-bold text-gray-900">₱744,000</p>
+          <p class="text-xs text-gray-400 mt-1">Employee only</p>
+          <p class="text-xs text-red-600 mt-1">⚠ 3/4 months filed</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-5 py-3.5 border-b border-gray-100"><h2 class="text-sm font-semibold text-gray-900">Monthly Contributions — 2024</h2></div>
+        <table class="w-full">
+          <thead class="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Month</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">SSS (Emp+Er)</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">PhilHealth</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">Pag-IBIG</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">BIR Withheld</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">Total</th>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">January 2024</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱64,300</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱52,500</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱8,550</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱184,500</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱309,850</td><td class="px-4 py-3"><span class="badge badge-green">Filed ✓</span></td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">February 2024</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱63,800</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱51,750</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱8,400</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱181,000</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱304,950</td><td class="px-4 py-3"><span class="badge badge-green">Filed ✓</span></td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">March 2024</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱65,100</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱53,250</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱8,700</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱192,000</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱319,050</td><td class="px-4 py-3"><span class="badge badge-green">Filed ✓</span></td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">April 2024</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱64,350</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱52,500</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱8,700</td><td class="px-4 py-3 text-sm text-right text-red-600 font-medium">₱186,500 ⚠</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱312,050</td><td class="px-4 py-3"><span class="badge badge-yellow">Partial</span></td></tr>
+            <tr class="bg-gray-50 border-t border-gray-200"><td class="px-4 py-3 text-sm font-semibold text-gray-700">YTD Total</td><td class="px-4 py-3 text-sm text-right font-semibold text-gray-900">₱257,550</td><td class="px-4 py-3 text-sm text-right font-semibold text-gray-900">₱210,000</td><td class="px-4 py-3 text-sm text-right font-semibold text-gray-900">₱34,350</td><td class="px-4 py-3 text-sm text-right font-semibold text-gray-900">₱744,000</td><td class="px-4 py-3 text-sm text-right font-semibold text-gray-900">₱1,245,900</td><td class="px-4 py-3"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

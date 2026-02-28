@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Incident — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .form-input { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;transition:border-color .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-select { width:100%;padding:9px 13px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:10px;color:#111827;outline:none;appearance:none;cursor:pointer; }
+    .form-select:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.1); }
+    .form-label { display:block;font-size:.8125rem;font-weight:500;color:#374151;margin-bottom:5px; }
+  </style>
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-50" data-page="compliance">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+    <header class="h-14 bg-white border-b border-gray-100 flex items-center px-6 gap-4 shrink-0">
+      <div class="flex-1 flex items-center gap-2 text-sm text-gray-500">
+        <a href="compliance.html" class="hover:text-gray-700">Compliance</a>
+        <span>›</span>
+        <a href="compliance-incidents.html" class="hover:text-gray-700">Incidents</a>
+        <span>›</span>
+        <span class="text-gray-900 font-medium">Report Incident</span>
+      </div>
+      <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto py-8 px-6">
+      <div class="max-w-2xl mx-auto">
+
+        <div class="bg-white border border-gray-100 rounded-xl p-8">
+          <h1 class="text-base font-semibold text-gray-900 mb-1">Report HR / Safety Incident</h1>
+          <p class="text-xs text-gray-400 mb-6">Log workplace incidents for DOLE compliance. All entries are date-stamped and auditable.</p>
+
+          <div class="space-y-5">
+
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="form-label">Date of Incident <span class="text-red-400">*</span></label>
+                <input type="date" class="form-input" value="2026-02-28">
+              </div>
+              <div>
+                <label class="form-label">Time of Incident</label>
+                <input type="time" class="form-input" value="14:30">
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">Incident Type <span class="text-red-400">*</span></label>
+              <select class="form-select">
+                <option value="">Select type…</option>
+                <optgroup label="Safety & Health">
+                  <option selected>Workplace Injury</option>
+                  <option>Near-Miss</option>
+                  <option>Occupational Illness</option>
+                  <option>Property Damage</option>
+                </optgroup>
+                <optgroup label="HR Compliance">
+                  <option>Harassment / Discrimination</option>
+                  <option>VAWC (Violence Against Women)</option>
+                  <option>Labor Standards Violation</option>
+                  <option>Misconduct</option>
+                </optgroup>
+                <optgroup label="DOLE-Reportable">
+                  <option>Work-Related Fatality</option>
+                  <option>Serious Physical Injury (8+ days lost)</option>
+                </optgroup>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="form-label">Employee(s) Involved <span class="text-red-400">*</span></label>
+              <input type="text" class="form-input" placeholder="Search employee name…" value="Juan dela Cruz">
+              <p class="text-xs text-gray-400 mt-1">Type to search from employee list. Separate multiple names with commas.</p>
+            </div>
+
+            <div>
+              <label class="form-label">Location / Area</label>
+              <input type="text" class="form-input" placeholder="e.g. 3rd Floor, Server Room, Warehouse A" value="2nd Floor, Operations Area">
+            </div>
+
+            <div>
+              <label class="form-label">Severity <span class="text-red-400">*</span></label>
+              <div class="flex gap-2">
+                <label class="flex-1 flex items-center gap-2 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-emerald-300">
+                  <input type="radio" name="severity" class="accent-emerald-500">
+                  <div><p class="text-sm font-medium text-gray-900">Low</p><p class="text-xs text-gray-400">Minor, no work lost</p></div>
+                </label>
+                <label class="flex-1 flex items-center gap-2 border border-amber-200 bg-amber-50 rounded-xl px-4 py-3 cursor-pointer">
+                  <input type="radio" name="severity" class="accent-amber-500" checked>
+                  <div><p class="text-sm font-medium text-gray-900">Medium</p><p class="text-xs text-gray-400">Work lost, no hospitalization</p></div>
+                </label>
+                <label class="flex-1 flex items-center gap-2 border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-red-200">
+                  <input type="radio" name="severity" class="accent-red-500">
+                  <div><p class="text-sm font-medium text-gray-900">High</p><p class="text-xs text-gray-400">Hospitalization / DOLE-reportable</p></div>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="form-label">Incident Description <span class="text-red-400">*</span></label>
+              <textarea class="form-input resize-none" rows="4" placeholder="Describe what happened, sequence of events, and conditions at the time…">Employee slipped on wet floor near the pantry area after a water cooler overflow. Complained of pain in left ankle. Administered first aid on site.</textarea>
+            </div>
+
+            <div>
+              <label class="form-label">Immediate Action Taken <span class="text-red-400">*</span></label>
+              <textarea class="form-input resize-none" rows="2" placeholder="e.g. First aid administered, area secured, employee sent to clinic…">First aid administered. Employee sent to company clinic. Area cordoned off and mopped. Maintenance notified.</textarea>
+            </div>
+
+            <div>
+              <label class="form-label">Witnesses <span class="text-gray-400 font-normal">(optional)</span></label>
+              <input type="text" class="form-input" placeholder="Names of witnesses present">
+            </div>
+
+            <div>
+              <label class="form-label">Days Lost from Work</label>
+              <input type="number" class="form-input" placeholder="0" min="0" value="2">
+            </div>
+
+            <div>
+              <label class="form-label">Supporting Documents <span class="text-gray-400 font-normal">(optional)</span></label>
+              <div class="border-2 border-dashed border-gray-200 rounded-xl px-4 py-4 text-center hover:border-emerald-300 transition cursor-pointer">
+                <svg class="w-5 h-5 text-gray-300 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/></svg>
+                <p class="text-xs text-gray-400">Photos, medical certificate, incident form</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- DOLE note for high severity -->
+          <div class="mt-5 flex items-start gap-3 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+            <svg class="w-4 h-4 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <p class="text-xs text-red-700">Work-related injuries causing 1+ day of work loss must be reported to DOLE via <span class="font-semibold">DOLE Work Accident Report (WAIR)</span> within <span class="font-semibold">48 hours</span>. Payro will generate a draft WAIR upon saving.</p>
+          </div>
+
+          <div class="flex gap-3 mt-6 pt-5 border-t border-gray-100">
+            <a href="compliance-incidents.html" class="px-4 py-2.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Cancel</a>
+            <button class="flex-1 py-2.5 text-sm font-semibold text-white rounded-lg" style="background:#3ECF8E;">Submit Incident Report →</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

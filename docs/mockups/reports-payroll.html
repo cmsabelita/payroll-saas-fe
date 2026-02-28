@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Report — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>* { font-family: 'DM Sans', sans-serif; }
+  .bar-wrap { display:flex;align-items:flex-end;gap:4px;height:120px; }
+  .bar { width:32px;border-radius:4px 4px 0 0;transition:opacity .15s; }
+  .bar:hover { opacity:0.8; }</style>
+</head>
+<body class="bg-gray-50 flex" data-page="reports">
+  <div id="sidebar-placeholder"></div>
+  <div class="flex-1 flex flex-col min-h-screen ml-[232px]">
+    <header class="bg-white border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+      <div class="flex items-center gap-2">
+        <a href="reports.html" class="text-gray-400 hover:text-gray-600 text-sm flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 19l-7-7 7-7"/></svg>Reports</a>
+        <span class="text-gray-300">/</span>
+        <div><h1 class="text-base font-semibold text-gray-900">Payroll Report</h1><p class="text-xs text-gray-400">Monthly payroll summary and cost analysis</p></div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button class="text-gray-400 hover:text-gray-600"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg></button>
+        <div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background:linear-gradient(135deg,#3ECF8E,#059669);">MS</div>
+      </div>
+    </header>
+    <main class="flex-1 p-6">
+
+      <!-- Filters -->
+      <div class="flex items-center gap-3 mb-6">
+        <select class="form-select w-28"><option>2024</option><option>2023</option></select>
+        <select class="form-select w-36"><option>All Months</option><option>January</option><option>February</option><option>March</option><option>April</option></select>
+        <select class="form-select w-44"><option>All Departments</option><option>IT</option><option>HR</option><option>Finance</option></select>
+        <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>Export Excel</button>
+        <button class="px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>Export PDF</button>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Total Payroll YTD</p><p class="text-xl font-bold text-gray-900 mt-1">₱17,150,000</p><p class="text-xs text-emerald-600 mt-1">Jan–Apr 2024</p></div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Avg Monthly</p><p class="text-xl font-bold text-gray-900 mt-1">₱4,287,500</p><p class="text-xs text-gray-400 mt-1">per period</p></div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Total Employees</p><p class="text-xl font-bold text-gray-900 mt-1">87</p><p class="text-xs text-gray-400 mt-1">as of April 2024</p></div>
+        <div class="bg-white border border-gray-100 rounded-xl p-4"><p class="text-xs text-gray-500">Tax Withheld YTD</p><p class="text-xl font-bold text-gray-900 mt-1">₱744,000</p><p class="text-xs text-gray-400 mt-1">BIR withholding</p></div>
+      </div>
+
+      <!-- Bar chart -->
+      <div class="bg-white border border-gray-100 rounded-xl p-5 mb-6">
+        <h2 class="text-sm font-semibold text-gray-900 mb-4">Monthly Payroll Trend — 2024</h2>
+        <div class="flex items-end gap-6">
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-500">₱4.1M</span>
+            <div class="bar" style="height:95px;background:#3ECF8E;"></div>
+            <span class="text-xs text-gray-500">Jan</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-500">₱4.0M</span>
+            <div class="bar" style="height:88px;background:#3ECF8E;"></div>
+            <span class="text-xs text-gray-500">Feb</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-500">₱4.2M</span>
+            <div class="bar" style="height:100px;background:#3ECF8E;"></div>
+            <span class="text-xs text-gray-500">Mar</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-500">₱4.3M</span>
+            <div class="bar" style="height:108px;background:#3ECF8E;"></div>
+            <span class="text-xs text-gray-500">Apr</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">May</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Jun</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Jul</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Aug</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Sep</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Oct</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Nov</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-gray-300">—</span>
+            <div class="bar" style="height:4px;background:#E5E7EB;"></div>
+            <span class="text-xs text-gray-300">Dec</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Department breakdown -->
+      <div class="bg-white border border-gray-100 rounded-xl overflow-hidden">
+        <div class="px-5 py-3.5 border-b border-gray-100">
+          <h2 class="text-sm font-semibold text-gray-900">Department Breakdown — April 2024</h2>
+        </div>
+        <table class="w-full">
+          <thead class="bg-gray-50 border-b border-gray-100">
+            <tr>
+              <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wide">Department</th>
+              <th class="px-4 py-2.5 text-center text-xs font-semibold text-gray-500 uppercase tracking-wide">Employees</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">Gross Pay</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">Deductions</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">Net Pay</th>
+              <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 uppercase tracking-wide">% of Total</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-50">
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Executive</td><td class="px-4 py-3 text-sm text-center text-gray-600">3</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱540,000</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱58,500</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱481,500</td><td class="px-4 py-3 text-sm text-right text-gray-500">12.6%</td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Human Resources</td><td class="px-4 py-3 text-sm text-center text-gray-600">8</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱408,000</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱48,960</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱359,040</td><td class="px-4 py-3 text-sm text-right text-gray-500">9.5%</td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Finance & Accounting</td><td class="px-4 py-3 text-sm text-center text-gray-600">12</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱720,000</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱86,400</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱633,600</td><td class="px-4 py-3 text-sm text-right text-gray-500">16.8%</td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Information Technology</td><td class="px-4 py-3 text-sm text-center text-gray-600">15</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱975,000</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱117,000</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱858,000</td><td class="px-4 py-3 text-sm text-right text-gray-500">22.7%</td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Operations</td><td class="px-4 py-3 text-sm text-center text-gray-600">22</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱880,000</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱105,600</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱774,400</td><td class="px-4 py-3 text-sm text-right text-gray-500">20.5%</td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Sales & Marketing</td><td class="px-4 py-3 text-sm text-center text-gray-600">18</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱504,000</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱60,480</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱443,520</td><td class="px-4 py-3 text-sm text-right text-gray-500">11.7%</td></tr>
+            <tr class="hover:bg-gray-50"><td class="px-4 py-3 text-sm font-medium text-gray-900">Customer Support</td><td class="px-4 py-3 text-sm text-center text-gray-600">9</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱260,500</td><td class="px-4 py-3 text-sm text-right text-gray-700">₱31,260</td><td class="px-4 py-3 text-sm text-right font-medium text-gray-900">₱229,240</td><td class="px-4 py-3 text-sm text-right text-gray-500">6.1%</td></tr>
+            <tr class="bg-gray-50 border-t border-gray-200 font-semibold"><td class="px-4 py-3 text-sm text-gray-900">Total</td><td class="px-4 py-3 text-sm text-center text-gray-900">87</td><td class="px-4 py-3 text-sm text-right text-gray-900">₱4,287,500</td><td class="px-4 py-3 text-sm text-right text-gray-900">₱508,200</td><td class="px-4 py-3 text-sm text-right text-gray-900">₱3,779,300</td><td class="px-4 py-3 text-sm text-right text-gray-900">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+  <script src="_sidebar.js"></script>
+</body>
+</html>

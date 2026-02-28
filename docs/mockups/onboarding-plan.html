@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan & Billing — Payro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'DM Sans', sans-serif; }
+    .btn-primary { display:inline-flex;align-items:center;gap:6px;background:#3ECF8E;color:white;font-weight:600;padding:10px 22px;border-radius:10px;font-size:.9375rem;border:none;cursor:pointer;text-decoration:none;transition:background .15s; }
+    .btn-primary:hover { background:#2db87a; }
+    .btn-outline { display:inline-flex;align-items:center;gap:6px;background:white;color:#374151;font-weight:500;padding:10px 22px;border-radius:10px;font-size:.9375rem;border:1.5px solid #E5E7EB;cursor:pointer;text-decoration:none;transition:background .15s; }
+    .btn-outline:hover { background:#F9FAFB; }
+    .plan-card { border:1.5px solid #E5E7EB;border-radius:14px;padding:22px;display:flex;flex-direction:column;background:white;transition:box-shadow .15s; }
+    .plan-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.06); }
+    .plan-card.highlighted { border-color:transparent;box-shadow:0 0 0 2.5px #34D399, 0 8px 28px rgba(62,207,142,.14); }
+    .feat-row { display:flex;align-items:flex-start;gap:8px;font-size:.8125rem;color:#374151;padding:3px 0; }
+    .feat-check { color:#22C55E;font-size:.875rem;font-weight:700;flex-shrink:0;line-height:1.4; }
+    .step-connector { flex:1;height:2px;background:#E5E7EB;margin-bottom:18px; }
+    .step-connector.done { background:#3ECF8E; }
+    .form-input { width:100%;padding:9px 12px;font-size:.875rem;background:white;border:1.5px solid #E5E7EB;border-radius:9px;color:#111827;outline:none;transition:border-color .15s,box-shadow .15s; }
+    .form-input:focus { border-color:#3ECF8E;box-shadow:0 0 0 3px rgba(62,207,142,.12); }
+    .form-input::placeholder { color:#9CA3AF; }
+    .plan-outline-btn { width:100%;padding:10px;border-radius:9px;font-size:.875rem;font-weight:600;color:#374151;border:1.5px solid #D1D5DB;background:white;cursor:pointer;transition:background .12s; }
+    .plan-outline-btn:hover { background:#F9FAFB; }
+    .plan-green-btn { width:100%;padding:10px;border-radius:9px;font-size:.875rem;font-weight:600;color:white;border:none;cursor:pointer;transition:background .15s; background:#3ECF8E; }
+    .plan-green-btn:hover { background:#2db87a; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+  <!-- TOP HEADER -->
+  <header class="bg-white border-b border-gray-100 sticky top-0 z-20">
+    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style="background:#3ECF8E;">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <span class="font-semibold text-gray-900" style="font-size:17px;">Payro</span>
+      </div>
+      <p class="text-sm text-gray-400">Setting up <span class="font-medium text-gray-700">Acme Corp</span></p>
+    </div>
+  </header>
+
+  <!-- STEP PROGRESS -->
+  <div class="bg-white border-b border-gray-100">
+    <div class="max-w-2xl mx-auto px-6 py-5">
+      <div class="flex items-center gap-0">
+
+        <!-- Step 1: Done -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:#3ECF8E;">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <span class="text-xs font-medium text-gray-400">Company Info</span>
+        </div>
+        <div class="step-connector done mx-2"></div>
+
+        <!-- Step 2: Done -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:#3ECF8E;">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <span class="text-xs font-medium text-gray-400">Business Details</span>
+        </div>
+        <div class="step-connector done mx-2"></div>
+
+        <!-- Step 3: Done -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:#3ECF8E;">
+            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <span class="text-xs font-medium text-gray-400">Payroll Settings</span>
+        </div>
+        <div class="step-connector done mx-2"></div>
+
+        <!-- Step 4: Active -->
+        <div class="flex flex-col items-center gap-1.5 shrink-0">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:#3ECF8E;">4</div>
+          <span class="text-xs font-semibold" style="color:#3ECF8E;">Plan &amp; Billing</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="max-w-4xl mx-auto px-6 mt-8 pb-16">
+
+    <!-- Heading -->
+    <div class="text-center mb-8">
+      <h1 class="text-2xl font-bold text-gray-900 mb-1.5">Choose Your Plan</h1>
+      <p class="text-sm text-gray-500">Start free, upgrade anytime</p>
+    </div>
+
+    <!-- Plan cards -->
+    <div class="grid grid-cols-3 gap-5 mb-8">
+
+      <!-- FREE -->
+      <div class="plan-card">
+        <div class="mb-5">
+          <p class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Free</p>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-3xl font-bold text-gray-900">&#8369;0</span>
+            <span class="text-sm text-gray-400">/mo</span>
+          </div>
+          <p class="text-xs text-gray-400">Up to 10 employees · Free forever</p>
+        </div>
+        <div class="border-t border-gray-100 pt-4 mb-5 flex-1 space-y-1">
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Core payroll computation</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>SSS / PhilHealth / Pag-IBIG</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Payslip generation</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Email support</span></div>
+          <div class="feat-row"><span style="color:#D1D5DB;font-size:.875rem;font-weight:700;flex-shrink:0;line-height:1.4;">&#10007;</span><span class="text-gray-400">Attendance tracking</span></div>
+          <div class="feat-row"><span style="color:#D1D5DB;font-size:.875rem;font-weight:700;flex-shrink:0;line-height:1.4;">&#10007;</span><span class="text-gray-400">Leave management</span></div>
+          <div class="feat-row"><span style="color:#D1D5DB;font-size:.875rem;font-weight:700;flex-shrink:0;line-height:1.4;">&#10007;</span><span class="text-gray-400">BIR 1601-C filing</span></div>
+        </div>
+        <button class="plan-outline-btn">Get Started</button>
+      </div>
+
+      <!-- STARTER (highlighted) -->
+      <div class="plan-card highlighted">
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-xs font-bold tracking-widest uppercase text-gray-400">Starter</p>
+            <span class="text-xs font-bold text-white px-2.5 py-0.5 rounded-full" style="background:#3ECF8E;">Most Popular</span>
+          </div>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-3xl font-bold text-gray-900">&#8369;499</span>
+            <span class="text-sm text-gray-400">/mo</span>
+          </div>
+          <p class="text-xs text-gray-400">Up to 50 employees</p>
+        </div>
+        <div class="border-t border-gray-100 pt-4 mb-5 flex-1 space-y-1">
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Everything in Free</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Attendance tracking</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Leave management</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>BIR 1601-C filing</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Priority support</span></div>
+          <div class="feat-row"><span style="color:#D1D5DB;font-size:.875rem;font-weight:700;flex-shrink:0;line-height:1.4;">&#10007;</span><span class="text-gray-400">Advanced reports</span></div>
+          <div class="feat-row"><span style="color:#D1D5DB;font-size:.875rem;font-weight:700;flex-shrink:0;line-height:1.4;">&#10007;</span><span class="text-gray-400">API access</span></div>
+        </div>
+        <button class="plan-green-btn">Get Started</button>
+      </div>
+
+      <!-- GROWTH -->
+      <div class="plan-card">
+        <div class="mb-5">
+          <p class="text-xs font-bold tracking-widest uppercase text-gray-400 mb-3">Growth</p>
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class="text-3xl font-bold text-gray-900">&#8369;1,499</span>
+            <span class="text-sm text-gray-400">/mo</span>
+          </div>
+          <p class="text-xs text-gray-400">Unlimited employees</p>
+        </div>
+        <div class="border-t border-gray-100 pt-4 mb-5 flex-1 space-y-1">
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Everything in Starter</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Advanced reports</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>API access</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Dedicated onboarding</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>BIR Alphalist &amp; 2316</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>Custom integrations</span></div>
+          <div class="feat-row"><span class="feat-check">&#10003;</span><span>SLA &amp; uptime guarantee</span></div>
+        </div>
+        <button class="plan-outline-btn">Get Started</button>
+      </div>
+
+    </div>
+
+    <!-- Payment card -->
+    <div class="bg-white border border-gray-100 rounded-xl p-6 mb-5">
+      <div class="flex items-center gap-2 mb-5">
+        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        <h3 class="text-sm font-semibold text-gray-900">Payment Details</h3>
+        <span class="ml-auto text-xs text-gray-400">14-day free trial · billed after trial ends</span>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 mb-4">
+        <!-- Card number -->
+        <div class="col-span-3">
+          <label class="block text-xs font-medium text-gray-600 mb-1.5">Card Number</label>
+          <input type="text" placeholder="4242 4242 4242 4242" class="form-input" maxlength="19">
+        </div>
+        <!-- Expiry -->
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1.5">Expiry</label>
+          <input type="text" placeholder="MM / YY" class="form-input" maxlength="7">
+        </div>
+        <!-- CVC -->
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1.5">CVC</label>
+          <input type="text" placeholder="•••" class="form-input" maxlength="4">
+        </div>
+        <!-- Name on card -->
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1.5">Name on Card</label>
+          <input type="text" placeholder="Juan dela Cruz" class="form-input">
+        </div>
+      </div>
+
+      <button class="btn-primary w-full justify-center text-base py-3" style="border-radius:10px;">
+        Complete Setup
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </button>
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-center text-xs text-gray-400">
+      <svg class="w-3.5 h-3.5 inline-block mr-1 mb-0.5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      Secured by Stripe &middot; Cancel anytime &middot; 14-day free trial on paid plans
+    </p>
+
+  </div>
+
+</body>
+</html>
