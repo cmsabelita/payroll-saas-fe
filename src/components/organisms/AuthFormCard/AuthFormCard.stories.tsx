@@ -62,7 +62,7 @@ export const Default: Story = {
     footer: (
       <Text variant="body" as="p" className="text-center text-sm text-muted-foreground">
         Remember your password?{" "}
-        <Link href="#" className="font-semibold text-primary hover:underline">
+        <Link href="#" className="font-semibold text-primary">
           Sign in
         </Link>
       </Text>

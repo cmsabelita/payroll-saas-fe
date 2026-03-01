@@ -14,6 +14,7 @@
   --color-accent: var(--color-accent);
   --color-accent-foreground: var(--color-accent-foreground);
   --color-border: var(--color-border);
+  --color-border-subtle: var(--color-border-subtle);
   --color-ring: var(--color-ring);
   --color-input: var(--color-input);
   --color-input-foreground: var(--color-input-foreground);
@@ -21,6 +22,8 @@
   --color-destructive-foreground: var(--color-destructive-foreground);
   --color-success: var(--color-success);
   --color-success-foreground: var(--color-success-foreground);
+  --color-success-muted: var(--color-success-muted);
+  --color-success-muted-foreground: var(--color-success-muted-foreground);
   --color-warning: var(--color-warning);
   --color-warning-foreground: var(--color-warning-foreground);
   --color-info: var(--color-info);

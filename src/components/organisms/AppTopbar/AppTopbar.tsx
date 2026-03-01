@@ -1,6 +1,6 @@
 "use client";
 
-import { Text } from "@/components/atoms";
+import { Text, ThemeToggle } from "@/components/atoms";
 import { cn } from "@/utils";
 import type { AppTopbarProps } from "./AppTopbar.types";
 
@@ -15,7 +15,7 @@ export function AppTopbar({
   return (
     <header
       className={cn(
-        "flex h-14 shrink-0 items-center justify-between gap-4 border-b border-border bg-background px-4 sm:px-6",
+        "flex h-14 shrink-0 items-center justify-between gap-4 border-b border-border-subtle bg-card px-4 sm:px-6",
         className
       )}
     >
@@ -32,9 +32,10 @@ export function AppTopbar({
       <div className="flex flex-shrink-0 items-center gap-2 sm:gap-4">
         {primaryAction != null && primaryAction}
         {dateRangeTrigger != null && dateRangeTrigger}
-        {trailing != null && (
-          <div className="flex items-center gap-2">{trailing}</div>
-        )}
+        <div className="flex items-center gap-2">
+          <ThemeToggle className="shrink-0" />
+          {trailing != null && trailing}
+        </div>
       </div>
     </header>
   );

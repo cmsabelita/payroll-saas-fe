@@ -1,14 +1,19 @@
-export type PortalAttendanceDayStatus = "present" | "absent" | "leave" | "rest" | null;
+export type PortalAttendanceDayStatus = "on-time" | "late" | "pending" | "absent";
 
 export interface PortalAttendanceStripDay {
-  date: string;
-  label: string;
+  dayLabel: string;
+  timeIn?: string;
   status: PortalAttendanceDayStatus;
 }
 
 export interface PortalAttendanceStripProps {
-  /** Week or period label (e.g. "This week") */
-  heading?: string;
+  weekLabel: string;
   days: PortalAttendanceStripDay[];
+  /** e.g. "Today — February 27 (Thursday)" */
+  todayLabel?: string;
+  /** e.g. "Time-in: 7:58 AM · Working" */
+  todayDetail?: string;
+  onTimeOut?: () => void;
+  viewAllHref?: string;
   className?: string;
 }

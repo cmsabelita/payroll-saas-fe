@@ -4,7 +4,9 @@
       "WebFetch(domain:dribbble.com)",
       "Bash(ls:*)",
       "Bash(sed:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(xargs cat:*)",
+      "mcp__ide__getDiagnostics"
     ]
   }
 }

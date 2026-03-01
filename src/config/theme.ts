@@ -12,6 +12,8 @@ export interface Palette {
   accent: string;
   accentForeground: string;
   border: string;
+  /** Lighter border for panels (sidebar, topbar). Mockup: gray-100 #F3F4F6 */
+  borderSubtle: string;
   ring: string;
   input: string;
   inputForeground: string;
@@ -19,6 +21,9 @@ export interface Palette {
   destructiveForeground: string;
   success: string;
   successForeground: string;
+  /** Subtle success background (e.g. nav active state). Mockup: #ECFDF5 / #059669 */
+  successMuted: string;
+  successMutedForeground: string;
   warning: string;
   warningForeground: string;
   info: string;
@@ -65,6 +70,7 @@ export const themeConfig: ThemeTokens = {
       accent: "#D1F5E3",
       accentForeground: "#065F46",
       border: "#D7DBDF",
+      borderSubtle: "#F3F4F6",
       ring: "#3ECF8E",
       input: "#FFFFFF",
       inputForeground: "#11181C",
@@ -72,6 +78,8 @@ export const themeConfig: ThemeTokens = {
       destructiveForeground: "#FFFFFF",
       success: "#3ECF8E",
       successForeground: "#FFFFFF",
+      successMuted: "#ECFDF5",
+      successMutedForeground: "#059669",
       warning: "#F59E0B",
       warningForeground: "#78350F",
       info: "#0EA5E9",
@@ -94,6 +102,7 @@ export const themeConfig: ThemeTokens = {
       accent: "#1A2E26",
       accentForeground: "#3ECF8E",
       border: "#303030",
+      borderSubtle: "#404040",
       ring: "#3ECF8E",
       input: "#181818",
       inputForeground: "#EDEDED",
@@ -101,6 +110,8 @@ export const themeConfig: ThemeTokens = {
       destructiveForeground: "#FFFFFF",
       success: "#3ECF8E",
       successForeground: "#000000",
+      successMuted: "#064E3B",
+      successMutedForeground: "#34D399",
       warning: "#F59E0B",
       warningForeground: "#FEF3C7",
       info: "#0EA5E9",

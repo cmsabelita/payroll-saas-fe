@@ -13,26 +13,12 @@ const meta: Meta<typeof PortalTopbar> = {
   },
   tags: ["autodocs"],
   argTypes: {
-    logo: {
-      control: false,
-      description: "Logo and/or company name (left side)",
-      table: { type: { summary: "ReactNode" } },
-    },
-    tabs: {
-      control: false,
-      description: "Portal nav tabs (e.g. UnderlineTabs)",
-      table: { type: { summary: "ReactNode" } },
-    },
-    trailing: {
-      control: false,
-      description: "Optional trailing area (e.g. notifications + user dropdown)",
-      table: { type: { summary: "ReactNode" } },
-    },
-    className: {
-      control: "text",
-      description: "Optional root class name",
-      table: { type: { summary: "string" } },
-    },
+    logo: { control: false, table: { type: { summary: "ReactNode" } } },
+    companyName: { control: "text", table: { type: { summary: "string" } } },
+    tabs: { control: false, table: { type: { summary: "ReactNode" } } },
+    requestsBadgeCount: { control: "number", table: { type: { summary: "number" } } },
+    trailing: { control: false, table: { type: { summary: "ReactNode" } } },
+    className: { control: "text", table: { type: { summary: "string" } } },
   },
 };
 
@@ -49,11 +35,29 @@ const portalTabs = [
 export const Default: Story = {
   args: {
     logo: (
-      <Box className="flex items-center gap-2">
-        <Text variant="label" as="span" className="font-semibold">
-          Acme Corp
-        </Text>
-      </Box>
+      <Text variant="label" as="span" className="font-semibold text-foreground">
+        Payro
+      </Text>
+    ),
+    companyName: "Acme Corporation",
+    requestsBadgeCount: 2,
+    trailing: (
+      <>
+        <IconButton variant="ghost" size="sm" aria-label="Notifications">
+          <FaIcon icon={faBell} size="sm" />
+        </IconButton>
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-muted"
+          aria-label="User menu"
+        >
+          <Avatar size="sm" fallback="JD" />
+          <Text variant="label" as="span" className="hidden sm:inline">
+            Juan dela Cruz
+          </Text>
+          <FaIcon icon={faChevronDown} size="sm" />
+        </button>
+      </>
     ),
   },
 };

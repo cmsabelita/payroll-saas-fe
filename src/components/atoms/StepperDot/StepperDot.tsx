@@ -33,7 +33,13 @@ export function StepperDot({
 }: StepperDotProps) {
   const showCheck = state === "done";
   return (
-    <span className={cn("inline-flex flex-col items-center gap-1", className)} {...rest}>
+    <span
+      className={cn(
+        "relative inline-flex h-8 w-8 flex-col items-center",
+        className
+      )}
+      {...rest}
+    >
       <span
         className={cn(stepperDotVariants({ state }))}
         aria-current={state === "active" ? "step" : undefined}
@@ -47,7 +53,10 @@ export function StepperDot({
         )}
       </span>
       {label ? (
-        <span className="text-xs text-muted-foreground text-center max-w-[4rem]">
+        <span
+          className="absolute top-full left-1/2 mt-0.5 w-max max-w-[5.5rem] -translate-x-1/2 text-center text-xs text-muted-foreground"
+          style={{ whiteSpace: "normal" }}
+        >
           {label}
         </span>
       ) : null}

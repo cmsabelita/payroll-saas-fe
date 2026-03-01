@@ -15,13 +15,13 @@ export function AppSidebar({
   return (
     <aside
       className={cn(
-        "flex h-full w-[232px] shrink-0 flex-col border-r border-border bg-background overflow-y-auto",
+        "flex h-full w-[232px] shrink-0 flex-col border-r border-border-subtle bg-card overflow-y-auto",
         className
       )}
       aria-label="Main navigation"
     >
-      {/* Logo row — mockup: gap-2.5 px-4 py-4 border-b */}
-      <Box className="flex shrink-0 items-center gap-2.5 border-b border-border px-4 py-4">
+      {/* Logo row — mockup: gap-2.5 px-4 py-4 border-b border-gray-100 */}
+      <Box className="flex shrink-0 items-center gap-2.5 border-b border-border-subtle px-4 py-4">
         {logo}
       </Box>
       {/* Nav — mockup: px-2.5 pt-2 pb-4; section labels mt-5 mb-1, uppercase small */}

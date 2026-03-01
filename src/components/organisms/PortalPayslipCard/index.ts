@@ -1,2 +1,5 @@
 export { PortalPayslipCard } from "./PortalPayslipCard";
-export type { PortalPayslipCardProps } from "./PortalPayslipCard.types";
+export type {
+  PortalPayslipCardProps,
+  PortalPayslipCardBreakdownLine,
+} from "./PortalPayslipCard.types";

@@ -1,15 +1,30 @@
+import type { ReactNode } from "react";
+
 export interface PortalRequestsListItem {
-  id: string;
-  type: string;
+  /** e.g. "Vacation Leave", "OT Request" */
   title: string;
+  /** e.g. "Pending", "Approved" */
   status: string;
-  date: string;
+  statusVariant?: "success" | "warning" | "secondary";
+  /** Optional date range or description */
+  detail?: string;
   href?: string;
+  /** Optional icon (ReactNode) */
+  icon?: ReactNode;
+}
+
+export interface PortalRequestsListAction {
+  label: string;
+  href?: string;
+  onClick?: () => void;
+  variant?: "primary" | "secondary";
 }
 
 export interface PortalRequestsListProps {
-  heading?: string;
+  title?: string;
+  /** Primary/secondary action buttons above the list */
+  actions?: PortalRequestsListAction[];
   items: PortalRequestsListItem[];
-  emptyMessage?: string;
+  viewAllHref?: string;
   className?: string;
 }

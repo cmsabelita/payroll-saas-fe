@@ -69,6 +69,8 @@ export type {
   StatusStepperStep,
   StatusStepperStepState,
 } from "./StatusStepper";
+export { PortalPayslipListCard } from "./PortalPayslipListCard";
+export type { PortalPayslipListCardProps } from "./PortalPayslipListCard";
 export { ProfileHeader } from "./ProfileHeader";
 export type { ProfileHeaderProps } from "./ProfileHeader";
 export { UnderlineTabs } from "./UnderlineTabs";

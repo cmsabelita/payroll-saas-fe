@@ -141,11 +141,11 @@ export const LoginMockup: Story = {
         footer={
           <>
             Copyright © Payro, All Rights Reserved &nbsp;&middot;&nbsp;{" "}
-            <a href="#" className="text-primary hover:underline">
+            <a href="#" className="text-primary">
               Terms &amp; Conditions
             </a>{" "}
             &nbsp;&middot;&nbsp;{" "}
-            <a href="#" className="text-primary hover:underline">
+            <a href="#" className="text-primary">
               Privacy &amp; Policy
             </a>
           </>

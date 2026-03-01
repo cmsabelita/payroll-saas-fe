@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 export interface PortalGreetingQuickAction {
   label: string;
   href?: string;

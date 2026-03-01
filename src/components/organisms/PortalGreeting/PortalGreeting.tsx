@@ -1,35 +1,63 @@
-import { Text } from "@/components/atoms";
+"use client";
+
+import { Button, buttonVariants, Text } from "@/components/atoms";
 import { cn } from "@/utils";
 import type { PortalGreetingProps } from "./PortalGreeting.types";
 
 export function PortalGreeting({
-  date,
+  dateLabel,
   title,
-  quickActions,
+  subtitle,
+  quickActions = [],
   className,
 }: PortalGreetingProps) {
   return (
-    <section
-      className={cn("mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between", className)}
-      aria-label="Greeting and quick actions"
+    <div
+      className={cn("flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between", className)}
+      role="region"
+      aria-label="Greeting"
     >
       <div>
-        <p className="text-sm text-muted-foreground">{date}</p>
-        <Text variant="heading2" as="h1" className="mt-0.5">
+        <Text variant="caption" as="p" className="mb-0.5 text-muted-foreground">
+          {dateLabel}
+        </Text>
+        <Text variant="heading" as="h1" className="text-xl font-bold">
           {title}
         </Text>
+        {subtitle != null && (
+          <Text variant="body" as="p" className="mt-0.5 text-sm text-muted-foreground">
+            {subtitle}
+          </Text>
+        )}
       </div>
-      <div className="flex flex-wrap gap-2">
-        {quickActions.map((action) => (
-          <a
-            key={action.label}
-            href={action.href}
-            className="inline-flex items-center rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted"
-          >
-            {action.label}
-          </a>
-        ))}
-      </div>
-    </section>
+      {quickActions.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          {quickActions.map((action, i) => {
+            const variant = action.variant === "primary" ? "primary" : "outline";
+            if (action.href != null) {
+              return (
+                <a
+                  key={i}
+                  href={action.href}
+                  className={cn(buttonVariants({ variant, size: "sm" }))}
+                >
+                  {action.label}
+                </a>
+              );
+            }
+            return (
+              <Button
+                key={i}
+                variant={variant}
+                size="sm"
+                onClick={action.onClick}
+              >
+                {action.label}
+              </Button>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }

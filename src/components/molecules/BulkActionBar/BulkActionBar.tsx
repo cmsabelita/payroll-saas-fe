@@ -30,7 +30,7 @@ export function BulkActionBar({
         <button
           type="button"
           onClick={onClear}
-          className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+          className="text-sm font-medium text-primary"
         >
           {clearLabel}
         </button>

@@ -21,7 +21,7 @@ export function SettingsLayout({
       >
         {nav}
       </aside>
-      <main className="min-w-0 flex-1 max-w-2xl space-y-5">{children}</main>
+      <main className="min-w-0 flex-1 space-y-5">{children}</main>
     </div>
   );
 }

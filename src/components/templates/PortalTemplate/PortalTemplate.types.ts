@@ -1,9 +1,8 @@
 import type { ReactNode } from "react";
 
 export interface PortalTemplateProps {
-  /** Topbar slot (e.g. PortalTopbar with logo, nav, trailing) */
+  /** Topbar slot (e.g. PortalTopbar or PortalTopbarContent). Rendered above main. */
   topbar?: ReactNode;
-  /** Main content */
   children: ReactNode;
   className?: string;
 }

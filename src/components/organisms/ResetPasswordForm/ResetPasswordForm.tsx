@@ -46,7 +46,7 @@ export function ResetPasswordForm({
   const footer = (
     <Text variant="body" as="p" className="text-center text-sm text-muted-foreground">
       Remember your password?{" "}
-      <Link href={signInHref} className="font-semibold text-primary hover:underline">
+      <Link href={signInHref} className="font-semibold text-primary">
         Sign in
       </Link>
     </Text>

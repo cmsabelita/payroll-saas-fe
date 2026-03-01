@@ -15,7 +15,7 @@ export function EmployeeDataTable({
   return (
     <Card className={cn("overflow-hidden rounded-xl border border-border", className)}>
       {tabFilter != null && (
-        <div className="border-b border-border px-4 pb-0 pt-3.5">{tabFilter}</div>
+        <div className="border-b border-border px-4 py-3">{tabFilter}</div>
       )}
       {toolbar != null && (
         <div className="flex flex-wrap items-center gap-3 border-b border-border px-4 py-3">

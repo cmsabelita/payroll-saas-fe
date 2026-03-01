@@ -32,7 +32,7 @@ function DefaultPreviewPlaceholder() {
       </svg>
       <a
         href="/dashboard"
-        className="text-sm font-medium text-primary hover:underline"
+        className="text-sm font-medium text-primary"
       >
         View live dashboard mockup →
       </a>
@@ -108,7 +108,7 @@ export function MarketingHero({
           <div className="flex items-center gap-1.5 bg-muted px-4 py-2.5">
             <div className="h-3 w-3 rounded-full bg-red-400" />
             <div className="h-3 w-3 rounded-full bg-yellow-400" />
-            <div className="h-3 w-3 rounded-full bg-green-400" />
+            <div className="h-3 w-3 rounded-full bg-primary" />
             <span className="ml-3 font-mono text-xs text-muted-foreground">
               app.payro.ph/dashboard
             </span>

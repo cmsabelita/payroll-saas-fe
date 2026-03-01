@@ -11,10 +11,14 @@ function getProgressValue(steps: StatusStepperStep[]): number {
 
 export function StatusStepper({ steps, className }: StatusStepperProps) {
   const valueNow = getProgressValue(steps);
+  const gridCols = steps.flatMap((_, i) =>
+    i < steps.length - 1 ? ["auto", "1fr"] : ["auto"]
+  ).join(" ");
 
   return (
     <Box
-      className={cn("flex w-full items-start", className)}
+      className={cn("grid w-full items-center pb-5", className)}
+      style={{ gridTemplateColumns: gridCols }}
       role="progressbar"
       aria-valuenow={valueNow}
       aria-valuemin={1}
@@ -31,11 +35,12 @@ export function StatusStepper({ steps, className }: StatusStepperProps) {
         />,
         ...(i < steps.length - 1
           ? [
+              <div key={`${step.key}-connector`} className="flex h-8 items-center">
               <StepperConnector
-                key={`${step.key}-connector`}
                 done={step.state === "done"}
-                className="mt-4 min-w-4 flex-1 mx-0 px-0 self-start"
-              />,
+                className="w-full"
+              />
+            </div>,
             ]
           : []),
       ])}

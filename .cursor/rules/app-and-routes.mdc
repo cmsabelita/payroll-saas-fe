@@ -20,6 +20,65 @@ globs: src/app/**/*.tsx, src/app/store/**/*
 - **RootStore** in `src/app/store/RootStore.ts`; `makeAutoObservable`. Add domain stores as properties.
 - Access via **`useRootStore()`** hook. **StoreProvider** wraps the app in layout.tsx.
 - Do not create new global state outside RootStore; add slices to RootStore or use React state for local UI.
+- Wrap client components that read store state with `observer()` from `mobx-react-lite`.
+
+### Domain store file structure
+Each domain gets a subfolder `src/app/store/<domain>/` with exactly three files:
+- **`Domain.types.ts`** — plain TypeScript types, no imports from MobX or services
+- **`Domain.api.ts`** — API object; imports `get/post/put/patch/deleteRequest` from `@/services`; returns `res.data` (typed); no MobX
+- **`Domain.store.ts`** — MobX class; imports from `Domain.api.ts` only; tracks `isLoading` and `error` per async action; wraps post-await mutations in `runInAction`
+
+### API layer (`Domain.api.ts`)
+```ts
+import { get, post, patch, deleteRequest } from "@/services";
+import type { Employee } from "./Employee.types";
+
+const BASE = "/employees";
+
+export const EmployeeApi = {
+  async list(): Promise<Employee[]> {
+    const res = await get<Employee[]>(BASE);
+    return res.data;
+  },
+  async create(payload: Omit<Employee, "id">): Promise<Employee> {
+    const res = await post<Employee>(BASE, payload);
+    return res.data;
+  },
+};
+```
+
+### Store async action pattern
+```ts
+import { makeAutoObservable, runInAction } from "mobx";
+
+async fetchAll() {
+  this.isLoading = true;
+  this.error = null;
+  try {
+    const items = await DomainApi.list();
+    runInAction(() => { this.items = items; });
+  } catch (err) {
+    runInAction(() => { this.error = "Failed"; });
+  } finally {
+    runInAction(() => { this.isLoading = false; });
+  }
+}
+```
+
+### Consuming in a component
+```tsx
+"use client";
+import { observer } from "mobx-react-lite";
+import { useRootStore } from "@/app/store";
+
+export const MyList = observer(function MyList() {
+  const { employeeStore } = useRootStore();
+  if (employeeStore.isLoading) return <p>Loading…</p>;
+  return <ul>{employeeStore.employees.map(e => <li key={e.id}>{e.name}</li>)}</ul>;
+});
+```
+
+Full reference: `docs/STORE-MOBX.md`.
 
 ## Fonts
 - DM Sans (body), Geist Mono (mono), Circular (self-hosted). See layout.tsx and globals/circular-font.css.

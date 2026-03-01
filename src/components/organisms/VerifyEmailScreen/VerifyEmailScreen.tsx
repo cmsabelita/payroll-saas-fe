@@ -48,7 +48,7 @@ export function VerifyEmailScreen({
         type="button"
         onClick={onResend}
         disabled={isResending}
-        className="mb-6 text-sm font-semibold text-primary hover:underline disabled:opacity-50"
+        className="mb-6 text-sm font-semibold text-primary disabled:opacity-50"
       >
         {isResending ? "Sending…" : "Resend verification email"}
       </button>

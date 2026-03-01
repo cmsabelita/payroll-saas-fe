@@ -135,11 +135,11 @@ export function SignupForm({
                   className="cursor-pointer text-sm leading-relaxed text-muted-foreground"
                 >
                   I agree to the{" "}
-                  <Link href={termsHref} className="font-medium text-primary hover:underline">
+                  <Link href={termsHref} className="font-medium text-primary">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href={privacyHref} className="font-medium text-primary hover:underline">
+                  <Link href={privacyHref} className="font-medium text-primary">
                     Privacy Policy
                   </Link>
                 </label>
@@ -187,7 +187,7 @@ export function SignupForm({
       <div className="mt-6 text-center">
         <Text variant="body" as="span" className="text-sm text-muted-foreground">
           Already have an account?{" "}
-          <Link href={signInHref} className="font-semibold text-primary hover:underline">
+          <Link href={signInHref} className="font-semibold text-primary">
             Sign in
           </Link>
         </Text>

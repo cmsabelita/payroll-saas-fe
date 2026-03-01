@@ -6,7 +6,7 @@ export function TabFilter({ tabs, value, onChange, className }: TabFilterProps) 
   return (
     <div
       role="tablist"
-      className={cn("inline-flex flex-wrap gap-1", className)}
+      className={cn("inline-flex flex-wrap gap-2", className)}
     >
       {tabs.map((tab) => (
         <TabSegment

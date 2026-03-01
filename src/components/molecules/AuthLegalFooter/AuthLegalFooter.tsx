@@ -14,11 +14,11 @@ export function AuthLegalFooter({
     <div className={cn("text-center text-xs text-muted-foreground", className)}>
       <span>Copyright : {productName}, All Rights Reserved</span>
       <span aria-hidden>{" · "}</span>
-      <Link href={termsHref} variant="primary" className="hover:underline">
+      <Link href={termsHref} variant="primary" >
         Terms &amp; Conditions
       </Link>
       <span aria-hidden>{" · "}</span>
-      <Link href={privacyHref} variant="primary" className="hover:underline">
+      <Link href={privacyHref} variant="primary" >
         Privacy &amp; Policy
       </Link>
     </div>

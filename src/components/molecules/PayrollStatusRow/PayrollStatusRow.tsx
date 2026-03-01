@@ -2,6 +2,22 @@ import { Badge, Box, Divider, Text } from "@/components/atoms";
 import { cn } from "@/utils";
 import type { PayrollStatusRowProps } from "./PayrollStatusRow.types";
 
+const PAYROLL_STATUS_VARIANT: Record<
+  string,
+  "success" | "warning" | "secondary" | "destructive"
+> = {
+  Draft: "warning",
+  Pending: "warning",
+  Approved: "success",
+  Paid: "success",
+  Completed: "success",
+  Rejected: "destructive",
+};
+
+function getStatusVariant(status: string): "success" | "warning" | "secondary" | "destructive" {
+  return PAYROLL_STATUS_VARIANT[status] ?? "secondary";
+}
+
 export function PayrollStatusRow({
   title,
   subtitle,
@@ -24,7 +40,7 @@ export function PayrollStatusRow({
         </Box>
         <Box className="shrink-0">
           {typeof status === "string" ? (
-            <Badge variant="secondary">{status}</Badge>
+            <Badge variant={getStatusVariant(status)}>{status}</Badge>
           ) : (
             status
           )}

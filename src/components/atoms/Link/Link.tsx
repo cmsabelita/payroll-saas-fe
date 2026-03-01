@@ -3,7 +3,7 @@ import { cn } from "@/utils";
 import type { LinkProps } from "./Link.types";
 
 const linkVariants = cva(
-  "underline underline-offset-4 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm",
+  "no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm",
   {
     variants: {
       variant: {

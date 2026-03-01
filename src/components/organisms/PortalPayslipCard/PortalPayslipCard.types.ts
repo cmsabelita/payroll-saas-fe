@@ -1,11 +1,21 @@
-export interface PortalPayslipCardProps {
-  /** Pay period (e.g. "January 2026") */
-  period: string;
-  /** Net pay amount (e.g. "₱45,230.00") */
+export interface PortalPayslipCardBreakdownLine {
+  label: string;
   amount: string;
-  /** Link to full payslip */
-  href: string;
-  /** Link label (e.g. "View payslip") */
-  linkLabel: string;
+  isDeduction?: boolean;
+}
+
+export interface PortalPayslipCardProps {
+  /** e.g. "Feb 1–15, 2026 · Semi-monthly" */
+  periodLabel: string;
+  /** e.g. "Released", "Pending" */
+  statusLabel: string;
+  /** Badge variant for status */
+  statusVariant?: "success" | "warning" | "secondary";
+  grossPay: string;
+  deductions: string;
+  netPay: string;
+  breakdown: PortalPayslipCardBreakdownLine[];
+  viewAllHref?: string;
+  onDownload?: () => void;
   className?: string;
 }
